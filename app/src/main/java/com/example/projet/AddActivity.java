@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import model.ActivitySport;
 
+
 public class AddActivity extends Activity implements OnClickListener {
 
     private static int REQUEST_CODE = 1;
@@ -27,7 +28,6 @@ public class AddActivity extends Activity implements OnClickListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-
         context = this;
         activitySportArrayListSelected = new ArrayList<ActivitySport>();
         infosActivitySelected = (TextView) findViewById(R.id.textInfos);
@@ -35,6 +35,10 @@ public class AddActivity extends Activity implements OnClickListener {
         button.setOnClickListener(this);
     }
 
+    /**
+     *
+     * permet de passer d'une vue l'autre tout en conservant la liste qui a été séléectionner
+     */
      @Override
     public void onClick(View paramView) {
         Intent intent = new Intent(context, ListActivitySport.class);
@@ -43,7 +47,10 @@ public class AddActivity extends Activity implements OnClickListener {
     }
 
 
-
+    /**
+     * permet de recuperer les activitées sportives dans la liste déroulante
+     * + afficher un message
+     */
    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {

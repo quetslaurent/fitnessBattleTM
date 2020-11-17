@@ -6,13 +6,17 @@ import android.os.Parcelable;
 public class ActivitySport  implements Parcelable {
 
     private String name;
-    private int nbrepetition;
+    private int nbrepetitionPoint;
     private boolean checked;
 
-
+    /**
+     * constructeur de la classe activité
+     * @param name , le nom du sport , exemple pompe
+     * @param nbrepetition , le nombre de répétition pour avoir un point
+     */
     public ActivitySport(String name, int nbrepetition) {
         this.name = name;
-        this.nbrepetition = nbrepetition;
+        this.nbrepetitionPoint = nbrepetition;
     }
     public ActivitySport() {
 
@@ -22,16 +26,16 @@ public class ActivitySport  implements Parcelable {
         return name;
     }
 
-    public int getNbrepetition() {
-        return nbrepetition;
+    public int getNbrepetitionPoint() {
+        return nbrepetitionPoint;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setNbrepetition(int nbrepetition) {
-        this.nbrepetition = nbrepetition;
+    public void setNbrepetitionPoint(int nbrepetitionPoint) {
+        this.nbrepetitionPoint = nbrepetitionPoint;
     }
 
     public boolean isChecked() {
@@ -69,14 +73,19 @@ public class ActivitySport  implements Parcelable {
     @Override
     public void writeToParcel(Parcel paramParcel, int flags) {
         paramParcel.writeString(name);
-        paramParcel.writeInt(nbrepetition);
+        paramParcel.writeInt(nbrepetitionPoint);
         paramParcel.writeInt(checked ? 1:0 );
 
     }
+
+    /**
+     * constructeur qui va lire les argu de l'objet Parcel dans l'ordre dans lequel ils sont passer dans write
+     * @param pc
+     */
     public ActivitySport(Parcel pc){
 
         name = pc.readString();
-        nbrepetition = pc.readInt();
+        nbrepetitionPoint = pc.readInt();
         checked = (pc.readInt() == 1);
     }
 

@@ -21,6 +21,9 @@ public class ListActivityAdapter extends ArrayAdapter<ActivitySport> {
         this.context = context;
     }
 
+    /**
+     * Si la convertview est null , on va la creer en chargeant les composants (checkbox,texte)
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -35,20 +38,27 @@ public class ListActivityAdapter extends ArrayAdapter<ActivitySport> {
 
             convertView.setTag(activtyViewHolder);
         } else {
+            /**
+             * si elle existe deja , il a juste a la recuperer
+             */
             activtyViewHolder = (ActivtyViewHolder) convertView.getTag();
         }
 
-
+        /**
+         * permet d'initialiser les var , text et check , en recuperant l'objet ActivitySport
+         */
         ActivitySport activitySport = getItem(position);
         if (activitySport != null) {
             activtyViewHolder.text.setText(activitySport.getName());
             activtyViewHolder.check.setChecked(activitySport.isChecked());
-            activtyViewHolder.check.setTag(position);
+            activtyViewHolder.check.setTag(position); //permet de recuperer sa position dans la liste
         }
         return convertView;
     }
 
-
+    /**
+     *  Classe statique , qui permet de parcourir la liste plus facilement
+     */
     static class ActivtyViewHolder {
         TextView text;
         CheckBox check;

@@ -34,6 +34,11 @@ public class ListActivitySport extends ListActivity implements OnItemClickListen
         getListView().setOnItemClickListener(this);
     }
 
+    /**
+     *
+     * @param activitiesSelected , liste des activités selectionner
+     * @return
+     */
     private List<ActivitySport> createActivity(List<ActivitySport>activitiesSelected){
         List<ActivitySport> activities = new ArrayList<ActivitySport>();
 
@@ -59,7 +64,7 @@ public class ListActivitySport extends ListActivity implements OnItemClickListen
         ActivitySport c = new ActivitySport();
         c.setChecked(false);
         c.setName(name);
-        c.setNbrepetition(nbRepetition);
+        c.setNbrepetitionPoint(nbRepetition);
         return c;
     }
 
@@ -68,6 +73,10 @@ public class ListActivitySport extends ListActivity implements OnItemClickListen
 
     }
 
+    /**
+     * Permet de verifier si la checkbox est coché ou non
+     * @param v
+     */
     public void checkboxHandler(View v) {
         CheckBox cb = (CheckBox) v;
         // On récupère la position à l'aide du tag défini dans l'adapter ListColorsAdapter
@@ -77,11 +86,14 @@ public class ListActivitySport extends ListActivity implements OnItemClickListen
         ActivitySport activitySport = (ActivitySport)getListView().getItemAtPosition(position);
         activitySport.setChecked(cb.isChecked());
 
-        addColorSelected(activitySport);
+        addActivitySportSelected(activitySport);
     }
 
-
-    private void addColorSelected(ActivitySport activitySport){
+    /**
+     * il va ajouter dans la liste des élements sélectionner pour la retourner dans la view suivante
+     * @param activitySport
+     */
+    private void addActivitySportSelected(ActivitySport activitySport){
         if(activitySelected.contains(activitySport) && !activitySport.isChecked()){
             activitySelected.remove(activitySport);
         }else if(!activitySelected.contains(activitySport) && activitySport.isChecked()){
@@ -89,9 +101,11 @@ public class ListActivitySport extends ListActivity implements OnItemClickListen
         }
     }
 
+    /**
+     * Renvoie a la vue precedente la liste des activities selectionner
+     */
     @Override
     public void onBackPressed() {
-        // On revient sur l'activité MainActivity en lui envoyant la liste des couleurs sélectionnées
         Intent intent = new Intent();
         intent.putParcelableArrayListExtra(EXTRA_SPORT_SELECTED,activitySelected);
         setResult(Activity.RESULT_OK, intent);
