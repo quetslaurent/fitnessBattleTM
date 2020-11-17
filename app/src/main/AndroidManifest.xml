@@ -15,6 +15,7 @@
         <activity android:name=".Chrono" />
         <activity
             android:name=".ListActivitySport"
+            android:theme="@style/ThemeDialogueSelect"
             android:label="@string/ListActivitySport"
             android:screenOrientation="portrait">
         </activity>

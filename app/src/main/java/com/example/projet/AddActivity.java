@@ -15,7 +15,6 @@ import model.ActivitySport;
 
 public class AddActivity extends Activity implements OnClickListener {
 
-    //private final List<Activity> activities = new ArrayList<>();
     private static int REQUEST_CODE = 1;
     private TextView infosActivitySelected;
     private Context context;
@@ -39,6 +38,7 @@ public class AddActivity extends Activity implements OnClickListener {
      @Override
     public void onClick(View paramView) {
         Intent intent = new Intent(context, ListActivitySport.class);
+        intent.putParcelableArrayListExtra(EXTRA_SPORT_SELECTED,activitySportArrayListSelected);
         startActivityForResult(intent, REQUEST_CODE);
     }
 
@@ -47,7 +47,7 @@ public class AddActivity extends Activity implements OnClickListener {
    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-// On construit le message à afficher suivant les couleurs sélectionnées
+// On construit le message à afficher suivant les sports sélectionnés
             activitySportArrayListSelected = data.getParcelableArrayListExtra(EXTRA_SPORT_SELECTED);
             if(activitySportArrayListSelected.isEmpty()){
                 infosActivitySelected.setText("Aucun sport n'a été selectionner");
