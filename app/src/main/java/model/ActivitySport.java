@@ -79,6 +79,7 @@ public class ActivitySport  implements Parcelable {
     }
 
     /**
+     * change
      * constructeur qui va lire les argu de l'objet Parcel dans l'ordre dans lequel ils sont passer dans write
      * @param pc
      */
