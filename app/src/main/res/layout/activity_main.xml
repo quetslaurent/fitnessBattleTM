@@ -12,6 +12,7 @@
         android:layout_width="176dp"
         android:layout_height="158dp"
         android:layout_marginTop="32dp"
+        android:onClick="goToCamera"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

@@ -61,4 +61,20 @@ float x1,x2,y1,y2;
         Intent intent=new Intent(Menu.this,AddActivity.class);
         startActivity(intent);
     }
+
+    public void goToGraphics(View view) {
+        Intent intent=new Intent(Menu.this,Graphical.class);
+        startActivity(intent);
+    }
+
+    public void goToTeam(View view) {
+        Intent intent=new Intent(Menu.this,Team.class);
+        startActivity(intent);
+    }
+
+
+    public void goToCamera(View view) {
+        Intent intent=new Intent(Menu.this,Camera.class);
+        startActivity(intent);
+    }
 }
