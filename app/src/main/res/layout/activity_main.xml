@@ -8,7 +8,7 @@
 
 
     <ImageView
-        android:id="@+id/imge_profil2"
+        android:id="@+id/imge_profil"
         android:layout_width="176dp"
         android:layout_height="158dp"
         android:layout_marginTop="32dp"
@@ -37,7 +37,7 @@
         android:hint="UserName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imge_profil2" />
+        app:layout_constraintTop_toBottomOf="@+id/imge_profil" />
 
     <Button
         android:id="@+id/button"

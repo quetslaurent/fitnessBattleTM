@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Camera"></activity>
+        <activity android:name=".IMC"></activity>
+        <activity android:name=".Camera" />
         <activity android:name=".AddActivity" />
         <activity android:name=".Team" />
         <activity android:name=".Graphical" />
@@ -20,7 +21,7 @@
             android:name=".ListActivitySport"
             android:label="@string/ListActivitySport"
             android:screenOrientation="portrait"
-            android:theme="@style/ThemeDialogueSelect"></activity>
+            android:theme="@style/ThemeDialogueSelect" />
         <activity
             android:name=".Menu"
             android:theme="@style/AppTheme.SlideActivityTheme" />

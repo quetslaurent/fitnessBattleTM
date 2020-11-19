@@ -10,7 +10,11 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
+
 public class MainActivity extends AppCompatActivity {
+
+    private Bitmap image;
+    private String token =null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +22,19 @@ public class MainActivity extends AppCompatActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ImageView imgPhoto = (ImageView)findViewById(R.id.imge_profil);
+        token = getSharedPreferences("myapp",MODE_PRIVATE).getString("photoToken",null);
+        if(token !=null){
+            image = BitmapFactory.decodeFile(token);
+            imgPhoto.setImageBitmap(image);
+        }
+
+    }
+
 
     public void goToMenu(View view) {
         Intent intent=new Intent(MainActivity.this,Menu.class);
