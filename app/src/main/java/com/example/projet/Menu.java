@@ -86,9 +86,4 @@ float x1,x2,y1,y2;
         startActivity(intent);
     }
 
-
-    public void goToCamera(View view) {
-        Intent intent=new Intent(Menu.this,Camera.class);
-        startActivity(intent);
-    }
 }

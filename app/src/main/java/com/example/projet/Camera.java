@@ -76,8 +76,12 @@ public class Camera extends AppCompatActivity {
                     editor = sharedPreferences.edit();
                     editor.putString("photoToken",photoToken);
                     editor.apply();
+                    Intent intent = new Intent(Camera.this,profile.class);
+                    intent.putExtra("EXTRA_CAMERA_IMAGE",photoToken);
+                    startActivity(intent);
                 }
             });
+
         }
 
 
@@ -129,13 +133,4 @@ public class Camera extends AppCompatActivity {
             }
         }
 
-    public void gotoMenu(View view) {
-        Intent intent = new Intent(this,Menu.class);
-        intent.putExtra("EXTRA_CAMERA_IMAGE",photoToken);
-        startActivity(intent);
-    }
-
-    public String getPhotoToken(){
-            return photoToken;
-    }
 }
