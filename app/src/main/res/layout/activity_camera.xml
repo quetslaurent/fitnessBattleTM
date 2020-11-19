@@ -29,6 +29,12 @@
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/ic_launcher_foreground"
             tools:ignore="VectorDrawableCompat" />
+        <Button
+            android:id="@+id/btnback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="gotoMenu"
+            android:text="back " />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

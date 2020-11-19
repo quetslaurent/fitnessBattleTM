@@ -2,6 +2,8 @@ package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+
+import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -11,8 +13,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.AdapterView.OnItemClickListener;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -32,7 +37,7 @@ public class Camera extends AppCompatActivity {
         private SharedPreferences sharedPreferences;
         private SharedPreferences.Editor editor;
         private String linkOfImage = null;
-
+    private static String EXTRA_CAMERA_IMAGE = "EXTRA_CAMERA_IMAGE";
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -128,4 +133,10 @@ public class Camera extends AppCompatActivity {
                 imgPhoto.setImageBitmap(image);
             }
         }
+
+    public void gotoMenu(View view) {
+            Intent i = new Intent(Camera.this,Register.class);
+            i.putExtra("EXTRA_CAMERA_IMAGE",photoToken);
+            startActivity(i);
+    }
 }
