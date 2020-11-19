@@ -17,6 +17,8 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.Toast;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
@@ -37,7 +39,8 @@ public class Camera extends AppCompatActivity {
         private SharedPreferences sharedPreferences;
         private SharedPreferences.Editor editor;
         private String linkOfImage = null;
-    private static String EXTRA_CAMERA_IMAGE = "EXTRA_CAMERA_IMAGE";
+        private static String EXTRA_CAMERA_IMAGE = "EXTRA_CAMERA_IMAGE";
+
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -58,13 +61,6 @@ public class Camera extends AppCompatActivity {
             sharedPreferences = getSharedPreferences("myapp",MODE_PRIVATE);
             photoToken = sharedPreferences.getString("photoToken",null);
 
-            if(photoToken==null){
-                //ok,utilisateur connecté,on a le token
-                editor = sharedPreferences.edit();
-                editor.putString("photoToken",linkOfImage);
-
-                editor.apply();
-            }
             image = BitmapFactory.decodeFile(photoToken);
             imgPhoto.setImageBitmap(image);
         }
@@ -76,9 +72,9 @@ public class Camera extends AppCompatActivity {
                 public void onClick(View v) {
                     //save photo
                     MediaStore.Images.Media.insertImage(getContentResolver(),image,"FitnessBattle","Profile photo");
-                    linkOfImage = photoPath;
+                    photoToken = photoPath;
                     editor = sharedPreferences.edit();
-                    editor.putString("photoToken",linkOfImage);
+                    editor.putString("photoToken",photoToken);
                     editor.apply();
                 }
             });
@@ -129,14 +125,17 @@ public class Camera extends AppCompatActivity {
             if(requestCode==RETURN_PHOTO && resultCode ==RESULT_OK){
                 //recup photo
                 image = BitmapFactory.decodeFile(photoPath);
-
                 imgPhoto.setImageBitmap(image);
             }
         }
 
     public void gotoMenu(View view) {
-            Intent i = new Intent(Camera.this,Register.class);
-            i.putExtra("EXTRA_CAMERA_IMAGE",photoToken);
-            startActivity(i);
+        Intent intent = new Intent(this,Menu.class);
+        intent.putExtra("EXTRA_CAMERA_IMAGE",photoToken);
+        startActivity(intent);
+    }
+
+    public String getPhotoToken(){
+            return photoToken;
     }
 }

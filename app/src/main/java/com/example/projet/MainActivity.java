@@ -3,9 +3,12 @@ package com.example.projet;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,8 +29,6 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
     }
 
-    public void goToCamera(View view) {
-        Intent intent=new Intent(MainActivity.this,Camera.class);
-        startActivity(intent);
-    }
+
+
 }

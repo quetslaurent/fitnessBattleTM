@@ -8,32 +8,35 @@
         android:id="@+id/checkActivity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
         android:focusable="false"
         android:focusableInTouchMode="false"
-        android:onClick="checkboxHandler" />
+        android:onClick="checkboxHandler"
+        android:layout_toLeftOf="@id/TextRep"
+        />
 
     <TextView
         android:id="@+id/TextActi"
-        android:layout_width="4dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_toStartOf="@+id/TextRep"
+        android:layout_toStartOf="@+id/checkActivity"
         android:textSize="16sp" />
 
-    <TextView
+    <EditText
         android:id="@+id/TextRep"
-        android:layout_width="50dp"
+        android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:hint="Rep"
+        android:layout_alignParentRight="true"
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="5dp"
-        android:layout_toLeftOf="@id/checkActivity"
         android:textSize="16sp" />
+
 </RelativeLayout>

@@ -7,28 +7,16 @@
     tools:context=".Register">
 
     <ImageView
-        android:id="@+id/imge_profil3"
+        android:id="@+id/photoProfile"
         android:layout_width="176dp"
         android:layout_height="0dp"
         android:layout_marginTop="32dp"
         android:layout_marginBottom="332dp"
-        android:onClick="goToCamera"
-        app:layout_constraintBottom_toTopOf="@+id/photolol"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profil" />
-
-    <ImageView
-        android:id="@+id/photolol"
-        android:layout_width="192dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="76dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imge_profil3"></ImageView>
 
     <EditText
         android:id="@+id/editTextTextPassword"
@@ -52,7 +40,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imge_profil3" />
+        app:layout_constraintTop_toBottomOf="@+id/photoProfile" />
 
     <Button
         android:id="@+id/button"
