@@ -11,13 +11,25 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
+        android:focusable="false"
         android:focusableInTouchMode="false"
-        android:onClick="checkboxHandler"
-        android:focusable="false" />
+        android:onClick="checkboxHandler" />
 
     <TextView
         android:id="@+id/TextActi"
-        android:layout_width="match_parent"
+        android:layout_width="4dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="5dp"
+        android:layout_marginEnd="0dp"
+        android:layout_toStartOf="@+id/TextRep"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/TextRep"
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_gravity="center_vertical"
