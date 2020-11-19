@@ -12,23 +12,20 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
-import com.r0adkll.slidr.Slidr;
-import com.r0adkll.slidr.model.SlidrInterface;
-
 public class Menu extends AppCompatActivity {
 
 float x1,x2,y1,y2;
     private Bitmap image;
     private String token =null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_menu);
 
-    }
 
+    }
     @Override
     protected void onResume() {
         super.onResume();
@@ -40,9 +37,6 @@ float x1,x2,y1,y2;
         }
 
     }
-
-
-
     public boolean onTouchEvent(MotionEvent touchEvent){
         switch(touchEvent.getAction()){
             case MotionEvent.ACTION_DOWN:
@@ -56,7 +50,7 @@ float x1,x2,y1,y2;
                 Intent i = new Intent(Menu.this, Graphical.class);
                 startActivity(i);
             }else if(x1 >  x2){
-                Intent i = new Intent(Menu.this, Team.class);
+                Intent i = new Intent(Menu.this, profile.class);
                 startActivity(i);
             }
             break;
@@ -88,7 +82,7 @@ float x1,x2,y1,y2;
     }
 
     public void goToTeam(View view) {
-        Intent intent=new Intent(Menu.this,Team.class);
+        Intent intent=new Intent(Menu.this, profile.class);
         startActivity(intent);
     }
 

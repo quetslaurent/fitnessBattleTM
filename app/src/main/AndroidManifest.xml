@@ -14,7 +14,7 @@
         <activity android:name=".IMC"></activity>
         <activity android:name=".Camera" />
         <activity android:name=".AddActivity" />
-        <activity android:name=".Team" />
+        <activity android:name=".profile" />
         <activity android:name=".Graphical" />
         <activity android:name=".Chrono" />
         <activity

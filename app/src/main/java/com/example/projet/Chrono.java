@@ -18,9 +18,9 @@ public class Chrono extends AppCompatActivity {
     ImageButton btnStart,btnStop;
 
     private boolean isResume;
-    Handler handler;
-    long tMilliSecond,tStart,tBuff,tUpdate=0L;
-    int sec,min,milliSec;
+    private Handler handler;
+    private long tMilliSecond,tStart,tBuff,tUpdate=0L;
+    private int sec,min,milliSec;
 
     private SlidrInterface slidr;
 
@@ -30,9 +30,7 @@ public class Chrono extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chrono);
         slidr = Slidr.attach(this);
-        chronometer = findViewById(R.id.chronometer);
-        btnStart = findViewById(R.id.btn_start);
-        btnStop = findViewById(R.id.btn_stop);
+        initView();
 
         handler = new Handler();
         btnStart.setOnClickListener(new View.OnClickListener() {
@@ -93,4 +91,10 @@ public class Chrono extends AppCompatActivity {
              handler.postDelayed(this,60);
         }
     };
+
+    public void initView(){
+        chronometer = findViewById(R.id.chronometer);
+        btnStart = findViewById(R.id.btn_start);
+        btnStop = findViewById(R.id.btn_stop);
+    }
 }
