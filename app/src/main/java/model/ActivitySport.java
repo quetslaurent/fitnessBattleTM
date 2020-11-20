@@ -9,6 +9,7 @@ public class ActivitySport  implements Parcelable {
     private int nbrepetitionPoint;
     private boolean checked;
 
+
     /**
      * constructeur de la classe activité
      * @param name , le nom du sport , exemple pompe
