@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="268dp"
+        android:layout_height="230dp"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingTop="15dp">
@@ -127,8 +127,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="110dp"
-        android:layout_marginTop="90dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -144,6 +144,20 @@
             android:textColor="@android:color/black"
             android:textSize="18dp" />
 
+
+        <TextView
+            android:layout_width="170dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="-10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_round"
+            android:drawableLeft="@drawable/ic_baseline_edit_24"
+            android:gravity="center"
+            android:onClick="goToImc"
+            android:paddingLeft="10dp"
+            android:text="Calculate IMC"
+            android:textColor="@android:color/black"
+            android:textSize="18dp" />
 
         <TextView
             android:layout_width="200dp"

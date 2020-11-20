@@ -39,4 +39,9 @@ public class profile extends AppCompatActivity {
         Intent intent=new Intent(profile.this,Camera.class);
         startActivity(intent);
     }
+
+    public void goToImc(View view) {
+        Intent intent=new Intent(profile.this,IMC.class);
+        startActivity(intent);
+    }
 }
