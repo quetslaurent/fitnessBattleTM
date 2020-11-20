@@ -13,9 +13,6 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Bitmap image;
-    private String token =null;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +23,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        ImageView imgPhoto = (ImageView)findViewById(R.id.imge_profil);
-        token = getSharedPreferences("myapp",MODE_PRIVATE).getString("photoToken",null);
-        if(token !=null){
-            image = BitmapFactory.decodeFile(token);
-            imgPhoto.setImageBitmap(image);
-        }
 
     }
 

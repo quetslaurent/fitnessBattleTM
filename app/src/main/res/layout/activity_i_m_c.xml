@@ -15,8 +15,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Poids : "
+            android:textColor="@android:color/black"
             android:textStyle="bold"
-            android:textColor="#FF0000"
             android:gravity="center"
             />
         <EditText
@@ -30,8 +30,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="Taille : "
+            android:textColor="@android:color/black"
             android:textStyle="bold"
-            android:textColor="#FF0000"
             android:gravity="center"
             />
         <EditText
@@ -42,7 +42,7 @@
             android:inputType="numberDecimal"
             />
         <RadioGroup
-            android:id="@+id/group"
+            android:id="@+id/groupRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkedButton="@+id/radio2"
@@ -50,13 +50,13 @@
             android:orientation="horizontal"
             >
             <RadioButton
-                android:id="@+id/radio1"
+                android:id="@+id/radioMetre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mètre"
                 />
             <RadioButton
-                android:id="@+id/radio2"
+                android:id="@+id/radioCentimetre"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Centimètre"
@@ -68,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Calculer l'IMC"
+            android:background="@drawable/custom_button"
             android:layout_gravity="center"
             />
 

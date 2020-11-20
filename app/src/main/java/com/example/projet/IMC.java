@@ -16,11 +16,12 @@ import android.widget.Toast;
 public class IMC extends AppCompatActivity {
 
     Button envoyer = null;
-    Button raz = null;
-    EditText poids = null;
-    EditText taille = null;
+    EditText weight = null;
+    EditText height = null;
     RadioGroup group = null;
     TextView result = null;
+    private String heightReceive = null;
+    private String weightReceive = null;
     private final String defaut = "Cliquez sur le bouton « Calculer l'IMC » pour le résultat.";
 
     @Override
@@ -29,15 +30,14 @@ public class IMC extends AppCompatActivity {
         setContentView(R.layout.activity_i_m_c);
         // On récupère toutes les vues dont on a besoin
         envoyer = (Button) findViewById(R.id.calcul);
-        taille = (EditText) findViewById(R.id.taille);
-        poids = (EditText) findViewById(R.id.poids);
-        group = (RadioGroup) findViewById(R.id.group);
+        height = (EditText) findViewById(R.id.taille);
+        weight = (EditText) findViewById(R.id.poids);
+        group = (RadioGroup) findViewById(R.id.groupRadio);
         result = (TextView) findViewById(R.id.result);
         // On attribue un listener adapté aux vues qui en ont besoin
         envoyer.setOnClickListener(envoyerListener);
-        taille.addTextChangedListener(textWatcher);
-        poids.addTextChangedListener(textWatcher);
-
+        height.addTextChangedListener(textWatcher);
+        weight.addTextChangedListener(textWatcher);
     }
 
     private TextWatcher textWatcher = new TextWatcher() {
@@ -63,20 +63,21 @@ public class IMC extends AppCompatActivity {
 
                 // Si la megafonction n'est pas activée
                 // On récupère la taille
-                String t = taille.getText().toString();
+                heightReceive = height.getText().toString();
                 // On récupère le poids
-                String p = poids.getText().toString();
-                float tValue = Float.valueOf(t);
+                weightReceive = weight.getText().toString();
+                float tValue = Float.valueOf(heightReceive);
+                float pValue = Float.valueOf(weightReceive);
                 // Puis on vérifie que la taille est cohérente
-                if(tValue == 0)
-                    Toast.makeText(IMC.this, "Ta taille est incorrecte",
+                if(heightReceive == null && weightReceive==null)
+                    Toast.makeText(IMC.this, "Enter information",
                             Toast.LENGTH_SHORT).show();
                 else {
-                    float pValue = Float.valueOf(p);
+
                     // Si l'utilisateur a indiqué que la taille était en centimètres
                     // On vérifie que la Checkbox sélectionnée est la deuxième à l'aide de son identifiant
 
-                    if(group.getCheckedRadioButtonId() == R.id.radio2)
+                    if(group.getCheckedRadioButtonId() == R.id.radioCentimetre)
                         tValue = tValue / 100;
                     tValue = (float)Math.pow(tValue, 2);
                     float imc = pValue / tValue;
@@ -107,9 +108,4 @@ public class IMC extends AppCompatActivity {
                 }
         }
     };
-
-
-
-
-
 }
