@@ -2,9 +2,7 @@ package repository;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-
 import java.util.List;
-
 import api.ApiClient;
 import api.IUnitsService;
 import model.Unit;
