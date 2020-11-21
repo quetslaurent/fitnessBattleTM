@@ -1,20 +1,18 @@
 package model;
 
-import android.app.Activity;
-
 public class Training {
 
     private int id;
-    private User user;
+    private UserFitness user;
     private ActivitySport activitySport;
-    private double repeition;
+    private double repetition;
     private TrainingDate trainingDate;
 
-    public Training(int id, User user, ActivitySport activitySport, double repeition, TrainingDate trainingDate) {
+    public Training(int id, UserFitness user, ActivitySport activitySport, double repetition, TrainingDate trainingDate) {
         this.id = id;
         this.user = user;
         this.activitySport = activitySport;
-        this.repeition = repeition;
+        this.repetition = repetition;
         this.trainingDate = trainingDate;
     }
 
@@ -24,7 +22,7 @@ public class Training {
                 "id=" + id +
                 ", user=" + user +
                 ", activitySport=" + activitySport +
-                ", repeition=" + repeition +
+                ", repeition=" + repetition +
                 ", trainingDate=" + trainingDate +
                 '}';
     }
@@ -37,11 +35,11 @@ public class Training {
         this.id = id;
     }
 
-    public User getUser() {
+    public UserFitness getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserFitness user) {
         this.user = user;
     }
 
@@ -54,11 +52,11 @@ public class Training {
     }
 
     public double getRepeition() {
-        return repeition;
+        return repetition;
     }
 
     public void setRepeition(double repeition) {
-        this.repeition = repeition;
+        this.repetition = repeition;
     }
 
     public TrainingDate getTrainingDate() {

@@ -1,16 +1,23 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
+
+import java.util.List;
+
+import model.UserFitness;
+import repository.UserRepository;
 
 public class profile extends AppCompatActivity {
     private SlidrInterface slidr;
@@ -22,7 +29,10 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profil);
         //permet de revenir a la page precedente
         slidr = Slidr.attach(this);
+
+
     }
+
 
     @Override
     protected void onResume() {

@@ -1,14 +1,13 @@
 package model;
 
-public class User {
-
+public class UserFitness {
     private int id;
     private String name;
     private String password;
     private String email;
     private Boolean admin;
 
-    public User(int id, String name, String password, String email, Boolean admin) {
+    public UserFitness(int id,String name, String password, String email, Boolean admin) {
         this.id = id;
         this.name = name;
         this.password = password;
