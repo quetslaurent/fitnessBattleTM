@@ -36,14 +36,22 @@ public class Register extends AppCompatActivity {
             public void onClick(View v) {
                 //instanciation
                 mail =txt_mail.getText().toString();
-                password = txt_password.getText().toString();
+                password = "test";
                 name=txt_name.getText().toString();
 
-
                 //verifi si les var sont null
-                if(mail.isEmpty()|| password.isEmpty()){
-                    Toast.makeText(Register.this,"Mail / password required",Toast.LENGTH_LONG).show();
-                }else{
+                if(name.isEmpty()){
+                    Toast.makeText(Register.this,"Username required",Toast.LENGTH_LONG).show();
+                }
+
+                else if(mail.isEmpty()){
+                    Toast.makeText(Register.this,"Mail required",Toast.LENGTH_LONG).show();
+                }
+
+                else if(password.isEmpty()){
+                    Toast.makeText(Register.this,"Password required",Toast.LENGTH_LONG).show();
+                }
+                else{
                     id++;
                     userFitness = new UserFitness(id,name,password,mail,false);
                     userRepository.create(userFitness).observe(Register.this, new Observer<UserFitness>() {
