@@ -23,6 +23,15 @@ public class ActivitySport  implements Parcelable {
 
     }
 
+
+    @Override
+    public String toString() {
+        return "ActivitySport{" +
+                "name='" + name + '\'' +
+                ", nbrepetitionPoint=" + nbrepetitionPoint +
+                '}';
+    }
+
     public String getName() {
         return name;
     }

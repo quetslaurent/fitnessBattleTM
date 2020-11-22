@@ -44,7 +44,6 @@ public class TrainingRepository {
 
         return  mutableLiveData;
     }
-
     public LiveData<Training> create(Training training){
         final MutableLiveData<Training> mutableLiveData = new MutableLiveData<>();
         getITrainingService().postTraining(training).enqueue(new Callback<Training>() {
@@ -60,4 +59,6 @@ public class TrainingRepository {
         });
         return mutableLiveData;
     }
+
+
 }

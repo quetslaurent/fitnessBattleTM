@@ -4,17 +4,28 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.os.Bundle;
+
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.ImageView;
 
+
+import java.util.Date;
 import java.util.List;
 
+import model.ActivitySport;
+import model.Category;
+import model.Training;
+import model.TrainingDate;
+import model.Unit;
 import model.UserFitness;
+import repository.ActivityRepository;
+import repository.CategoryRepository;
+import repository.TrainingDateRepository;
+import repository.TrainingRepository;
+import repository.UnitRepository;
 import repository.UserRepository;
 
 
@@ -25,9 +36,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        //creation du UserRepository
 
+    //creation des repositories
         UserRepository userRepository = new UserRepository();
+        UnitRepository unitRepository = new UnitRepository();
+        ActivityRepository activityRepository = new ActivityRepository();
+        TrainingDateRepository trainingDateRepository = new TrainingDateRepository();
+        CategoryRepository categoryRepository = new CategoryRepository();
+        TrainingRepository trainingRepository = new TrainingRepository();
+
+        Date date= new Date();
+        UserFitness u1=new UserFitness(0,"Quets","helha","QuetsBoulette@gmail.com",false);
+        ActivitySport act1 = new ActivitySport("pompes",25);
+         TrainingDate tra1 = new TrainingDate(1,date);
+         Unit unt1 = new Unit(1,"Type5");
+
+
+
         /**
          * life cycle owner -> this , notre classe
          * new observer , le flux d'info
@@ -39,12 +64,48 @@ public class MainActivity extends AppCompatActivity {
             }
         }); //renvoie un flux d'info ( liveData)
 
-        userRepository.create(new UserFitness(0,"nico","helha","nicolasBoulette@gmail.com",false)).observe(this, new Observer<UserFitness>() {
+        userRepository.create(u1).observe(this, new Observer<UserFitness>() {
             @Override
             public void onChanged(UserFitness userFitness) {
-                Log.i("Todo", userFitness.toString());
+                Log.i("user", userFitness.toString());
             }
         });
+
+     /*   unitRepository.create(unt1).observe(this, new Observer<Unit>() {
+            @Override
+            public void onChanged(Unit unit) {
+                Log.i("unit", unit.toString());
+            }
+        });
+
+        activityRepository.create(new ActivitySport("pompes",25)).observe(this, new Observer<ActivitySport>() {
+            @Override
+            public void onChanged(ActivitySport activitySport) {
+                Log.i("activitysport", activitySport.toString());
+            }
+        });
+
+        categoryRepository.create(new Category(1,"Cardio")).observe(this, new Observer<Category>() {
+            @Override
+            public void onChanged(Category category) {
+                Log.i("categorie", category.toString());
+            }
+        });
+
+        trainingDateRepository.create(new TrainingDate(1,date)).observe(this, new Observer<TrainingDate>() {
+            @Override
+            public void onChanged(TrainingDate trainingDate) {
+                Log.i("training", trainingDate.toString());
+            }
+        });
+
+
+        trainingRepository.create(new Training(1,u1,act1,15,tra1)).observe(this, new Observer<Training>() {
+            @Override
+            public void onChanged(Training  training) {
+                Log.i("Todo", training.toString());
+            }
+        });*/
     }
 
     @Override

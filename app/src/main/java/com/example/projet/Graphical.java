@@ -15,6 +15,8 @@ import android.os.Bundle;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+import model.ActivitySport;
+
 public class Graphical extends AppCompatActivity {
     private SlidrInterface slidr;
     BarChart barChart;
@@ -32,12 +34,11 @@ public class Graphical extends AppCompatActivity {
         //graphics
         barChart = findViewById(R.id.chart);
         ArrayList<BarEntry>barEntries=new ArrayList<>();
-        barEntries.add(new BarEntry(2f, 0));
-        barEntries.add(new BarEntry(4f, 1));
-        barEntries.add(new BarEntry(6f, 1));
-        barEntries.add(new BarEntry(8f, 3));
-        barEntries.add(new BarEntry(7f, 4));
-        barEntries.add(new BarEntry(3f, 3));
+   /*     barEntries.add(new ActivitySport("pompes",25));
+        barEntries.add(new ActivitySport("abdos",35));
+        barEntries.add(new ActivitySport("course",15));
+        barEntries.add(new ActivitySport("traction",5));
+        barEntries.add(new ActivitySport("natation",45)); */
 
         barDataSet = new BarDataSet(barEntries, "Genre");
         barData = new BarData(barDataSet);
@@ -46,6 +47,10 @@ public class Graphical extends AppCompatActivity {
         barChart.setData(barData);
         barChart.getDescription().setText("Nombre de répitions par sport");
         barChart.animateY(2000);
+    }
+
+    public void addEntries(ActivitySport activitySport){
+
     }
 
 
