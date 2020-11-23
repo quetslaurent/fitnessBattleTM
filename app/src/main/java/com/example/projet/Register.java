@@ -25,7 +25,7 @@ public class Register extends AppCompatActivity {
     private Button btn_register;
     private UserFitness userFitness;
     private UserRepository userRepository;
-    private List<UserFitness>usersFitness;
+    private List<UserFitness>usersFitness ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +37,9 @@ public class Register extends AppCompatActivity {
             @Override
             public void onChanged(List<UserFitness> users) {
                 Log.i("UserSql", users.toString());
-                usersFitness.addAll(users);
-                Log.i("users dans onchange", usersFitness.toString());
             }
         });
 
-        Log.i("User hors change", usersFitness.toString());
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,21 +70,8 @@ public class Register extends AppCompatActivity {
 
     }
 
-    public int findUser(UserFitness userFitness){
-        Log.i("equals", usersFitness.toString());
-           for(UserFitness u : usersFitness){
-               if(u.equals(userFitness)==false){
-                   return 1;
-               }
-       }
-       return -1;
-    }
-
     public void createUser(UserFitness userFitness){
-        int varFindUser = findUser(userFitness);
-        if(varFindUser==-1) {
             Toast.makeText(Register.this,"Mail already used",Toast.LENGTH_LONG).show();
-        }else if(varFindUser==1){
             userRepository.create(userFitness).observe(Register.this, new Observer<UserFitness>() {
                 @Override
                 public void onChanged(UserFitness userFitness) {
@@ -96,7 +80,6 @@ public class Register extends AppCompatActivity {
                 }
             });
 
-        }
     }
 
     private void initView() {

@@ -13,17 +13,15 @@ import android.widget.ImageButton;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+import viewModel.ChronoModel;
+
 public class Chrono extends AppCompatActivity {
     Chronometer chronometer;
     ImageButton btnStart,btnStop;
-
-    private boolean isResume;
     private Handler handler;
-    private long tMilliSecond,tStart,tBuff,tUpdate=0L;
-    private int sec,min,milliSec;
-
+    private boolean isResume;
     private SlidrInterface slidr;
-
+    private ChronoModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +64,7 @@ public class Chrono extends AppCompatActivity {
                     btnStart.setImageDrawable(getResources().getDrawable(
                             R.drawable.ic_baseline_play_arrow_24
                     ));
-                    tMilliSecond = 0L;
-                    tStart = 0L;
-                    tBuff = 0L;
-                    tUpdate = 0L;
-                    sec = 0;
-                    min = 0;
-                    milliSec = 0;
+
                     chronometer.setText("00:00:00");
                 }
             }
