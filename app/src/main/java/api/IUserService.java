@@ -5,8 +5,10 @@ import java.util.List;
 import model.UserFitness;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface IUserService {
 
@@ -17,4 +19,6 @@ public interface IUserService {
 
     @POST("users")
     Call<UserFitness>postUser(@Body UserFitness user);
+
+
 }

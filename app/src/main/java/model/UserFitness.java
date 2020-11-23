@@ -66,4 +66,15 @@ public class UserFitness {
     public void setAdmin(Boolean admin) {
         this.admin = admin;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof UserFitness)){
+            return false;
+        }
+        UserFitness u = (UserFitness)o;
+        return name.equals(u.name) && email.equals(u.email);
+    }
+
+
 }

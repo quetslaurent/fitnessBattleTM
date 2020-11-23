@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         TrainingRepository trainingRepository = new TrainingRepository();
 
         Date date= new Date();
-        UserFitness u1=new UserFitness(0,"Quets","helha","QuetsBoulette@gmail.com",false);
+      //  UserFitness u1=new UserFitness(0,"Quets","helha","QuetsBoulette@gmail.com",false);
         ActivitySport act1 = new ActivitySport("pompes",25);
          TrainingDate tra1 = new TrainingDate(1,date);
          Unit unt1 = new Unit(1,"Type5");
@@ -64,12 +64,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }); //renvoie un flux d'info ( liveData)
 
-        userRepository.create(u1).observe(this, new Observer<UserFitness>() {
+
+     /*   userRepository.create(u1).observe(this, new Observer<UserFitness>() {
             @Override
             public void onChanged(UserFitness userFitness) {
                 Log.i("user", userFitness.toString());
             }
-        });
+        }); */
 
      /*   unitRepository.create(unt1).observe(this, new Observer<Unit>() {
             @Override
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         trainingRepository.create(new Training(1,u1,act1,15,tra1)).observe(this, new Observer<Training>() {
             @Override
             public void onChanged(Training  training) {
-                Log.i("Todo", training.toString());
+                Log.i("traning", training.toString());
             }
         });*/
     }
