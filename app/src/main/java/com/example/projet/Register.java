@@ -25,26 +25,24 @@ public class Register extends AppCompatActivity {
     private Button btn_register;
     private UserFitness userFitness;
     private UserRepository userRepository;
-    private List<UserFitness>usersFitness =new ArrayList<>();
+    private List<UserFitness>usersFitness;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initView();
-      /*  UserFitness u1 = new UserFitness(1,"joey","louisebb","joey2000@hotmail.com",false);
-        UserFitness u2 = new UserFitness(1,"gaga","gaga","joey2000@hotmail.com",false);
-
-        Toast.makeText(Register.this,"genre c'est mauvais "+ u1.equals(u2),Toast.LENGTH_LONG).show(); */
 
         userRepository.query().observe(this, new Observer<List<UserFitness>>() {
             @Override
             public void onChanged(List<UserFitness> users) {
                 Log.i("UserSql", users.toString());
                 usersFitness.addAll(users);
-                Log.i("UserSql", usersFitness.toString());
+                Log.i("users dans onchange", usersFitness.toString());
             }
         });
+
+        Log.i("User hors change", usersFitness.toString());
 
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +105,7 @@ public class Register extends AppCompatActivity {
         txt_password = (EditText)findViewById(R.id.editTextTextPassword);
         btn_register = (Button) findViewById(R.id.btn_register);
         txt_name = (EditText)findViewById(R.id.edit_txt_name);
+        usersFitness = new ArrayList<>();
     }
 
 
