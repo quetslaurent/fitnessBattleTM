@@ -1,5 +1,6 @@
 package repository;
 
+import android.app.Application;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -15,6 +16,17 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class UserRepository {
+
+    private Application application;
+
+    public UserRepository(Application application) {
+        this.application=application;
+    }
+
+    public UserRepository() {
+
+    }
+
 
     private IUserService getIUserService(){
         return ApiClient.getClient().create(IUserService.class);

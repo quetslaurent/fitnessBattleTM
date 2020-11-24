@@ -1,20 +1,17 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import model.UserFitness;
 import repository.UserRepository;
+import viewModel.RegisterModel;
 
 public class Register extends AppCompatActivity {
 
@@ -24,23 +21,16 @@ public class Register extends AppCompatActivity {
     private String name;
     private Button btn_register;
     private UserFitness userFitness;
+    private RegisterModel registerModel;
     private UserRepository userRepository;
-    private List<UserFitness>usersFitness ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initView();
-
-        userRepository.query().observe(this, new Observer<List<UserFitness>>() {
-            @Override
-            public void onChanged(List<UserFitness> users) {
-                Log.i("UserSql", users.toString());
-            }
-        });
-
-
+        //registerModel = new ViewModelProvider(this).get(RegisterModel.class);
+        userRepository = new UserRepository();
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,7 +53,8 @@ public class Register extends AppCompatActivity {
                 }
                 else{
                   userFitness = new UserFitness(0,name,password,mail,false);
-                  createUser(userFitness);
+                  //registerModel.createUser(userFitness);
+                    createUser(userFitness);
                 }
             }
         });
@@ -71,24 +62,20 @@ public class Register extends AppCompatActivity {
     }
 
     public void createUser(UserFitness userFitness){
-            Toast.makeText(Register.this,"Mail already used",Toast.LENGTH_LONG).show();
-            userRepository.create(userFitness).observe(Register.this, new Observer<UserFitness>() {
-                @Override
-                public void onChanged(UserFitness userFitness) {
-                    Log.i("user", userFitness.toString());
-                    Toast.makeText(Register.this,"User created",Toast.LENGTH_LONG).show();
-                }
-            });
+        userRepository.create(userFitness).observe(this, new Observer<UserFitness>() {
+            @Override
+            public void onChanged(UserFitness userFitness) {
 
+            }
+        });
     }
 
     private void initView() {
-        userRepository = new UserRepository();
         txt_mail=(EditText) findViewById(R.id.edit_txt);
         txt_password = (EditText)findViewById(R.id.editTextTextPassword);
         btn_register = (Button) findViewById(R.id.btn_register);
         txt_name = (EditText)findViewById(R.id.edit_txt_name);
-        usersFitness = new ArrayList<>();
+
     }
 
 

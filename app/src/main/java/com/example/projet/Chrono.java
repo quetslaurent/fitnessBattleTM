@@ -1,6 +1,8 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,7 +23,7 @@ public class Chrono extends AppCompatActivity {
     private Handler handler;
     private boolean isResume;
     private SlidrInterface slidr;
-    private ChronoModel;
+    private ChronoModel  chronoModel ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +31,15 @@ public class Chrono extends AppCompatActivity {
         setContentView(R.layout.activity_chrono);
         slidr = Slidr.attach(this);
         initView();
+        chronoModel = new ViewModelProvider(this).get(ChronoModel.class);
+        //chronometer.setText(String.format("%02d",chronoModel.getMin())+":"+String.format("%02d",chronoModel.getSec())+":"+String.format("%02d",chronoModel.getMilliSec()));
+        handler = chronoModel.getHandler();
 
-        handler = new Handler();
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!isResume) {
-                    tStart = SystemClock.uptimeMillis();
+                  chronoModel.start();
                     handler.postDelayed(runnable, 0);
                     chronometer.start();
                     isResume = true;
@@ -44,7 +48,7 @@ public class Chrono extends AppCompatActivity {
                             R.drawable.ic_baseline_pause_24
                     ));
                 } else {
-                    tBuff += tMilliSecond;
+                   chronoModel.addtime();
                     handler.removeCallbacks(runnable);
                     chronometer.stop();
                     isResume = false;
@@ -64,7 +68,7 @@ public class Chrono extends AppCompatActivity {
                     btnStart.setImageDrawable(getResources().getDrawable(
                             R.drawable.ic_baseline_play_arrow_24
                     ));
-
+                    chronoModel.stop();
                     chronometer.setText("00:00:00");
                 }
             }
@@ -73,13 +77,8 @@ public class Chrono extends AppCompatActivity {
     public Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            tMilliSecond = SystemClock.uptimeMillis()-tStart;
-            tUpdate = tBuff + tMilliSecond;
-            sec = (int) (tUpdate/1000);
-            min=sec/60;
-            sec=sec%60;
-            milliSec=(int)(tUpdate%100);
-             chronometer.setText(String.format("%02d",min)+":"+String.format("%02d",sec)+":"+String.format("%02d",milliSec));
+           chronoModel.run();
+             chronometer.setText(String.format("%02d",chronoModel.getMin())+":"+String.format("%02d",chronoModel.getSec())+":"+String.format("%02d",chronoModel.getMilliSec()));
              handler.postDelayed(this,60);
         }
     };
