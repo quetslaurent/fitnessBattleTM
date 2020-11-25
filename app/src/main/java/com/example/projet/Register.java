@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,15 +24,14 @@ public class Register extends AppCompatActivity {
     private Button btn_register;
     private UserFitness userFitness;
     private RegisterModel registerModel;
-    private UserRepository userRepository;
+  // private UserRepository userRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initView();
-        //registerModel = new ViewModelProvider(this).get(RegisterModel.class);
-        userRepository = new UserRepository();
+        //userRepository = new UserRepository();
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,30 +54,46 @@ public class Register extends AppCompatActivity {
                 }
                 else{
                   userFitness = new UserFitness(0,name,password,mail,false);
-                  //registerModel.createUser(userFitness);
-                    createUser(userFitness);
+                  registerModel.createUser(userFitness);
+
+                   // createUser(userFitness);
                 }
             }
         });
 
     }
 
-    public void createUser(UserFitness userFitness){
+   /* public void createUser(UserFitness userFitness){
         userRepository.create(userFitness).observe(this, new Observer<UserFitness>() {
             @Override
             public void onChanged(UserFitness userFitness) {
 
             }
         });
-    }
+    }**/
 
     private void initView() {
         txt_mail=(EditText) findViewById(R.id.edit_txt);
         txt_password = (EditText)findViewById(R.id.editTextTextPassword);
         btn_register = (Button) findViewById(R.id.btn_register);
         txt_name = (EditText)findViewById(R.id.edit_txt_name);
+        registerModel = new ViewModelProvider(this).get(RegisterModel.class);
 
     }
 
+   /* private void sendMail(){
+        String recipientList=txt_mail.getText().toString();
+        String subject ="Inscription Fitness Battle";
+        String message = "Bonjour merci pour ton inscription";
+
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.putExtra(Intent.EXTRA_EMAIL,recipientList);
+        intent.putExtra(Intent.EXTRA_SUBJECT,subject);
+        intent.putExtra(Intent.EXTRA_TEXT,message);
+
+        intent.setType("message/rfc822");
+        startActivity(intent.createChooser(intent,"Choose an em client"));
+    }
+*/
 
 }

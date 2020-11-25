@@ -16,14 +16,14 @@ import repository.UserRepository;
 public class RegisterModel extends ViewModel {
 
     private LiveData<List<UserFitness>>usersFitness;
-    private UserRepository userRepository;
+    private UserRepository userRepository = new UserRepository();
     private Context context;
 
 
-    public RegisterModel(@NonNull Application application){
+   /* public RegisterModel(@NonNull Application application){
         super();
         userRepository = new UserRepository(application);
-    }
+    } */
 
     public LiveData<List<UserFitness>> getUsersFitness(){
         return userRepository.query();

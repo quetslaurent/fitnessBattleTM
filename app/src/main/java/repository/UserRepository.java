@@ -69,14 +69,14 @@ public class UserRepository {
                 if(response.isSuccessful()){
                     mutableLiveData.postValue(response.body());
                 }
-                else{
-                    Toast.makeText(register,"Mail or Username is already used", Toast.LENGTH_SHORT);
-                }
+               /* else{
+
+                }*/
             }
 
             @Override
             public void onFailure(Call<UserFitness> call, Throwable t) {
-                Toast.makeText(register,"Mail or Username is already used", Toast.LENGTH_SHORT);
+
             }
         });
         return mutableLiveData;
