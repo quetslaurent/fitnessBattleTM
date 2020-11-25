@@ -2,9 +2,12 @@ package repository;
 
 import android.app.Application;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
+
+import com.example.projet.Register;
 
 import java.util.List;
 
@@ -32,6 +35,7 @@ public class UserRepository {
         return ApiClient.getClient().create(IUserService.class);
     }
 
+    private Register register;
     /**
      * flux d'info que l'on peut observer
      * on peut pas le modifier ! mais le mutable oui
@@ -55,17 +59,24 @@ public class UserRepository {
 
         return  mutableLiveData;
     }
+
+
     public LiveData<UserFitness> create(UserFitness userFitness){
         final MutableLiveData<UserFitness> mutableLiveData = new MutableLiveData<>();
         getIUserService().postUser(userFitness).enqueue(new Callback<UserFitness>() {
             @Override
             public void onResponse(Call<UserFitness> call, Response<UserFitness> response) {
-                mutableLiveData.postValue(response.body());
+                if(response.isSuccessful()){
+                    mutableLiveData.postValue(response.body());
+                }
+                else{
+                    Toast.makeText(register,"Mail or Username is already used", Toast.LENGTH_SHORT);
+                }
             }
 
             @Override
             public void onFailure(Call<UserFitness> call, Throwable t) {
-
+                Toast.makeText(register,"Mail or Username is already used", Toast.LENGTH_SHORT);
             }
         });
         return mutableLiveData;

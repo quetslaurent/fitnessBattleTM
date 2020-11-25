@@ -2,8 +2,8 @@ package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
+import androidx.lifecycle.ViewModelProviders;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -13,17 +13,16 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import viewModel.CameraModel;
 
 public class Camera extends AppCompatActivity {
 
@@ -33,13 +32,15 @@ public class Camera extends AppCompatActivity {
         private Button btnSave;
 
         private ImageView imgPhoto;
-        private String photoPath;
         private Bitmap image;
+        private String linkOfImage = null;
+        private static String EXTRA_CAMERA_IMAGE = "EXTRA_CAMERA_IMAGE";
+        private Camera camera;
+        private String photoPath;
         private String photoToken;
         private SharedPreferences sharedPreferences;
         private SharedPreferences.Editor editor;
-        private String linkOfImage = null;
-        private static String EXTRA_CAMERA_IMAGE = "EXTRA_CAMERA_IMAGE";
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +50,10 @@ public class Camera extends AppCompatActivity {
 
         }
 
+    //CameraModel cameraModel = ViewModelProviders.of(this).get(CameraModel.class);
 
         private void initActivity() {
+
             btnPhoto = (Button)findViewById(R.id.btnPhoto);
             btnSave = (Button)findViewById(R.id.btnSave);
             imgPhoto = (ImageView)findViewById(R.id.imgPhoto);
@@ -58,6 +61,7 @@ public class Camera extends AppCompatActivity {
             createOnClickBtnPhoto();
             createOnClickBtnSave();
 
+            //cameraModel.init();
             sharedPreferences = getSharedPreferences("myapp",MODE_PRIVATE);
             photoToken = sharedPreferences.getString("photoToken",null);
 
@@ -79,6 +83,7 @@ public class Camera extends AppCompatActivity {
                     Intent intent = new Intent(Camera.this,profile.class);
                     intent.putExtra("EXTRA_CAMERA_IMAGE",photoToken);
                     startActivity(intent);
+//                    cameraModel.save();
                 }
             });
 
@@ -89,6 +94,7 @@ public class Camera extends AppCompatActivity {
             btnPhoto.setOnClickListener(new Button.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    //cameraModel.takePhoto();
                     takePhoto();
                 }
             });
@@ -133,4 +139,7 @@ public class Camera extends AppCompatActivity {
             }
         }
 
+//    public ImageView getImgPhoto() {
+//        return imgPhoto;
+//    }
 }
