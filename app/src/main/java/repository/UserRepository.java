@@ -1,6 +1,7 @@
 package repository;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -67,9 +68,17 @@ public class UserRepository {
                 if(response.isSuccessful()){
                     mutableLiveData.postValue(response.body());
                 }
-               /* else{
+               else{
+                    switch (response.code()){
+                        case 404:
+                            Toast.makeText(registerActivity,"server not found",Toast.LENGTH_SHORT).show();
+                        break;
 
-                }*/
+                        case 409:
+                            Toast.makeText(registerActivity,"user or email already used",Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                }
             }
 
             @Override
