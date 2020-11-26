@@ -5,13 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import mail.GMailSender;
 import model.UserFitness;
 import viewModel.RegisterViewModel;
 
@@ -55,26 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                 else{
                   userFitness = new UserFitness(0,name,password,mail,false);
                   registerViewModel.createUser(userFitness);
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                GMailSender sender = new GMailSender("fitnessbattle2000@gmail.com",
-                                        "joeynicoguiguiquets");
-                                sender.sendMail("Inscription à Fitness Battle ", " Bienvenue sur Fitness Battle. " +
-                                                "\nDecouvrez notre application pour vous boostez vous et vos amis a donner le meilleur de vous même ! \n" +
-                                                "\n\n L'équipe de développement" +
-                                                "\n Louvieaux Nicolas" +
-                                                "\n Hage Joey" +
-                                                "\n Mercier Guillaume" +
-                                                "\n Quets Laurent",
-                                        "fitnessbattle2000@gmail.com", txt_mail.getText().toString());
-                            } catch (Exception e) {
-                                Log.e("SendMail", e.getMessage(), e);
-                            }
-                        }
 
-                    }).start();
                 }
             }
         });
