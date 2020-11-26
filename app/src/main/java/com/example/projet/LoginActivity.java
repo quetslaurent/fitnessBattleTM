@@ -62,6 +62,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Log.i("UserSql", users.toString());
             }
+
         }); //renvoie un flux d'info ( liveData)
 
      /*   userRepository.create(u1).observe(this, new Observer<UserFitness>() {

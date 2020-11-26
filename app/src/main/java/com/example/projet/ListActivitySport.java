@@ -37,13 +37,6 @@ public class ListActivitySport extends ListActivity implements OnItemClickListen
         activitySelected = getIntent().getParcelableArrayListExtra(EXTRA_SPORT_SELECTED); //on récupère la list envoyée depuis AddActivity
         activities = createActivity(activitySelected);
 
-//        activityRepository.query().observe((LifecycleOwner) this, new Observer<List<ActivitySport>>() {
-//            @Override
-//            public void onChanged(List<ActivitySport> activitySports) {
-//                activities.add((ActivitySport) activitySports);
-//            }
-//        });
-
         setListAdapter(new ListActivityAdapter(this, R.layout.item_list, activities));
         getListView().setOnItemClickListener(this);
 
@@ -62,6 +55,9 @@ public class ListActivitySport extends ListActivity implements OnItemClickListen
         activities.add(createActivity("Tractions",10));
         activities.add(createActivity("Courses",10));
         activities.add(createActivity("Abdos",10));
+
+
+
 
         for(ActivitySport activitySelected:activitiesSelected){
             for(ActivitySport activitySport:activities){
