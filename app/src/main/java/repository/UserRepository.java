@@ -1,13 +1,11 @@
 package repository;
 
 import android.app.Application;
-import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.projet.Register;
+import com.example.projet.RegisterActivity;
 
 import java.util.List;
 
@@ -35,7 +33,7 @@ public class UserRepository {
         return ApiClient.getClient().create(IUserService.class);
     }
 
-    private Register register;
+    private RegisterActivity registerActivity;
     /**
      * flux d'info que l'on peut observer
      * on peut pas le modifier ! mais le mutable oui

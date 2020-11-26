@@ -17,7 +17,7 @@ import com.r0adkll.slidr.model.SlidrInterface;
 
 import model.ActivitySport;
 
-public class Graphical extends AppCompatActivity {
+public class GraphicalActivity extends AppCompatActivity {
     private SlidrInterface slidr;
     BarChart barChart;
     BarData barData;

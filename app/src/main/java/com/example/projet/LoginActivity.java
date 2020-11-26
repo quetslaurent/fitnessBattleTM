@@ -16,8 +16,6 @@ import java.util.Date;
 import java.util.List;
 
 import model.ActivitySport;
-import model.Category;
-import model.Training;
 import model.TrainingDate;
 import model.Unit;
 import model.UserFitness;
@@ -29,7 +27,7 @@ import repository.UnitRepository;
 import repository.UserRepository;
 
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -117,12 +115,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void goToMenu(View view) {
-        Intent intent=new Intent(MainActivity.this,Menu.class);
+        Intent intent=new Intent(LoginActivity.this, MenuActivity.class);
         startActivity(intent);
     }
 
     public void goToRegister(View view) {
-            Intent intent=new Intent(MainActivity.this,Register.class);
+            Intent intent=new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
     }
 

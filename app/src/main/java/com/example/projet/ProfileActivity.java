@@ -1,25 +1,18 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
-import java.util.List;
-
-import model.UserFitness;
-import repository.UserRepository;
-
-public class profile extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
     private SlidrInterface slidr;
     private Bitmap image;
     private String token =null;
@@ -46,12 +39,12 @@ public class profile extends AppCompatActivity {
     }
 
     public void goToCamera(View view) {
-        Intent intent=new Intent(profile.this,Camera.class);
+        Intent intent=new Intent(ProfileActivity.this, CameraActivity.class);
         startActivity(intent);
     }
 
     public void goToImc(View view) {
-        Intent intent=new Intent(profile.this,IMC.class);
+        Intent intent=new Intent(ProfileActivity.this, IMCActivity.class);
         startActivity(intent);
     }
 }

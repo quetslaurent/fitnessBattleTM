@@ -1,25 +1,8 @@
 package viewModel;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Environment;
-import android.provider.MediaStore;
-
-import androidx.core.content.FileProvider;
 import androidx.lifecycle.ViewModel;
 
-import com.example.projet.Camera;
-import com.example.projet.profile;
-
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-public class CameraModel extends ViewModel {
+public class CameraViewModel extends ViewModel {
 
     /*private static final int RETURN_PHOTO =1;
     private Camera camera;

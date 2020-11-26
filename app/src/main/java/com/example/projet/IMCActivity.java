@@ -7,13 +7,12 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class IMC extends AppCompatActivity {
+public class IMCActivity extends AppCompatActivity {
 
     Button envoyer = null;
     EditText weight = null;
@@ -70,7 +69,7 @@ public class IMC extends AppCompatActivity {
                 float pValue = Float.valueOf(weightReceive);
                 // Puis on vérifie que la taille est cohérente
                 if(heightReceive == null && weightReceive==null)
-                    Toast.makeText(IMC.this, "Enter information",
+                    Toast.makeText(IMCActivity.this, "Enter information",
                             Toast.LENGTH_SHORT).show();
                 else {
 

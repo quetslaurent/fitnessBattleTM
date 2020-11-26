@@ -10,7 +10,7 @@ import java.util.List;
 import model.UserFitness;
 import repository.UserRepository;
 
-public class RegisterModel extends ViewModel {
+public class RegisterViewModel extends ViewModel {
 
 
     private UserRepository userRepository = new UserRepository();

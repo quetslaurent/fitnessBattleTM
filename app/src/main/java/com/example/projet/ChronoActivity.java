@@ -6,24 +6,19 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.SystemClock;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.ImageButton;
-
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
-
-import viewModel.ChronoModel;
-
-public class Chrono extends AppCompatActivity {
+import viewModel.ChronoViewModel;
+public class ChronoActivity extends AppCompatActivity {
     Chronometer chronometer;
     ImageButton btnStart,btnStop;
     private Handler handler;
     private boolean isResume;
     private SlidrInterface slidr;
-    private ChronoModel  chronoModel ;
+    private ChronoViewModel chronoViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,15 +26,14 @@ public class Chrono extends AppCompatActivity {
         setContentView(R.layout.activity_chrono);
         slidr = Slidr.attach(this);
         initView();
-        chronoModel = new ViewModelProvider(this).get(ChronoModel.class);
-        //chronometer.setText(String.format("%02d",chronoModel.getMin())+":"+String.format("%02d",chronoModel.getSec())+":"+String.format("%02d",chronoModel.getMilliSec()));
-        handler = chronoModel.getHandler();
+        chronoViewModel = new ViewModelProvider(this).get(ChronoViewModel.class);
+        handler = chronoViewModel.getHandler();
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!isResume) {
-                  chronoModel.start();
+                  chronoViewModel.start();
                     handler.postDelayed(runnable, 0);
                     chronometer.start();
                     isResume = true;
@@ -48,7 +42,7 @@ public class Chrono extends AppCompatActivity {
                             R.drawable.ic_baseline_pause_24
                     ));
                 } else {
-                   chronoModel.addtime();
+                   chronoViewModel.addtime();
                     handler.removeCallbacks(runnable);
                     chronometer.stop();
                     isResume = false;
@@ -68,7 +62,7 @@ public class Chrono extends AppCompatActivity {
                     btnStart.setImageDrawable(getResources().getDrawable(
                             R.drawable.ic_baseline_play_arrow_24
                     ));
-                    chronoModel.stop();
+                    chronoViewModel.stop();
                     chronometer.setText("00:00:00");
                 }
             }
@@ -77,8 +71,8 @@ public class Chrono extends AppCompatActivity {
     public Runnable runnable = new Runnable() {
         @Override
         public void run() {
-           chronoModel.run();
-             chronometer.setText(String.format("%02d",chronoModel.getMin())+":"+String.format("%02d",chronoModel.getSec())+":"+String.format("%02d",chronoModel.getMilliSec()));
+           chronoViewModel.run();
+             chronometer.setText(String.format("%02d", chronoViewModel.getMin())+":"+String.format("%02d", chronoViewModel.getSec())+":"+String.format("%02d", chronoViewModel.getMilliSec()));
              handler.postDelayed(this,60);
         }
     };

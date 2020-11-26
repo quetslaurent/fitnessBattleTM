@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 
-public class Menu extends AppCompatActivity {
+public class MenuActivity extends AppCompatActivity {
 
 float x1,x2,y1,y2;
     private Bitmap image;
@@ -47,10 +47,10 @@ float x1,x2,y1,y2;
                 x2 = touchEvent.getX();
                 y2 = touchEvent.getY();
                 if(x1 <  x2){
-                Intent i = new Intent(Menu.this, Graphical.class);
+                Intent i = new Intent(MenuActivity.this, GraphicalActivity.class);
                 startActivity(i);
             }else if(x1 >  x2){
-                Intent i = new Intent(Menu.this, profile.class);
+                Intent i = new Intent(MenuActivity.this, ProfileActivity.class);
                 startActivity(i);
             }
             break;
@@ -58,7 +58,7 @@ float x1,x2,y1,y2;
         return false;
     }
     public void goToChrono(View view) {
-            Intent intent=new Intent(Menu.this,Chrono.class);
+            Intent intent=new Intent(MenuActivity.this, ChronoActivity.class);
             startActivity(intent);
     }
 
@@ -72,17 +72,17 @@ float x1,x2,y1,y2;
     }
 
     public void goToAddActivity(View view) {
-        Intent intent=new Intent(Menu.this,AddActivity.class);
+        Intent intent=new Intent(MenuActivity.this,AddActivity.class);
         startActivity(intent);
     }
 
     public void goToGraphics(View view) {
-        Intent intent=new Intent(Menu.this,Graphical.class);
+        Intent intent=new Intent(MenuActivity.this, GraphicalActivity.class);
         startActivity(intent);
     }
 
     public void goToTeam(View view) {
-        Intent intent=new Intent(Menu.this, profile.class);
+        Intent intent=new Intent(MenuActivity.this, ProfileActivity.class);
         startActivity(intent);
     }
 

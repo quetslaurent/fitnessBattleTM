@@ -9,7 +9,7 @@
     android:layout_marginTop="200dp"
     android:layout_marginLeft="50dp"
     android:background="@drawable/bg_round"
-    tools:context=".Chrono">
+    tools:context=".ChronoActivity">
 
     <Chronometer
         android:id="@+id/chronometer"

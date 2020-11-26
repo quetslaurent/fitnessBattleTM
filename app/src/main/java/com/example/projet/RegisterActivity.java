@@ -2,10 +2,8 @@ package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,12 +12,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import mail.GMailSender;
-import mail.IMailFormat;
 import model.UserFitness;
-import repository.UserRepository;
-import viewModel.RegisterModel;
+import viewModel.RegisterViewModel;
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     private EditText txt_mail,txt_password,txt_name;
     private String mail;
@@ -27,7 +23,7 @@ public class Register extends AppCompatActivity {
     private String name;
     private Button btn_register;
     private UserFitness userFitness;
-    private RegisterModel registerModel;
+    private RegisterViewModel registerViewModel;
   // private UserRepository userRepository;
 
     @Override
@@ -46,19 +42,19 @@ public class Register extends AppCompatActivity {
 
                 //verifie si les vars sont null
                 if(name.isEmpty()){
-                    Toast.makeText(Register.this,"Username required",Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this,"Username required",Toast.LENGTH_LONG).show();
                 }
 
                 else if(mail.isEmpty()){
-                    Toast.makeText(Register.this,"Mail required",Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this,"Mail required",Toast.LENGTH_LONG).show();
                 }
 
                 else if(password.isEmpty()){
-                    Toast.makeText(Register.this,"Password required",Toast.LENGTH_LONG).show();
+                    Toast.makeText(RegisterActivity.this,"Password required",Toast.LENGTH_LONG).show();
                 }
                 else{
                   userFitness = new UserFitness(0,name,password,mail,false);
-                  registerModel.createUser(userFitness);
+                  registerViewModel.createUser(userFitness);
                     new Thread(new Runnable() {
                         @Override
                         public void run() {
@@ -90,7 +86,7 @@ public class Register extends AppCompatActivity {
         txt_password = (EditText)findViewById(R.id.editTextTextPassword);
         btn_register = (Button) findViewById(R.id.btn_register);
         txt_name = (EditText)findViewById(R.id.edit_txt_name);
-        registerModel =  new ViewModelProvider(this).get(RegisterModel.class);
+        registerViewModel =  new ViewModelProvider(this).get(RegisterViewModel.class);
 
     }
 

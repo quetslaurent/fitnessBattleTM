@@ -22,9 +22,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import viewModel.CameraModel;
-
-public class Camera extends AppCompatActivity {
+public class CameraActivity extends AppCompatActivity {
 
         private static final int RETURN_PHOTO =1;
 
@@ -35,7 +33,7 @@ public class Camera extends AppCompatActivity {
         private Bitmap image;
         private String linkOfImage = null;
         private static String EXTRA_CAMERA_IMAGE = "EXTRA_CAMERA_IMAGE";
-        private Camera camera;
+        private CameraActivity cameraActivity;
         private String photoPath;
         private String photoToken;
         private SharedPreferences sharedPreferences;
@@ -80,7 +78,7 @@ public class Camera extends AppCompatActivity {
                     editor = sharedPreferences.edit();
                     editor.putString("photoToken",photoToken);
                     editor.apply();
-                    Intent intent = new Intent(Camera.this,profile.class);
+                    Intent intent = new Intent(CameraActivity.this, ProfileActivity.class);
                     intent.putExtra("EXTRA_CAMERA_IMAGE",photoToken);
                     startActivity(intent);
 //                    cameraModel.save();
@@ -114,8 +112,8 @@ public class Camera extends AppCompatActivity {
                     //enregistrer le chemin complet
                     photoPath = photoFile.getAbsolutePath();
                     //creer l'uri
-                    Uri photoUri = FileProvider.getUriForFile(Camera.this,
-                            Camera.this.getApplicationContext().getPackageName()+".provider",photoFile);
+                    Uri photoUri = FileProvider.getUriForFile(CameraActivity.this,
+                            CameraActivity.this.getApplicationContext().getPackageName()+".provider",photoFile);
                     //transfert uri vers l'intent pour enregistrer photo dans fichier temporaire
 
                     intent.putExtra(MediaStore.EXTRA_OUTPUT,photoUri);
