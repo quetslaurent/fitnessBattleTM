@@ -22,7 +22,7 @@ public class Training {
                 "id=" + id +
                 ", user=" + user +
                 ", activitySport=" + activitySport +
-                ", repeition=" + repetition +
+                ", repetition=" + repetition +
                 ", trainingDate=" + trainingDate +
                 '}';
     }

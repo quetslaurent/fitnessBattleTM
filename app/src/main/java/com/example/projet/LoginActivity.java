@@ -1,6 +1,7 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
         Date date= new Date();
       //  UserFitness u1=new UserFitness(0,"Quets","helha","QuetsBoulette@gmail.com",false);
-        ActivitySport act1 = new ActivitySport("pompes",25);
+        //ActivitySport act1 = new ActivitySport("pompes",25);
          TrainingDate tra1 = new TrainingDate(1,date);
          Unit unt1 = new Unit(1,"Type5");
 
@@ -58,10 +59,10 @@ public class LoginActivity extends AppCompatActivity {
         userRepository.query().observe(this, new Observer<List<UserFitness>>() {
             @Override
             public void onChanged(List<UserFitness> users) {
+
                 Log.i("UserSql", users.toString());
             }
         }); //renvoie un flux d'info ( liveData)
-
 
      /*   userRepository.create(u1).observe(this, new Observer<UserFitness>() {
             @Override

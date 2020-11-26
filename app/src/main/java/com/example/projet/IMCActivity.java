@@ -22,6 +22,12 @@ public class IMCActivity extends AppCompatActivity {
     private String heightReceive = null;
     private String weightReceive = null;
     private final String defaut = "Cliquez sur le bouton « Calculer l'IMC » pour le résultat.";
+    private static double FAMINE = 16.5;
+    private static double MAIGREUR = 18.5;
+    private static double NORMALE = 25;
+    private static double SURPOIDS = 30;
+    private static double OBESITE_MODERE = 35;
+    private static double OBESITE_SEVERE = 40;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,22 +87,22 @@ public class IMCActivity extends AppCompatActivity {
                     tValue = (float)Math.pow(tValue, 2);
                     float imc = pValue / tValue;
 
-                    if(imc <16.5){
+                    if(imc <FAMINE){
                         result.setText("Votre IMC est de " + String.valueOf(imc) +"\nVous êtes en famine.");
                     }
-                    else if(imc >=16.5 && imc <18.5){
+                    else if(imc >=FAMINE && imc <MAIGREUR){
                         result.setText("Votre IMC est de " + String.valueOf(imc) +"\nVous êtes en maigreur.");
                     }
-                    else if(imc >=18.5 && imc <25){
+                    else if(imc >=MAIGREUR && imc <NORMALE){
                         result.setText("Votre IMC est de " + String.valueOf(imc) +"\nVous êtes en corpulence normale.");
                     }
-                    else if(imc >=25 && imc <30){
+                    else if(imc >=NORMALE && imc <SURPOIDS){
                         result.setText("Votre IMC est de " + String.valueOf(imc) +"\nVous êtes en surpoids.");
                     }
-                    else if(imc >=30 && imc <35){
+                    else if(imc >=SURPOIDS && imc <OBESITE_MODERE){
                         result.setText("Votre IMC est de " + String.valueOf(imc) +"\nVous êtes en obésité modérée.");
                     }
-                    else if(imc >=35 && imc <40){
+                    else if(imc >=OBESITE_MODERE && imc <OBESITE_SEVERE){
                         result.setText("Votre IMC est de " + String.valueOf(imc) +"\nVous êtes en obésité sévère.");
                     }
                     else{

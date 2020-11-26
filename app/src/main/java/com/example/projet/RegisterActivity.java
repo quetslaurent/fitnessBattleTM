@@ -2,6 +2,7 @@ package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.List;
 
 import model.UserFitness;
 import viewModel.RegisterViewModel;
@@ -29,6 +32,8 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initView();
+        LiveData<List<UserFitness>> users =registerViewModel.getUsersFitness();
+
         //userRepository = new UserRepository();
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -16,6 +16,7 @@ public class RegisterViewModel extends ViewModel {
     private UserRepository userRepository = new UserRepository();
 
     public LiveData<List<UserFitness>> getUsersFitness(){
+
         return userRepository.query();
     }
 

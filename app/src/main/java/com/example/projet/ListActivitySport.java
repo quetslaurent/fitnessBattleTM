@@ -8,12 +8,17 @@ import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CheckBox;
 
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
+
 import model.ActivitySport;
+import repository.ActivityRepository;
 
 
 public class ListActivitySport extends ListActivity implements OnItemClickListener {
@@ -21,6 +26,8 @@ public class ListActivitySport extends ListActivity implements OnItemClickListen
     private List<ActivitySport> activities;
     private ArrayList<ActivitySport> activitySelected;
     private static String EXTRA_SPORT_SELECTED = "EXTRA_SPORT_SELECTED";
+    //private ListActivityViewModel listActivityViewModel;
+    private ActivityRepository activityRepository = new ActivityRepository();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +37,17 @@ public class ListActivitySport extends ListActivity implements OnItemClickListen
         activitySelected = getIntent().getParcelableArrayListExtra(EXTRA_SPORT_SELECTED); //on récupère la list envoyée depuis AddActivity
         activities = createActivity(activitySelected);
 
+//        activityRepository.query().observe((LifecycleOwner) this, new Observer<List<ActivitySport>>() {
+//            @Override
+//            public void onChanged(List<ActivitySport> activitySports) {
+//                activities.add((ActivitySport) activitySports);
+//            }
+//        });
+
         setListAdapter(new ListActivityAdapter(this, R.layout.item_list, activities));
         getListView().setOnItemClickListener(this);
+
+
     }
 
     /**

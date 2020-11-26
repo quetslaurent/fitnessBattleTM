@@ -8,6 +8,8 @@ public class ActivitySport  implements Parcelable {
     private String name;
     private int nbrepetitionPoint;
     private boolean checked;
+    private Category category;
+    private Unit unit;
 
 
     /**
@@ -15,9 +17,11 @@ public class ActivitySport  implements Parcelable {
      * @param name , le nom du sport , exemple pompe
      * @param nbrepetition , le nombre de répétition pour avoir un point
      */
-    public ActivitySport(String name, int nbrepetition) {
+    public ActivitySport(String name, int nbrepetition,Category category,Unit unit) {
         this.name = name;
         this.nbrepetitionPoint = nbrepetition;
+        this.category = category;
+        this.unit = unit;
     }
     public ActivitySport() {
 
@@ -29,6 +33,9 @@ public class ActivitySport  implements Parcelable {
         return "ActivitySport{" +
                 "name='" + name + '\'' +
                 ", nbrepetitionPoint=" + nbrepetitionPoint +
+                ", checked=" + checked +
+                ", category=" + category +
+                ", unit=" + unit +
                 '}';
     }
 
@@ -46,6 +53,22 @@ public class ActivitySport  implements Parcelable {
 
     public void setNbrepetitionPoint(int nbrepetitionPoint) {
         this.nbrepetitionPoint = nbrepetitionPoint;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Unit getUnit() {
+        return unit;
+    }
+
+    public void setUnit(Unit unit) {
+        this.unit = unit;
     }
 
     public boolean isChecked() {
