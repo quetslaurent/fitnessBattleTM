@@ -7,10 +7,14 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import mail.GMailSender;
+import mail.IMailFormat;
 import model.UserFitness;
 import repository.UserRepository;
 import viewModel.RegisterModel;
@@ -55,45 +59,40 @@ public class Register extends AppCompatActivity {
                 else{
                   userFitness = new UserFitness(0,name,password,mail,false);
                   registerModel.createUser(userFitness);
+                    new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                GMailSender sender = new GMailSender("fitnessbattle2000@gmail.com",
+                                        "joeynicoguiguiquets");
+                                sender.sendMail("Inscription à Fitness Battle ", " Bienvenue sur Fitness Battle. " +
+                                                "\nDecouvrez notre application pour vous boostez vous et vos amis a donner le meilleur de vous même ! \n" +
+                                                "\n\n L'équipe de développement" +
+                                                "\n Louvieaux Nicolas" +
+                                                "\n Hage Joey" +
+                                                "\n Mercier Guillaume" +
+                                                "\n Quets Laurent",
+                                        "fitnessbattle2000@gmail.com", txt_mail.getText().toString());
+                            } catch (Exception e) {
+                                Log.e("SendMail", e.getMessage(), e);
+                            }
+                        }
 
-                   // createUser(userFitness);
+                    }).start();
                 }
             }
         });
 
     }
 
-   /* public void createUser(UserFitness userFitness){
-        userRepository.create(userFitness).observe(this, new Observer<UserFitness>() {
-            @Override
-            public void onChanged(UserFitness userFitness) {
-
-            }
-        });
-    }**/
-
     private void initView() {
         txt_mail=(EditText) findViewById(R.id.edit_txt);
         txt_password = (EditText)findViewById(R.id.editTextTextPassword);
         btn_register = (Button) findViewById(R.id.btn_register);
         txt_name = (EditText)findViewById(R.id.edit_txt_name);
-        registerModel = new ViewModelProvider(this).get(RegisterModel.class);
+        registerModel =  new ViewModelProvider(this).get(RegisterModel.class);
 
     }
 
-   /* private void sendMail(){
-        String recipientList=txt_mail.getText().toString();
-        String subject ="Inscription Fitness Battle";
-        String message = "Bonjour merci pour ton inscription";
-
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_EMAIL,recipientList);
-        intent.putExtra(Intent.EXTRA_SUBJECT,subject);
-        intent.putExtra(Intent.EXTRA_TEXT,message);
-
-        intent.setType("message/rfc822");
-        startActivity(intent.createChooser(intent,"Choose an em client"));
-    }
-*/
 
 }
