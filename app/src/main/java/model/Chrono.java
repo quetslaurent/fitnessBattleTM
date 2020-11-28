@@ -32,7 +32,7 @@ public class Chrono {
         tUpdate = tBuff + tMilliSecond;
         sec = (int) (tUpdate / 1000);
         min = sec / 60;
-        sec = sec % 60;
+        sec = sec % 100;
         milliSec = (int) (tUpdate % 60);
     }
 
