@@ -1,15 +1,12 @@
 package model;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-public class ActivitySport  implements Parcelable {
+public class ActivitySport {
 
     private String name;
     private int nbrepetitionPoint;
-    private boolean checked;
     private Category category;
     private Unit unit;
+    private int id;
 
 
     /**
@@ -33,10 +30,13 @@ public class ActivitySport  implements Parcelable {
         return "ActivitySport{" +
                 "name='" + name + '\'' +
                 ", nbrepetitionPoint=" + nbrepetitionPoint +
-                ", checked=" + checked +
                 ", category=" + category +
                 ", unit=" + unit +
                 '}';
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -71,13 +71,6 @@ public class ActivitySport  implements Parcelable {
         this.unit = unit;
     }
 
-    public boolean isChecked() {
-        return checked;
-    }
-
-    public void setChecked(boolean checked) {
-        this.checked = checked;
-    }
 
 
     @Override
@@ -96,40 +89,5 @@ public class ActivitySport  implements Parcelable {
             return false;
         return true;
     }
-
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel paramParcel, int flags) {
-        paramParcel.writeString(name);
-        paramParcel.writeInt(nbrepetitionPoint);
-        paramParcel.writeInt(checked ? 1:0 );
-
-    }
-
-    /**
-     * change
-     * constructeur qui va lire les argu de l'objet Parcel dans l'ordre dans lequel ils sont passer dans write
-     * @param pc
-     */
-    public ActivitySport(Parcel pc){
-
-        name = pc.readString();
-        nbrepetitionPoint = pc.readInt();
-        checked = (pc.readInt() == 1);
-    }
-
-    public static final Parcelable.Creator<ActivitySport> CREATOR = new Parcelable.Creator<ActivitySport>() {
-        public ActivitySport createFromParcel(Parcel pc) {
-            return new ActivitySport(pc);
-        }
-        public ActivitySport[] newArray(int size) {
-            return new ActivitySport[size];
-        }
-    };
 
 }

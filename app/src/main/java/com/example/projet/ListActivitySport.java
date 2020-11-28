@@ -1,127 +1,59 @@
 package com.example.projet;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
+import android.widget.ListView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import android.app.Activity;
-import android.app.ListActivity;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.CheckBox;
-
-import androidx.lifecycle.LifecycleOwner;
-import androidx.lifecycle.Observer;
-
+import model.ActivitiesAdapter;
 import model.ActivitySport;
+import model.Category;
+import model.Unit;
 import repository.ActivityRepository;
 
+public class ListActivitySport extends AppCompatActivity{
 
-public class ListActivitySport extends ListActivity implements OnItemClickListener {
-
-    private List<ActivitySport> activities;
-    private ArrayList<ActivitySport> activitySelected;
-    private static String EXTRA_SPORT_SELECTED = "EXTRA_SPORT_SELECTED";
-    //private ListActivityViewModel listActivityViewModel;
+    private final List<ActivitySport> activitySports = new ArrayList<>();
+    private Category c1 = new Category(1,"Upper Body");
+    private Unit u1 = new Unit(1,"Type5");
     private ActivityRepository activityRepository = new ActivityRepository();
+    private LiveData<ActivitySport> liveActivity;
+    private ListView lvActivities;
+    private ActivitiesAdapter activitiesAdapter;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_item_activity);
+        setContentView(R.layout.activity_add);
+        lvActivities = (ListView)findViewById(R.id.list_activities);
+        context = this;
 
-        activitySelected = getIntent().getParcelableArrayListExtra(EXTRA_SPORT_SELECTED); //on récupère la list envoyée depuis AddActivity
-        activities = createActivity(activitySelected);
+        getActivity().observe(this, new Observer<ActivitySport>() {
+            @Override
+            public void onChanged(ActivitySport activitySport) {
+                Log.i("test",activitySport.toString());
+                activitySports.add(activitySport);
 
-        setListAdapter(new ListActivityAdapter(this, R.layout.item_list, activities));
-        getListView().setOnItemClickListener(this);
-
-
-    }
-
-    /**
-     *
-     * @param activitiesSelected , liste des activités selectionner
-     * @return
-     */
-    private List<ActivitySport> createActivity(List<ActivitySport>activitiesSelected){
-        List<ActivitySport> activities = new ArrayList<ActivitySport>();
-
-        activities.add(createActivity("Pompes",10));
-        activities.add(createActivity("Tractions",10));
-        activities.add(createActivity("Courses",10));
-        activities.add(createActivity("Abdos",10));
-
-
-
-
-        for(ActivitySport activitySelected:activitiesSelected){
-            for(ActivitySport activitySport:activities){
-                if(activitiesSelected.equals(activitySport)){
-                    activitySport.setChecked(true);
-                    break;
-                }
+                activitiesAdapter = new ActivitiesAdapter(
+                        context,
+                        R.id.list_activities,
+                        activitySports);
+                lvActivities.setAdapter(activitiesAdapter);
             }
-        }
+        });
 
-        return activities;
+
     }
 
 
-    private ActivitySport createActivity(String name, int nbRepetition){
-        ActivitySport c = new ActivitySport();
-        c.setChecked(false);
-        c.setName(name);
-        c.setNbrepetitionPoint(nbRepetition);
-        return c;
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-    }
-
-    /**
-     * Permet de verifier si la checkbox est coché ou non
-     * @param v
-     */
-    public void checkboxHandler(View v) {
-        CheckBox cb = (CheckBox) v;
-        // On récupère la position à l'aide du tag défini dans l'adapter ListColorsAdapter
-        int position = Integer.parseInt(cb.getTag().toString());
-
-        // On récupère l'élément Color sur lequel on se trouve
-        ActivitySport activitySport = (ActivitySport)getListView().getItemAtPosition(position);
-        activitySport.setChecked(cb.isChecked());
-
-        addActivitySportSelected(activitySport);
-    }
-
-    /**
-     * il va ajouter dans la liste des élements sélectionner pour la retourner dans la view suivante
-     * @param activitySport
-     */
-    private void addActivitySportSelected(ActivitySport activitySport){
-        if(activitySelected.contains(activitySport) && !activitySport.isChecked()){
-            activitySelected.remove(activitySport);
-        }else if(!activitySelected.contains(activitySport) && activitySport.isChecked()){
-            activitySelected.add(activitySport);
-        }
-    }
-
-    /**
-     * Renvoie a la vue precedente la liste des activities selectionner
-     */
-    @Override
-    public void onBackPressed() {
-        Intent intent = new Intent();
-        intent.putParcelableArrayListExtra(EXTRA_SPORT_SELECTED,activitySelected);
-        setResult(Activity.RESULT_OK, intent);
-        finish();
+    public LiveData<ActivitySport> getActivity(){
+        return liveActivity = activityRepository.getById(1);
     }
 
 }

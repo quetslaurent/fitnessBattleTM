@@ -4,18 +4,6 @@
     android:layout_height="match_parent" >
 
 
-    <CheckBox
-        android:id="@+id/checkActivity"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center_vertical"
-        android:focusable="false"
-        android:focusableInTouchMode="false"
-        android:onClick="checkboxHandler"
-        android:layout_toLeftOf="@id/TextRep"
-        />
-
     <TextView
         android:id="@+id/TextActi"
         android:layout_width="wrap_content"
@@ -25,7 +13,7 @@
         android:layout_gravity="center_vertical"
         android:layout_marginLeft="0dp"
         android:layout_marginEnd="0dp"
-        android:layout_toStartOf="@+id/checkActivity"
+        android:layout_toStartOf="@+id/TextRep"
         android:textSize="16sp" />
 
     <EditText

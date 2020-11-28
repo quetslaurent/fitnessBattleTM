@@ -72,7 +72,7 @@ float x1,x2,y1,y2;
     }
 
     public void goToAddActivity(View view) {
-        Intent intent=new Intent(MenuActivity.this,AddActivity.class);
+        Intent intent=new Intent(MenuActivity.this,ListActivitySport.class);
         startActivity(intent);
     }
 

@@ -65,8 +65,7 @@ public class ActivityRepository {
         getIActivityService().getActivity(id).enqueue(new Callback<ActivitySport>() {
             @Override
             public void onResponse(Call<ActivitySport> call, Response<ActivitySport> response) {
-                ActivitySport activitySport = response.body();
-                mutableLiveData.postValue(activitySport);
+                mutableLiveData.postValue(response.body());
             }
 
             @Override

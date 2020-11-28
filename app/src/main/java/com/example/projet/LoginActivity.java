@@ -65,6 +65,14 @@ public class LoginActivity extends AppCompatActivity {
 
         }); //renvoie un flux d'info ( liveData)
 
+        activityRepository.getById(1).observe(this, new Observer<ActivitySport>() {
+            @Override
+            public void onChanged(ActivitySport activitySport) {
+                Log.i("UserActivity", activitySport.toString());
+            }
+        });
+
+
      /*   userRepository.create(u1).observe(this, new Observer<UserFitness>() {
             @Override
             public void onChanged(UserFitness userFitness) {
