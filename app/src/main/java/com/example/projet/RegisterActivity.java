@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"Password required",Toast.LENGTH_LONG).show();
                 }
                 else{
-                  userFitness = new UserFitness(0,name,password,mail,false);
+                  userFitness = new UserFitness(name,password,mail,false);
                   registerViewModel.createUser(userFitness);
 
                 }

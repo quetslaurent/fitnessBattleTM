@@ -59,21 +59,4 @@ public class ActivityRepository {
         return mutableLiveData;
     }
 
-
-    public LiveData<ActivitySport> getById(int id) {
-        final MutableLiveData<ActivitySport> mutableLiveData = new MutableLiveData<>();
-        getIActivityService().getActivity(id).enqueue(new Callback<ActivitySport>() {
-            @Override
-            public void onResponse(Call<ActivitySport> call, Response<ActivitySport> response) {
-                mutableLiveData.postValue(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<ActivitySport> call, Throwable t) {
-
-            }
-        });
-        return mutableLiveData;
-    }
-
 }

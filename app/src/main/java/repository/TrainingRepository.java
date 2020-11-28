@@ -7,9 +7,7 @@ import java.util.List;
 
 import api.ApiClient;
 import api.ITrainingService;
-import api.IUserService;
 import model.Training;
-import model.UserFitness;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,6 +52,21 @@ public class TrainingRepository {
 
             @Override
             public void onFailure(Call<Training> call, Throwable t) {
+
+            }
+        });
+        return mutableLiveData;
+    }
+    public LiveData<List<Training>> getTrainingByuserId(int id){
+        final MutableLiveData<List<Training>> mutableLiveData = new MutableLiveData<>();
+        getITrainingService().getTrainingbyUserId(id).enqueue(new Callback<List<Training>>() {
+            @Override
+            public void onResponse(Call<List<Training>> call, Response<List<Training>> response) {
+                mutableLiveData.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<Training>> call, Throwable t) {
 
             }
         });

@@ -9,15 +9,14 @@ public class TrainingDate {
     private Date date;
 
 
-    public TrainingDate(int id, Date date) {
-        this.id = id;
+    public TrainingDate(Date date) {
         this.date = date;
     }
 
     @Override
     public String toString() {
         return "TrainingDate{" +
-                "id=" + id +
+
                 ", date=" + date +
                 '}';
     }

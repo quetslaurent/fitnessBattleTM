@@ -1,7 +1,7 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 
 import model.ActivitySport;
+import model.Training;
 import model.TrainingDate;
 import model.Unit;
 import model.UserFitness;
@@ -45,32 +46,34 @@ public class LoginActivity extends AppCompatActivity {
         TrainingRepository trainingRepository = new TrainingRepository();
 
         Date date= new Date();
-      //  UserFitness u1=new UserFitness(0,"Quets","helha","QuetsBoulette@gmail.com",false);
-        //ActivitySport act1 = new ActivitySport("pompes",25);
-         TrainingDate tra1 = new TrainingDate(1,date);
+        UserFitness u1=new UserFitness("Quets","helha","QuetsBoulette@gmail.com",false);
+        ActivitySport act1 = new ActivitySport("pompes",25);
+       TrainingDate tra1 = new TrainingDate(date);
          Unit unt1 = new Unit(1,"Type5");
 
+    /*    final UserFitness[] u = new UserFitness[1];
+  userRepository.getById(2).observe(this, new Observer<UserFitness>() {
+       @Override
+       public void onChanged(UserFitness userFitness) {
+           Log.i("USSSSSSSSSSSER",userFitness.toString());
+           u[0] =userFitness;
+       }
+   });
 
 
-        /**
+        Log.i("USSSSSSSSSSSER",u[0].toString()); */
+
+
+/**
          * life cycle owner -> this , notre classe
          * new observer , le flux d'info
          */
         userRepository.query().observe(this, new Observer<List<UserFitness>>() {
             @Override
             public void onChanged(List<UserFitness> users) {
-
                 Log.i("UserSql", users.toString());
             }
-
         }); //renvoie un flux d'info ( liveData)
-
-        activityRepository.getById(1).observe(this, new Observer<ActivitySport>() {
-            @Override
-            public void onChanged(ActivitySport activitySport) {
-                Log.i("UserActivity", activitySport.toString());
-            }
-        });
 
 
      /*   userRepository.create(u1).observe(this, new Observer<UserFitness>() {
@@ -99,22 +102,23 @@ public class LoginActivity extends AppCompatActivity {
             public void onChanged(Category category) {
                 Log.i("categorie", category.toString());
             }
-        });
+        });*/
 
-        trainingDateRepository.create(new TrainingDate(1,date)).observe(this, new Observer<TrainingDate>() {
+    /*    trainingDateRepository.create(new TrainingDate(date)).observe(this, new Observer<TrainingDate>() {
             @Override
             public void onChanged(TrainingDate trainingDate) {
                 Log.i("training", trainingDate.toString());
             }
-        });
+        }); */
 
+   /* Training tra = new Training(12,1,1,1,12);
 
-        trainingRepository.create(new Training(1,u1,act1,15,tra1)).observe(this, new Observer<Training>() {
+    trainingRepository.create(tra).observe(this, new Observer<Training>() {
             @Override
             public void onChanged(Training  training) {
                 Log.i("traning", training.toString());
             }
-        });*/
+        }); */
     }
 
     @Override

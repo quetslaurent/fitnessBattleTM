@@ -14,11 +14,14 @@ public interface IUserService {
 
 
     @GET("users")
-    Call<List<UserFitness>> getUser();//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
+    Call<List<UserFitness>> getUsers();//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
 
+    @GET("users/{id}")
+    Call<UserFitness> getUser(@Path("id")int id);
 
     @POST("users")
     Call<UserFitness>postUser(@Body UserFitness user);
 
 
 }
+

@@ -1,7 +1,6 @@
 package repository;
 
 import android.app.Application;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -34,16 +33,17 @@ public class UserRepository {
         return ApiClient.getClient().create(IUserService.class);
     }
 
-    private RegisterActivity registerActivity;
+
+
     /**
      * flux d'info que l'on peut observer
      * on peut pas le modifier ! mais le mutable oui
      * @return
      */
-    public LiveData<List<UserFitness>> query(){ //List d'oversable
+    public LiveData<List<UserFitness>> query(){ //List d'oversable //
         final MutableLiveData<List<UserFitness>> mutableLiveData = new MutableLiveData<>();
 
-        getIUserService().getUser().enqueue(new Callback<List<UserFitness>>() {
+        getIUserService().getUsers().enqueue(new Callback<List<UserFitness>>() {
             @Override
             public void onResponse(Call<List<UserFitness>> call, Response<List<UserFitness>> response) {
                 mutableLiveData.postValue(response.body()); //on envoit des données sur le flux d'information
@@ -68,17 +68,23 @@ public class UserRepository {
                 if(response.isSuccessful()){
                     mutableLiveData.postValue(response.body());
                 }
-               else{
-                    switch (response.code()){
-                        case 404:
-                            Toast.makeText(registerActivity,"server not found",Toast.LENGTH_SHORT).show();
-                        break;
+            }
 
-                        case 409:
-                            Toast.makeText(registerActivity,"user or email already used",Toast.LENGTH_SHORT).show();
-                            break;
-                    }
-                }
+            @Override
+            public void onFailure(Call<UserFitness> call, Throwable t) {
+
+            }
+        });
+        return mutableLiveData;
+    }
+    public LiveData<UserFitness> getById(int id){
+        final MutableLiveData<UserFitness> mutableLiveData = new MutableLiveData<>();
+        getIUserService().getUser(id).enqueue(new Callback<UserFitness>() {
+            @Override
+            public void onResponse(Call<UserFitness> call, Response<UserFitness> response) {
+
+                UserFitness userFitness = response.body();
+                mutableLiveData.postValue(userFitness);
             }
 
             @Override
