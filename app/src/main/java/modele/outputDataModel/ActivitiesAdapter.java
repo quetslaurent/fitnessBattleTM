@@ -14,9 +14,9 @@ import com.example.projet.R;
 
 import java.util.List;
 
-public class ActivitiesAdapterOutput extends ArrayAdapter<ActivitySport> {
+public class ActivitiesAdapter extends ArrayAdapter<ActivitySport> {
 
-    public ActivitiesAdapterOutput(@NonNull Context context, int resource, @NonNull List<ActivitySport> objects){
+    public ActivitiesAdapter(@NonNull Context context, int resource, @NonNull List<ActivitySport> objects){
         super(context,resource,objects);
     }
 

@@ -18,7 +18,6 @@ public interface IActivityService {
     @POST("activity")
     Call<ActivitySport>postActivity(@Body ActivitySport activitySport);
 
-
     @GET("activity/{id}")
     Call<ActivitySport> getActivity(@Path("id")int id);
 

@@ -7,6 +7,7 @@ import java.util.List;
 
 import api.ApiClient;
 import api.ICategoryService;
+import model.CategoryActivities;
 import modele.outputDataModel.Category;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -57,5 +58,26 @@ public class CategoryRepository {
         });
         return mutableLiveData;
     }
+
+    public LiveData<List<CategoryActivities>>queryCategoriesActivities(){ //List d'oversable
+        final MutableLiveData<List<CategoryActivities>> mutableLiveData = new MutableLiveData<>();
+
+        getICategoryService().getActivitiesByCategory().enqueue(new Callback<List<CategoryActivities>>() {
+
+            @Override
+            public void onResponse(Call<List<CategoryActivities>> call, Response<List<CategoryActivities>> response) {
+                mutableLiveData.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<CategoryActivities>> call, Throwable t) {
+
+            }
+        });
+
+        return  mutableLiveData;
+    }
+
+
 
 }

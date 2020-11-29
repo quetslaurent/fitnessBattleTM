@@ -3,6 +3,7 @@ package api;
 import java.util.List;
 
 import modele.outputDataModel.Category;
+import model.CategoryActivities;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -16,4 +17,7 @@ public interface ICategoryService {
 
     @POST("categories")
     Call<Category>postCategory(@Body Category category);
+
+    @GET("categories/activities")
+    Call<List<CategoryActivities>> getActivitiesByCategory();
 }
