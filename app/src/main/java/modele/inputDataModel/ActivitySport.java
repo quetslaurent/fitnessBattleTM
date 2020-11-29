@@ -1,4 +1,4 @@
-package model;
+package modele.inputDataModel;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -108,7 +108,7 @@ public class ActivitySport  implements Parcelable {
         checked = (pc.readInt() == 1);
     }
 
-    public static final Parcelable.Creator<ActivitySport> CREATOR = new Parcelable.Creator<ActivitySport>() {
+    public static final Creator<ActivitySport> CREATOR = new Creator<ActivitySport>() {
         public ActivitySport createFromParcel(Parcel pc) {
             return new ActivitySport(pc);
         }

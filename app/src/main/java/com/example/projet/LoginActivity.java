@@ -1,7 +1,6 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 
 import android.content.Intent;
@@ -13,14 +12,15 @@ import android.view.View;
 import android.view.Window;
 
 
-import java.util.Date;
 import java.util.List;
 
-import model.ActivitySport;
-import model.Training;
-import model.TrainingDate;
-import model.Unit;
-import model.UserFitness;
+import modele.inputDataModel.TrainingInput;
+import modele.outputDataModel.ActivitySport;
+
+import modele.outputDataModel.TrainingDateOutput;
+import modele.outputDataModel.TrainingOutput;
+import modele.outputDataModel.UnitOutput;
+import modele.outputDataModel.UserFitnessOutput;
 import repository.ActivityRepository;
 import repository.CategoryRepository;
 import repository.TrainingDateRepository;
@@ -45,32 +45,37 @@ public class LoginActivity extends AppCompatActivity {
         CategoryRepository categoryRepository = new CategoryRepository();
         TrainingRepository trainingRepository = new TrainingRepository();
 
-        Date date= new Date();
-        UserFitness u1=new UserFitness("Quets","helha","QuetsBoulette@gmail.com",false);
+
+
+
+
+
+        final UserFitnessOutput u1=new UserFitnessOutput("Quets","helha","QuetsBoulette@gmail.com",false);
         ActivitySport act1 = new ActivitySport("pompes",25);
-       TrainingDate tra1 = new TrainingDate(date);
-         Unit unt1 = new Unit(1,"Type5");
+      // TrainingDate tra1 = new TrainingDate(date);
+         UnitOutput unt1 = new UnitOutput(1,"Type5");
+      /*   trainingDateRepository.create(new TrainingDate(TrainingDate.getTimeNow())).observe(this, new Observer<TrainingDate>() {
+             @Override
+             public void onChanged(TrainingDate trainingDate) {
+                 Log.i("USSSSSSSSSSSER",trainingDate.toString());
+             }
+         });*/
 
-    /*    final UserFitness[] u = new UserFitness[1];
-  userRepository.getById(2).observe(this, new Observer<UserFitness>() {
-       @Override
-       public void onChanged(UserFitness userFitness) {
-           Log.i("USSSSSSSSSSSER",userFitness.toString());
-           u[0] =userFitness;
-       }
-   });
-
-
-        Log.i("USSSSSSSSSSSER",u[0].toString()); */
+         trainingDateRepository.query().observe(this, new Observer<List<TrainingDateOutput>>() {
+             @Override
+             public void onChanged(List<TrainingDateOutput> trainingDateOutputs) {
+                 Log.i("USSSSSSSSSSSER", trainingDateOutputs.toString());
+             }
+         });
 
 
 /**
          * life cycle owner -> this , notre classe
          * new observer , le flux d'info
          */
-        userRepository.query().observe(this, new Observer<List<UserFitness>>() {
+        userRepository.query().observe(this, new Observer<List<UserFitnessOutput>>() {
             @Override
-            public void onChanged(List<UserFitness> users) {
+            public void onChanged(List<UserFitnessOutput> users) {
                 Log.i("UserSql", users.toString());
             }
         }); //renvoie un flux d'info ( liveData)
@@ -111,15 +116,26 @@ public class LoginActivity extends AppCompatActivity {
             }
         }); */
 
-   /* Training tra = new Training(12,1,1,1,12);
+ TrainingInput tra = new TrainingInput(12,1,1,1);
 
-    trainingRepository.create(tra).observe(this, new Observer<Training>() {
+    trainingRepository.create(tra).observe(this, new Observer<TrainingInput>() {
             @Override
-            public void onChanged(Training  training) {
-                Log.i("traning", training.toString());
+            public void onChanged(TrainingInput trainingInput) {
+                Log.i("traning", trainingInput.toString());
             }
-        }); */
+        });
+
+
+trainingRepository.getTrainingByuserId(1).observe(this, new Observer<List<TrainingOutput>>() {
+    @Override
+    public void onChanged(List<TrainingOutput> trainingOutputs) {
+        Log.i("traning", trainingOutputs.toString());
     }
+});
+    }
+
+
+
 
     @Override
     protected void onResume() {

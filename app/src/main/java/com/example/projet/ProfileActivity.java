@@ -1,27 +1,22 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
-import model.UserFitness;
-import repository.UserRepository;
+import modele.outputDataModel.UserFitnessOutput;
 import viewModel.ProfileViewModel;
-import viewModel.RegisterViewModel;
 
 public class ProfileActivity extends AppCompatActivity {
     private SlidrInterface slidr;
@@ -40,11 +35,11 @@ public class ProfileActivity extends AppCompatActivity {
         initView();
 
 
-   profileViewModel.getUserlive().observe(this, new Observer<UserFitness>() {
+   profileViewModel.getUserlive().observe(this, new Observer<UserFitnessOutput>() {
        @Override
-       public void onChanged(UserFitness userFitness) {
-           txt_name.setText(userFitness.getName());
-           txt_mail.setText(userFitness.getEmail());
+       public void onChanged(UserFitnessOutput userFitnessOutput) {
+           txt_name.setText(userFitnessOutput.getName());
+           txt_mail.setText(userFitnessOutput.getEmail());
        }
    });
 

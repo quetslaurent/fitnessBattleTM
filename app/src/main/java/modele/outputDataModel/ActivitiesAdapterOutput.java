@@ -1,4 +1,4 @@
-package model;
+package modele.outputDataModel;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import androidx.annotation.ContentView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -15,9 +14,9 @@ import com.example.projet.R;
 
 import java.util.List;
 
-public class ActivitiesAdapter extends ArrayAdapter<ActivitySport> {
+public class ActivitiesAdapterOutput extends ArrayAdapter<ActivitySport> {
 
-    public ActivitiesAdapter(@NonNull Context context, int resource, @NonNull List<ActivitySport> objects){
+    public ActivitiesAdapterOutput(@NonNull Context context, int resource, @NonNull List<ActivitySport> objects){
         super(context,resource,objects);
     }
 

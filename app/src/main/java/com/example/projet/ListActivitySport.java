@@ -10,21 +10,21 @@ import androidx.lifecycle.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
-import model.ActivitiesAdapter;
-import model.ActivitySport;
-import model.Category;
-import model.Unit;
+import modele.outputDataModel.ActivitiesAdapterOutput;
+import modele.outputDataModel.ActivitySport;
+import modele.outputDataModel.Category;
+import modele.outputDataModel.UnitOutput;
 import repository.ActivityRepository;
 
 public class ListActivitySport extends AppCompatActivity{
 
     private final List<ActivitySport> activitySports = new ArrayList<>();
     private Category c1 = new Category(1,"Upper Body");
-    private Unit u1 = new Unit(1,"Type5");
+    private UnitOutput u1 = new UnitOutput(1,"Type5");
     private ActivityRepository activityRepository = new ActivityRepository();
     private LiveData<ActivitySport> liveActivity;
     private ListView lvActivities;
-    private ActivitiesAdapter activitiesAdapter;
+    private ActivitiesAdapterOutput activitiesAdapterOutput;
     private Context context;
 
     @Override
@@ -40,11 +40,11 @@ public class ListActivitySport extends AppCompatActivity{
                 Log.i("test",activitySport.toString());
                 activitySports.add(activitySport);
 
-                activitiesAdapter = new ActivitiesAdapter(
+                activitiesAdapterOutput = new ActivitiesAdapterOutput(
                         context,
                         R.id.list_activities,
                         activitySports);
-                lvActivities.setAdapter(activitiesAdapter);
+                lvActivities.setAdapter(activitiesAdapterOutput);
             }
         });
 

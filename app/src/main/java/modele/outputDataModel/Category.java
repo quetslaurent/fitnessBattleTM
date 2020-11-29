@@ -1,4 +1,4 @@
-package model;
+package modele.outputDataModel;
 
 public class Category {
     private int id;

@@ -1,13 +1,13 @@
-package model;
+package modele.inputDataModel;
 
-public class UserFitness {
+public class UserFitnessInput {
     private int id;
     private String name;
     private String password;
     private String email;
     private Boolean admin;
 
-    public UserFitness(String name, String password, String email, Boolean admin){
+    public UserFitnessInput(String name, String password, String email, Boolean admin){
         this.name = name;
         this.password = password;
         this.email = email;
@@ -68,10 +68,10 @@ public class UserFitness {
 
     @Override
     public boolean equals(Object o) {
-        if(!(o instanceof UserFitness)){
+        if(!(o instanceof UserFitnessInput)){
             return false;
         }
-        UserFitness u = (UserFitness)o;
+        UserFitnessInput u = (UserFitnessInput)o;
         return name.equals(u.name) && email.equals(u.email);
     }
 

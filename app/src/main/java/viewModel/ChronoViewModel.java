@@ -1,11 +1,10 @@
 package viewModel;
 
 import android.os.Handler;
-import android.os.SystemClock;
 
 import androidx.lifecycle.ViewModel;
 
-import model.Chrono;
+import modele.Chrono;
 
 public class ChronoViewModel extends ViewModel {
 

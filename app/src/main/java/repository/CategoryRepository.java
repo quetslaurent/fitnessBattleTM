@@ -7,9 +7,7 @@ import java.util.List;
 
 import api.ApiClient;
 import api.ICategoryService;
-import api.IUserService;
-import model.Category;
-import model.UserFitness;
+import modele.outputDataModel.Category;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -3,8 +3,7 @@ package api;
 
 import java.util.List;
 
-import model.ActivitySport;
-import model.UserFitness;
+import modele.outputDataModel.ActivitySport;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

@@ -7,8 +7,7 @@ import java.util.List;
 
 import api.ApiClient;
 import api.ITrainingDateService;
-import model.TrainingDate;
-import model.UserFitness;
+import modele.outputDataModel.TrainingDateOutput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,34 +23,34 @@ public class TrainingDateRepository {
      * on peut pas le modifier ! mais le mutable oui
      * @return
      */
-    public LiveData<List<TrainingDate>> query(){ //List d'oversable
-        final MutableLiveData<List<TrainingDate>> mutableLiveData = new MutableLiveData<>();
+    public LiveData<List<TrainingDateOutput>> query(){ //List d'oversable
+        final MutableLiveData<List<TrainingDateOutput>> mutableLiveData = new MutableLiveData<>();
 
-        getITrainingDateService().getTrainingDate().enqueue(new Callback<List<TrainingDate>>() {
+        getITrainingDateService().getTrainingDate().enqueue(new Callback<List<TrainingDateOutput>>() {
             @Override
-            public void onResponse(Call<List<TrainingDate>> call, Response<List<TrainingDate>> response) {
+            public void onResponse(Call<List<TrainingDateOutput>> call, Response<List<TrainingDateOutput>> response) {
                 mutableLiveData.postValue(response.body()); //on envoit des données sur le flux d'information
                 //verifier si tache synchrone
             }
 
             @Override
-            public void onFailure(Call<List<TrainingDate>> call, Throwable t) {
+            public void onFailure(Call<List<TrainingDateOutput>> call, Throwable t) {
 
             }
         });
 
         return  mutableLiveData;
     }
-    public LiveData<TrainingDate> create(TrainingDate trainingDate){
-        final MutableLiveData<TrainingDate> mutableLiveData = new MutableLiveData<>();
-        getITrainingDateService().postTrainingDate(trainingDate).enqueue(new Callback<TrainingDate>() {
+    public LiveData<TrainingDateOutput> create(TrainingDateOutput trainingDateOutput){
+        final MutableLiveData<TrainingDateOutput> mutableLiveData = new MutableLiveData<>();
+        getITrainingDateService().postTrainingDate(trainingDateOutput).enqueue(new Callback<TrainingDateOutput>() {
             @Override
-            public void onResponse(Call<TrainingDate> call, Response<TrainingDate> response) {
+            public void onResponse(Call<TrainingDateOutput> call, Response<TrainingDateOutput> response) {
                 mutableLiveData.postValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<TrainingDate> call, Throwable t) {
+            public void onFailure(Call<TrainingDateOutput> call, Throwable t) {
 
             }
         });

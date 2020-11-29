@@ -1,11 +1,11 @@
-package model;
+package modele.inputDataModel;
 
-public class Unit {
+public class UnitInput {
     private int id;
     private String type;
 
 
-    public Unit(int id, String type) {
+    public UnitInput(int id, String type) {
         this.id = id;
         this.type = type;
     }

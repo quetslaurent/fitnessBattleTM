@@ -2,7 +2,7 @@ package api;
 
 import java.util.List;
 
-import model.Category;
+import modele.outputDataModel.Category;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

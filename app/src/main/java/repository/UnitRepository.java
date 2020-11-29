@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 import api.ApiClient;
 import api.IUnitsService;
-import model.Unit;
+import modele.outputDataModel.UnitOutput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,34 +21,34 @@ public class UnitRepository {
      * on peut pas le modifier ! mais le mutable oui
      * @return
      */
-    public LiveData<List<Unit>> query(){ //List d'oversable
-        final MutableLiveData<List<Unit>> mutableLiveData = new MutableLiveData<>();
+    public LiveData<List<UnitOutput>> query(){ //List d'oversable
+        final MutableLiveData<List<UnitOutput>> mutableLiveData = new MutableLiveData<>();
 
-        getIUnitService().getUnits().enqueue(new Callback<List<Unit>>() {
+        getIUnitService().getUnits().enqueue(new Callback<List<UnitOutput>>() {
             @Override
-            public void onResponse(Call<List<Unit>> call, Response<List<Unit>> response) {
+            public void onResponse(Call<List<UnitOutput>> call, Response<List<UnitOutput>> response) {
                 mutableLiveData.postValue(response.body()); //on envoit des données sur le flux d'information
                 //verifier si tache synchrone
             }
 
             @Override
-            public void onFailure(Call<List<Unit>> call, Throwable t) {
+            public void onFailure(Call<List<UnitOutput>> call, Throwable t) {
 
             }
         });
 
         return  mutableLiveData;
     }
-    public LiveData<Unit> create(Unit unit){
-        final MutableLiveData<Unit> mutableLiveData = new MutableLiveData<>();
-        getIUnitService().postUnits(unit).enqueue(new Callback<Unit>() {
+    public LiveData<UnitOutput> create(UnitOutput unit){
+        final MutableLiveData<UnitOutput> mutableLiveData = new MutableLiveData<>();
+        getIUnitService().postUnits(unit).enqueue(new Callback<UnitOutput>() {
             @Override
-            public void onResponse(Call<Unit> call, Response<Unit> response) {
+            public void onResponse(Call<UnitOutput> call, Response<UnitOutput> response) {
                 mutableLiveData.postValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<Unit> call, Throwable t) {
+            public void onFailure(Call<UnitOutput> call, Throwable t) {
 
             }
         });

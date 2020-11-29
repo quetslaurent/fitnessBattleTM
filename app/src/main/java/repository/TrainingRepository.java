@@ -7,7 +7,8 @@ import java.util.List;
 
 import api.ApiClient;
 import api.ITrainingService;
-import model.Training;
+import modele.inputDataModel.TrainingInput;
+import modele.outputDataModel.TrainingOutput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -24,49 +25,49 @@ public class TrainingRepository {
      * on peut pas le modifier ! mais le mutable oui
      * @return
      */
-    public LiveData<List<Training>> query(){ //List d'oversable
-        final MutableLiveData<List<Training>> mutableLiveData = new MutableLiveData<>();
+    public LiveData<List<TrainingOutput>> query(){ //List d'oversable
+        final MutableLiveData<List<TrainingOutput>> mutableLiveData = new MutableLiveData<>();
 
-        getITrainingService().getTraining().enqueue(new Callback<List<Training>>() {
+        getITrainingService().getTraining().enqueue(new Callback<List<TrainingOutput>>() {
             @Override
-            public void onResponse(Call<List<Training>> call, Response<List<Training>> response) {
+            public void onResponse(Call<List<TrainingOutput>> call, Response<List<TrainingOutput>> response) {
                 mutableLiveData.postValue(response.body()); //on envoit des données sur le flux d'information
                 //verifier si tache synchrone
             }
 
             @Override
-            public void onFailure(Call<List<Training>> call, Throwable t) {
+            public void onFailure(Call<List<TrainingOutput>> call, Throwable t) {
 
             }
         });
 
         return  mutableLiveData;
     }
-    public LiveData<Training> create(Training training){
-        final MutableLiveData<Training> mutableLiveData = new MutableLiveData<>();
-        getITrainingService().postTraining(training).enqueue(new Callback<Training>() {
+    public LiveData<TrainingInput> create(TrainingInput trainingInput){
+        final MutableLiveData<TrainingInput> mutableLiveData = new MutableLiveData<>();
+        getITrainingService().postTraining(trainingInput).enqueue(new Callback<TrainingInput>() {
             @Override
-            public void onResponse(Call<Training> call, Response<Training> response) {
+            public void onResponse(Call<TrainingInput> call, Response<TrainingInput> response) {
                 mutableLiveData.postValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<Training> call, Throwable t) {
+            public void onFailure(Call<TrainingInput> call, Throwable t) {
 
             }
         });
         return mutableLiveData;
     }
-    public LiveData<List<Training>> getTrainingByuserId(int id){
-        final MutableLiveData<List<Training>> mutableLiveData = new MutableLiveData<>();
-        getITrainingService().getTrainingbyUserId(id).enqueue(new Callback<List<Training>>() {
+    public LiveData<List<TrainingOutput>> getTrainingByuserId(int id){
+        final MutableLiveData<List<TrainingOutput>> mutableLiveData = new MutableLiveData<>();
+        getITrainingService().getTrainingbyUserId(id).enqueue(new Callback<List<TrainingOutput>>() {
             @Override
-            public void onResponse(Call<List<Training>> call, Response<List<Training>> response) {
+            public void onResponse(Call<List<TrainingOutput>> call, Response<List<TrainingOutput>> response) {
                 mutableLiveData.postValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<Training>> call, Throwable t) {
+            public void onFailure(Call<List<TrainingOutput>> call, Throwable t) {
 
             }
         });
