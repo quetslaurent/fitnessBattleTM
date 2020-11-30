@@ -1,5 +1,6 @@
 package com.example.projet;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
@@ -15,32 +16,35 @@ import repository.CategoryRepository;
 
 public class ListActivitySport extends AppCompatActivity{
 
-    private List<ActivitySport> activitySports = new ArrayList<>();
     private CategoryRepository categoryRepository = new CategoryRepository();
+    private Context context;
+    private ListView lvActivities;
+    private ActivitiesAdapter activitiesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        ListView lvActivities = findViewById(R.id.list_activities);
+        lvActivities = findViewById(R.id.list_activities);
+        context = this;
 
         categoryRepository.queryCategoriesActivities().observe(this, new Observer<List<ActivitiesByCategorieOutput>>() {
             @Override
             public void onChanged(List<ActivitiesByCategorieOutput> activityByCategorieOutputs) {
                 Log.i("test", activityByCategorieOutputs.toString());
+                activitiesAdapter = new ActivitiesAdapter(
+                        context,
+                        R.id.list_activities,
+                        activityByCategorieOutputs
+                );
+
+                lvActivities.setAdapter(activitiesAdapter);
             }
         });
 
 
 
-        //activitySports.add(new ActivitySport("Abdo", 20));
-        ActivitiesAdapter activitiesAdapter = new ActivitiesAdapter(
-                this,
-                R.id.list_activities,
-                activitySports
-        );
 
-        lvActivities.setAdapter(activitiesAdapter);
     }
 
 

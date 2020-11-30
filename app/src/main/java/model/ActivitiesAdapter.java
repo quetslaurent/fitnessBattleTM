@@ -14,11 +14,12 @@ import com.example.projet.R;
 
 import java.util.List;
 
+import model.outputDataModel.ActivitiesByCategorieOutput;
 import model.outputDataModel.ActivitySport;
 
-public class ActivitiesAdapter extends ArrayAdapter<ActivitySport> {
+public class ActivitiesAdapter extends ArrayAdapter<ActivitiesByCategorieOutput> {
 
-    public ActivitiesAdapter(@NonNull Context context, int resource, @NonNull List<ActivitySport> objects){
+    public ActivitiesAdapter(@NonNull Context context, int resource, @NonNull List<ActivitiesByCategorieOutput> objects){
         super(context,resource,objects);
     }
 
@@ -32,16 +33,20 @@ public class ActivitiesAdapter extends ArrayAdapter<ActivitySport> {
             inflatedView = layoutInflater.inflate(R.layout.list_item_activity,parent,false);
         }
 
-        final ActivitySport activitySport = getItem(position);
-        populateView(inflatedView,activitySport);
+        final ActivitiesByCategorieOutput activitiesByCategorieOutput = getItem(position);
+        populateView(inflatedView,activitiesByCategorieOutput);
         return  inflatedView;
 
     }
 
-    private void populateView(View inflatedView, ActivitySport activitySport) {
+    private void populateView(View inflatedView, ActivitiesByCategorieOutput activitiesByCategorieOutput) {
         TextView tvName = inflatedView.findViewById(R.id.list_item_activities_name);
-        tvName.setText(activitySport.getName());
 
+        List<ActivitySport> activities = activitiesByCategorieOutput.getActivities();
+        for(int i=0; i<activities.size();i++){
+            String nameActivities = activities.get(i).getName();
+            tvName.setText(nameActivities);
+        }
     }
 
 

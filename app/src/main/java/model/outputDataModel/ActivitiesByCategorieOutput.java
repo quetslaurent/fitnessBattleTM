@@ -21,4 +21,12 @@ public class ActivitiesByCategorieOutput extends CategoryOutput {
                 "activitySports=" + activities +
                 '}';
     }
+
+    public List<ActivitySport> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<ActivitySport> activities) {
+        this.activities = activities;
+    }
 }

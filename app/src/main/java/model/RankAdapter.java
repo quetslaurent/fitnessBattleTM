@@ -45,6 +45,4 @@ public class RankAdapter extends ArrayAdapter<UserFitnessOutput> {
 
     }
 
-
-
 }
