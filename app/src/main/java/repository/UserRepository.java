@@ -9,7 +9,8 @@ import java.util.List;
 
 import api.ApiClient;
 import api.IUserService;
-import modele.outputDataModel.UserFitnessOutput;
+import model.inputDataModel.UserFitnessInput;
+import model.outputDataModel.UserFitnessOutput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,18 +59,18 @@ public class UserRepository {
     }
 
 
-    public LiveData<UserFitnessOutput> create(UserFitnessOutput userFitness){
-        final MutableLiveData<UserFitnessOutput> mutableLiveData = new MutableLiveData<>();
-        getIUserService().postUser(userFitness).enqueue(new Callback<UserFitnessOutput>() {
+    public LiveData<UserFitnessInput> create(UserFitnessInput userFitnessInput){
+        final MutableLiveData<UserFitnessInput> mutableLiveData = new MutableLiveData<>();
+        getIUserService().postUser(userFitnessInput).enqueue(new Callback<UserFitnessInput>() {
             @Override
-            public void onResponse(Call<UserFitnessOutput> call, Response<UserFitnessOutput> response) {
+            public void onResponse(Call<UserFitnessInput> call, Response<UserFitnessInput> response) {
                 if(response.isSuccessful()){
                     mutableLiveData.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<UserFitnessOutput> call, Throwable t) {
+            public void onFailure(Call<UserFitnessInput> call, Throwable t) {
 
             }
         });

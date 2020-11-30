@@ -1,11 +1,11 @@
-package modele.inputDataModel;
+package model.inputDataModel;
 
-public class Category {
+public class CategoryInput {
     private int id;
     private String name;
 
     //ceci est un com
-    public Category(int id, String name) {
+    public CategoryInput(int id, String name) {
         this.id = id;
         this.name = name;
     }

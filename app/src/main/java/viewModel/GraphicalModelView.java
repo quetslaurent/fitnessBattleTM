@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import modele.outputDataModel.TrainingOutput;
+import model.outputDataModel.TrainingOutput;
 import repository.TrainingRepository;
 
 

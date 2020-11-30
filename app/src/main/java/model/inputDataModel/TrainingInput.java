@@ -1,4 +1,4 @@
-package modele.inputDataModel;
+package model.inputDataModel;
 
 public class TrainingInput {
 

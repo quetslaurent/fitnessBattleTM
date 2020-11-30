@@ -7,7 +7,8 @@ import java.util.List;
 
 import api.ApiClient;
 import api.ITrainingDateService;
-import modele.outputDataModel.TrainingDateOutput;
+import model.inputDataModel.TrainingDateInput;
+import model.outputDataModel.TrainingDateOutput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,16 +42,16 @@ public class TrainingDateRepository {
 
         return  mutableLiveData;
     }
-    public LiveData<TrainingDateOutput> create(TrainingDateOutput trainingDateOutput){
-        final MutableLiveData<TrainingDateOutput> mutableLiveData = new MutableLiveData<>();
-        getITrainingDateService().postTrainingDate(trainingDateOutput).enqueue(new Callback<TrainingDateOutput>() {
+    public LiveData<TrainingDateInput> create(TrainingDateInput trainingDateInput){
+        final MutableLiveData<TrainingDateInput> mutableLiveData = new MutableLiveData<>();
+        getITrainingDateService().postTrainingDate(trainingDateInput).enqueue(new Callback<TrainingDateInput>() {
             @Override
-            public void onResponse(Call<TrainingDateOutput> call, Response<TrainingDateOutput> response) {
+            public void onResponse(Call<TrainingDateInput> call, Response<TrainingDateInput> response) {
                 mutableLiveData.postValue(response.body());
             }
 
             @Override
-            public void onFailure(Call<TrainingDateOutput> call, Throwable t) {
+            public void onFailure(Call<TrainingDateInput> call, Throwable t) {
 
             }
         });

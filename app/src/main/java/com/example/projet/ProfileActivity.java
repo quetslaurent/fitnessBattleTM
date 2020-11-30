@@ -1,6 +1,7 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
+
+import model.outputDataModel.UserFitnessOutput;
 import viewModel.ProfileViewModel;
 
 
@@ -34,9 +37,9 @@ public class ProfileActivity extends AppCompatActivity {
         initView();
 
 
-   profileViewModel.getUserlive().observe(this, new Observer<UserFitness>() {
+   profileViewModel.getUserlive().observe(this, new Observer<UserFitnessOutput>() {
        @Override
-       public void onChanged(UserFitness userFitness) {
+       public void onChanged(UserFitnessOutput userFitness) {
            txt_name.setText(userFitness.getName());
            txt_mail.setText(userFitness.getEmail());
        }

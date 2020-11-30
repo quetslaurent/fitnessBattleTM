@@ -13,7 +13,8 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import modele.outputDataModel.UserFitnessOutput;
+import model.inputDataModel.UserFitnessInput;
+import model.outputDataModel.UserFitnessOutput;
 import viewModel.RegisterViewModel;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -23,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     private String password;
     private String name;
     private Button btn_register;
-    private UserFitnessOutput userFitness;
+    private UserFitnessInput userFitness;
     private RegisterViewModel registerViewModel;
   // private UserRepository userRepository;
 
@@ -56,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"Password required",Toast.LENGTH_LONG).show();
                 }
                 else{
-                  userFitness = new UserFitnessOutput(name,password,mail,false);
+                  userFitness = new UserFitnessInput(name,password,mail,false);
                   registerViewModel.createUser(userFitness);
 
                 }

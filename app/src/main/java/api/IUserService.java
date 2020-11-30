@@ -2,7 +2,8 @@ package api;
 
 import java.util.List;
 
-import modele.outputDataModel.UserFitnessOutput;
+import model.inputDataModel.UserFitnessInput;
+import model.outputDataModel.UserFitnessOutput;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -19,7 +20,7 @@ public interface IUserService {
     Call<UserFitnessOutput> getUser(@Path("id")int id);
 
     @POST("users")
-    Call<UserFitnessOutput>postUser(@Body UserFitnessOutput user);
+    Call<UserFitnessInput>postUser(@Body UserFitnessInput user);
 
 
 }

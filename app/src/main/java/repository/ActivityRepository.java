@@ -7,7 +7,7 @@ import java.util.List;
 
 import api.ApiClient;
 import api.IActivityService;
-import modele.outputDataModel.ActivitySport;
+import model.outputDataModel.ActivitySport;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

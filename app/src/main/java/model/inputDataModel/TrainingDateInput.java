@@ -1,4 +1,4 @@
-package modele.inputDataModel;
+package model.inputDataModel;
 
 
 import java.text.SimpleDateFormat;

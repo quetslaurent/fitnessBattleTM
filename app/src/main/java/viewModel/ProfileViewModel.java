@@ -3,7 +3,7 @@ package viewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import modele.outputDataModel.UserFitnessOutput;
+import model.outputDataModel.UserFitnessOutput;
 import repository.UserRepository;
 
 public class ProfileViewModel extends ViewModel {

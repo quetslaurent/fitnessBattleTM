@@ -1,4 +1,4 @@
-package modele.outputDataModel;
+package model.outputDataModel;
 
 public class UserFitnessOutput {
     private int id;
@@ -7,11 +7,7 @@ public class UserFitnessOutput {
     private String email;
     private Boolean admin;
 
-    public UserFitnessOutput(String name, String password, String email, Boolean admin){
-        this.name = name;
-        this.password = password;
-        this.email = email;
-        this.admin = admin;
+    public UserFitnessOutput(){
     }
 
 

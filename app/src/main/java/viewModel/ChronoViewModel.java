@@ -4,7 +4,7 @@ import android.os.Handler;
 
 import androidx.lifecycle.ViewModel;
 
-import modele.Chrono;
+import model.Chrono;
 
 public class ChronoViewModel extends ViewModel {
 

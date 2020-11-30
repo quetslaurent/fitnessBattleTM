@@ -1,4 +1,4 @@
-package modele.outputDataModel;
+package model.outputDataModel;
 
 public class TrainingOutput {
 

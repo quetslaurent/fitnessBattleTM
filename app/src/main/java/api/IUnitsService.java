@@ -2,7 +2,8 @@ package api;
 
 import java.util.List;
 
-import modele.outputDataModel.UnitOutput;
+import model.inputDataModel.UnitInput;
+import model.outputDataModel.UnitOutput;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -14,5 +15,5 @@ public interface IUnitsService {
     Call<List<UnitOutput>> getUnits();//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
 
     @POST("units")
-    Call<UnitOutput>postUnits(@Body UnitOutput unit);
+    Call<UnitInput>postUnits(@Body UnitInput unit);
 }

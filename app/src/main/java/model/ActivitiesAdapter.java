@@ -1,4 +1,4 @@
-package modele.inputDataModel;
+package model;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import com.example.projet.R;
 
 import java.util.List;
+
+import model.outputDataModel.ActivitySport;
 
 public class ActivitiesAdapter extends ArrayAdapter<ActivitySport> {
 

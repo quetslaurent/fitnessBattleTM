@@ -1,6 +1,7 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.graphics.Color;
@@ -11,10 +12,17 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+import model.outputDataModel.ActivitySport;
+import model.outputDataModel.TrainingDateOutput;
+import model.outputDataModel.TrainingOutput;
+import repository.ActivityRepository;
+import repository.TrainingRepository;
 import viewModel.GraphicalModelView;
 
 public class GraphicalActivity extends AppCompatActivity {
@@ -23,6 +31,7 @@ public class GraphicalActivity extends AppCompatActivity {
     BarData barData;
     BarDataSet barDataSet;
     private GraphicalModelView graphicalModelView;
+    private TrainingRepository trainingRepository = new TrainingRepository();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,9 @@ public class GraphicalActivity extends AppCompatActivity {
         //graphics
         barChart = findViewById(R.id.chart);
         ArrayList<BarEntry>barEntries=new ArrayList<>();
+
+
+
     /*  barEntries.add(new ActivitySport("pompes",25));
         barEntries.add(new ActivitySport("abdos",35));
         barEntries.add(new ActivitySport("course",15));
@@ -64,9 +76,16 @@ public class GraphicalActivity extends AppCompatActivity {
         barChart.animateY(2000);
     }
 
-    public void addEntries(){
+    private void setData(){
+        ArrayList<TrainingOutput> xVals = new ArrayList<>();
+        ArrayList<BarEntry> yVals = new ArrayList<>();
+        trainingRepository.getTrainingByuserId(1).observe(this, new Observer<List<TrainingOutput>>() {
+            @Override
+            public void onChanged(List<TrainingOutput> trainingOutputs) {
+
+            }
+        });
 
     }
-
 
 }

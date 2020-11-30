@@ -2,8 +2,8 @@ package api;
 
 import java.util.List;
 
-import modele.inputDataModel.TrainingInput;
-import modele.outputDataModel.TrainingOutput;
+import model.inputDataModel.TrainingInput;
+import model.outputDataModel.TrainingOutput;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

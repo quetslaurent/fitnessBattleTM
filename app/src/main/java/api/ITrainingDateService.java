@@ -2,7 +2,8 @@ package api;
 
 import java.util.List;
 
-import modele.outputDataModel.TrainingDateOutput;
+import model.inputDataModel.TrainingDateInput;
+import model.outputDataModel.TrainingDateOutput;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -15,5 +16,5 @@ public interface ITrainingDateService {
 
 
     @POST("training-dates")
-    Call<TrainingDateOutput>postTrainingDate(@Body TrainingDateOutput trainingDateOutput);
+    Call<TrainingDateInput>postTrainingDate(@Body TrainingDateInput trainingDateInput);
 }

@@ -1,11 +1,11 @@
-package modele.outputDataModel;
+package model.outputDataModel;
 
-public class Category {
+public class CategoryOutput {
     private int id;
     private String name;
 
     //ceci est un com
-    public Category(int id, String name) {
+    public CategoryOutput(int id, String name) {
         this.id = id;
         this.name = name;
     }

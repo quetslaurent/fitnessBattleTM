@@ -8,9 +8,9 @@ import androidx.lifecycle.Observer;
 
 import java.util.ArrayList;
 import java.util.List;
-import modele.outputDataModel.ActivitiesAdapter;
-import modele.outputDataModel.ActivitySport;
-import model.CategoryActivities;
+import model.ActivitiesAdapter;
+import model.outputDataModel.ActivitySport;
+import model.outputDataModel.ActivitiesByCategorieOutput;
 import repository.CategoryRepository;
 
 public class ListActivitySport extends AppCompatActivity{
@@ -24,10 +24,10 @@ public class ListActivitySport extends AppCompatActivity{
         setContentView(R.layout.activity_add);
         ListView lvActivities = findViewById(R.id.list_activities);
 
-        categoryRepository.queryCategoriesActivities().observe(this, new Observer<List<CategoryActivities>>() {
+        categoryRepository.queryCategoriesActivities().observe(this, new Observer<List<ActivitiesByCategorieOutput>>() {
             @Override
-            public void onChanged(List<CategoryActivities> categoryActivities) {
-                Log.i("test",categoryActivities.toString());
+            public void onChanged(List<ActivitiesByCategorieOutput> activityByCategorieOutputs) {
+                Log.i("test", activityByCategorieOutputs.toString());
             }
         });
 

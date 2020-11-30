@@ -7,7 +7,8 @@ import androidx.lifecycle.ViewModel;
 import java.util.List;
 
 
-import modele.outputDataModel.UserFitnessOutput;
+import model.inputDataModel.UserFitnessInput;
+import model.outputDataModel.UserFitnessOutput;
 import repository.UserRepository;
 
 public class RegisterViewModel extends ViewModel {
@@ -20,7 +21,7 @@ public class RegisterViewModel extends ViewModel {
         return userRepository.query();
     }
 
-    public void createUser(UserFitnessOutput userFitness){
+    public void createUser(UserFitnessInput userFitness){
         userRepository.create(userFitness);
 
     }

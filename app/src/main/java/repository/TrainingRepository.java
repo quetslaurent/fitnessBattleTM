@@ -7,8 +7,8 @@ import java.util.List;
 
 import api.ApiClient;
 import api.ITrainingService;
-import modele.inputDataModel.TrainingInput;
-import modele.outputDataModel.TrainingOutput;
+import model.inputDataModel.TrainingInput;
+import model.outputDataModel.TrainingOutput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
