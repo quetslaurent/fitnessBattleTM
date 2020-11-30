@@ -24,9 +24,23 @@ public class TrainingOutput {
                 '}';
     }
 
+ public int getId() {
+  return id;
+ }
 
+ public double getPoints() {
+  return points;
+ }
 
+ public double getRepetitions() {
+  return repetitions;
+ }
 
+ public String getTrainingDateValue() {
+  return trainingDateValue;
+ }
 
-
+ public String getActivityName() {
+  return activityName;
+ }
 }

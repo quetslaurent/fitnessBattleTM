@@ -9,6 +9,7 @@ import api.ApiClient;
 import api.ITrainingService;
 import model.inputDataModel.TrainingInput;
 import model.outputDataModel.TrainingOutput;
+import model.outputDataModel.UserFitnessOutput;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -73,6 +74,8 @@ public class TrainingRepository {
         });
         return mutableLiveData;
     }
+
+
 
 
 }
