@@ -38,9 +38,10 @@ public class RankAdapter extends ArrayAdapter<UserFitnessOutput> {
     private void populateView(View inflatedView, UserFitnessOutput userFitnessOutput) {
         TextView tvName = inflatedView.findViewById(R.id.list_item_users_name);
         tvName.setText(userFitnessOutput.getName());
-        //METTRE UN DOUBLE DANS UNE TEXTVIEW
-        /*TextView tvPoints = inflatedView.findViewById(R.id.list_item_users_points);
-        tvPoints.setText((int) userFitnessOutput.getPoints());*/
+        TextView tvPoints = inflatedView.findViewById(R.id.list_item_users_points);
+        double user=userFitnessOutput.getPoints();
+        String userPoints =""+user;
+        tvPoints.setText(userPoints);
 
     }
 
