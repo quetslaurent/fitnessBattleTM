@@ -6,10 +6,22 @@ public class UserFitnessOutput {
     private String password;
     private String email;
     private Boolean admin;
+    private double points;
 
     public UserFitnessOutput(){
     }
 
+    @Override
+    public String toString() {
+        return "UserFitnessOutput{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", admin=" + admin +
+                ", points=" + points +
+                '}';
+    }
 
     public int getId() {
         return id;
@@ -43,15 +55,12 @@ public class UserFitnessOutput {
         this.email = email;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", admin=" + admin +
-                '}';
+    public double getPoints() {
+        return points;
+    }
+
+    public void setPoints(double points) {
+        this.points = points;
     }
 
     public Boolean getAdmin() {

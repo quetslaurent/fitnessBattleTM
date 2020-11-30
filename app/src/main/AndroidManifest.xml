@@ -3,7 +3,8 @@
     package="com.example.projet">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".IMCActivity"></activity>
+        <activity android:name=".RankActivity"></activity>
+        <activity android:name=".IMCActivity" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".GraphicalActivity" />
@@ -27,7 +29,7 @@
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-             <!--   <categoryOutput android:name="android.intent.categoryOutput.LAUNCHER" /> -->
+                <!-- <categoryOutput android:name="android.intent.categoryOutput.LAUNCHER" /> -->
             </intent-filter>
         </activity>
 

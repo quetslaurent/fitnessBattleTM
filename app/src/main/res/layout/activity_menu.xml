@@ -83,6 +83,7 @@
             app:srcCompat="@drawable/profil" />
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="80dp"
             android:layout_marginTop="96dp"
@@ -99,8 +100,8 @@
                 android:layout_column="0"
                 android:layout_marginStart="32dp"
                 android:background="@drawable/custom_button_menu_rl"
-                android:text="🌍"
                 android:onClick="goToWebsite"
+                android:text="🌍"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -113,8 +114,8 @@
                 android:layout_marginLeft="50dp"
                 android:layout_marginRight="50dp"
                 android:background="@drawable/custom_button"
-                android:text="+"
                 android:onClick="goToAddActivity"
+                android:text="+"
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
 
@@ -131,6 +132,22 @@
                 android:textColor="@android:color/white"
                 android:textSize="40sp" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_rank"
+            android:layout_width="67dp"
+            android:layout_height="72dp"
+            android:layout_row="3"
+            android:layout_column="1"
+            android:background="@drawable/custom_button"
+            android:onClick="goToRank"
+            android:text="+"
+            android:textColor="@android:color/white"
+            android:textSize="40sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

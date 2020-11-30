@@ -15,7 +15,7 @@ import repository.CategoryRepository;
 
 public class ListActivitySport extends AppCompatActivity{
 
-    private final List<ActivitySport> activitySports = new ArrayList<>();
+    private List<ActivitySport> activitySports = new ArrayList<>();
     private CategoryRepository categoryRepository = new CategoryRepository();
 
     @Override

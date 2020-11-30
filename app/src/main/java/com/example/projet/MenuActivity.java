@@ -86,4 +86,8 @@ float x1,x2,y1,y2;
         startActivity(intent);
     }
 
+    public void goToRank(View view) {
+        Intent intent=new Intent(MenuActivity.this, RankActivity.class);
+        startActivity(intent);
+    }
 }
