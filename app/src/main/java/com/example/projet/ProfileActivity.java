@@ -74,4 +74,14 @@ public class ProfileActivity extends AppCompatActivity {
         txt_name = (TextView) findViewById(R.id.txt_name);
         profileViewModel =  new ViewModelProvider(this).get(ProfileViewModel.class);
     }
+
+    public void goToEditName(View view) {
+        Intent intent=new Intent(ProfileActivity.this, EditNameActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToEditMail(View view) {
+        Intent intent=new Intent(ProfileActivity.this, EditMailActivity.class);
+        startActivity(intent);
+    }
 }

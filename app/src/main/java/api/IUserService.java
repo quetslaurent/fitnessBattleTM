@@ -27,5 +27,9 @@ public interface IUserService {
     @POST("users")
     Call<UserFitnessInput>postUser(@Body UserFitnessInput user);
 
+    @POST("users/login")
+    Call<String>login(@Body UserFitnessInput user);
+
+
 }
 

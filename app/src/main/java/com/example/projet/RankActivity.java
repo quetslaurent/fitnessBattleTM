@@ -5,13 +5,11 @@ import androidx.lifecycle.Observer;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import model.ActivitiesAdapter;
 import model.RankAdapter;
 import model.outputDataModel.UserFitnessOutput;
 import repository.UserRepository;

@@ -13,7 +13,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="230dp"
         android:gravity="center"
         android:orientation="vertical"
         android:paddingTop="15dp">
@@ -58,12 +58,25 @@
 
         <TextView
             android:id="@+id/txt_name"
-            android:layout_width="match_parent"
-            android:layout_height="41dp"
+            android:layout_width="200sp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:hint="Nicolas"
             android:textSize="18sp"
             android:textStyle="bold" />
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/bg_round"
+            android:drawableLeft="@drawable/ic_baseline_edit_24"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:onClick="goToEditName"
+            android:textColor="@android:color/black"
+            android:textSize="18dp" />
+
+
     </LinearLayout>
 
 
@@ -78,7 +91,7 @@
             android:src="@drawable/ic_mail"/>
 
         <TextView
-            android:layout_width="91dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:text="Email"
@@ -87,12 +100,23 @@
 
         <TextView
             android:id="@+id/tv_mail"
-            android:layout_width="match_parent"
-            android:layout_height="43dp"
+            android:layout_width="260sp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="5dp"
             android:hint="la187349@student.helha.be"
             android:textSize="18sp"
             android:textStyle="bold" />
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+
+            android:background="@drawable/bg_round"
+            android:drawableLeft="@drawable/ic_baseline_edit_24"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:onClick="goToEditMail"
+            android:textColor="@android:color/black"
+            android:textSize="18dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -101,18 +125,6 @@
         android:layout_marginTop="50dp"
         android:gravity="center"
         android:orientation="vertical">
-
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="-10dp"
-            android:background="@drawable/bg_round"
-            android:drawableLeft="@drawable/ic_baseline_edit_24"
-            android:gravity="center"
-            android:paddingLeft="10dp"
-            android:text="Edit Profil"
-            android:textColor="@android:color/black"
-            android:textSize="18dp" />
 
         <TextView
             android:layout_width="180dp"
@@ -138,6 +150,19 @@
             android:gravity="center"
             android:paddingLeft="10dp"
             android:text="Change Password"
+            android:textColor="@android:color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="-10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_delete"
+            android:drawableLeft="@drawable/ic_baseline_person_24"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:text="Delete account"
             android:textColor="@android:color/black"
             android:textSize="18dp" />
 

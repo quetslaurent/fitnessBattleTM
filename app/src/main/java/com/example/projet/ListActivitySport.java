@@ -7,10 +7,8 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
-import java.util.ArrayList;
 import java.util.List;
-import model.ActivitiesAdapter;
-import model.outputDataModel.ActivitySport;
+import model.CategoryAdapter;
 import model.outputDataModel.ActivitiesByCategorieOutput;
 import repository.CategoryRepository;
 
@@ -18,14 +16,14 @@ public class ListActivitySport extends AppCompatActivity{
 
     private CategoryRepository categoryRepository = new CategoryRepository();
     private Context context;
-    private ListView lvActivities;
-    private ActivitiesAdapter activitiesAdapter;
+    private ListView lvCategory;
+    private CategoryAdapter categoryAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        lvActivities = findViewById(R.id.list_activities);
+        lvCategory = findViewById(R.id.list_category);
         context = this;
 
         categoryRepository.queryCategoriesActivities().observe(this, new Observer<List<ActivitiesByCategorieOutput>>() {
@@ -33,12 +31,12 @@ public class ListActivitySport extends AppCompatActivity{
             public void onChanged(List<ActivitiesByCategorieOutput> activitiesByCategorieOutputs) {
                 Log.i("test", activitiesByCategorieOutputs.toString());
 
-                activitiesAdapter = new ActivitiesAdapter(
+                categoryAdapter = new CategoryAdapter(
                         context,
-                        R.id.list_activities,
+                        R.id.list_category,
                         activitiesByCategorieOutputs
                 );
-                lvActivities.setAdapter(activitiesAdapter);
+                lvCategory.setAdapter(categoryAdapter);
             }
         });
 

@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
         init();
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,13 +36,15 @@ public class LoginActivity extends AppCompatActivity {
                     name=edit_name.getText().toString();
                     pswd=edit_pswd.getText().toString();
                     userFitnessInputLogin = new UserFitnessInputLogin(name,pswd);
-                authRepository.loginUser(userFitnessInputLogin).observe(LoginActivity.this, new Observer<UserFitnessOutputLogin>() {
+                    authRepository.loginUser(userFitnessInputLogin).observe(LoginActivity.this, new Observer<UserFitnessOutputLogin>() {
                     @Override
                     public void onChanged(UserFitnessOutputLogin userFitnessOutputLogin) {
                         Log.i("loginnnnnn", userFitnessOutputLogin.toString());
 
                     }
                 });
+                Intent intent=new Intent(LoginActivity.this, MenuActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -54,11 +56,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-
-    public void goToMenu(View view) {
-        Intent intent=new Intent(LoginActivity.this, MenuActivity.class);
-        startActivity(intent);
-    }
 
     public void goToRegister(View view) {
             Intent intent=new Intent(LoginActivity.this, RegisterActivity.class);
@@ -75,5 +72,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
+    public void goToOffline(View view) {
+        Intent intent=new Intent(LoginActivity.this, OfflineActivity.class);
+        startActivity(intent);
+    }
 }

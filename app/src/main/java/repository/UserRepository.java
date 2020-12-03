@@ -33,6 +33,8 @@ public class UserRepository {
         return ApiClient.getClient().create(IUserService.class);
     }
 
+
+
     /**
      * flux d'info que l'on peut observer
      * on peut pas le modifier ! mais le mutable oui
@@ -40,6 +42,7 @@ public class UserRepository {
      */
     public LiveData<List<UserFitnessOutput>> query(){ //List d'oversable //
         final MutableLiveData<List<UserFitnessOutput>> mutableLiveData = new MutableLiveData<>();
+
         getIUserService().getUsers().enqueue(new Callback<List<UserFitnessOutput>>() {
             @Override
             public void onResponse(Call<List<UserFitnessOutput>> call, Response<List<UserFitnessOutput>> response) {
@@ -107,6 +110,5 @@ public class UserRepository {
         });
         return mutableLiveData;
     }
-
 
 }
