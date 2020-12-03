@@ -11,6 +11,7 @@ import api.ApiClient;
 import api.IUserService;
 import model.inputDataModel.UserFitnessInput;
 import model.outputDataModel.UserFitnessOutput;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -88,6 +89,38 @@ public class UserRepository {
 
             @Override
             public void onFailure(Call<UserFitnessOutput> call, Throwable t) {
+
+            }
+        });
+        return mutableLiveData;
+    }
+
+    public LiveData<Double> getPointById(int id){
+        final MutableLiveData<Double> mutableLiveData = new MutableLiveData<>();
+        getIUserService().getUserPoint(id).enqueue(new Callback<Double>() {
+            @Override
+            public void onResponse(Call<Double> call, Response<Double> response) {
+                mutableLiveData.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<Double> call, Throwable t) {
+
+            }
+        });
+        return mutableLiveData;
+    }
+
+    public LiveData<ResponseBody> login(UserFitnessInput userFitnessInput){
+        final  MutableLiveData<ResponseBody> mutableLiveData = new MutableLiveData<>();
+        getIUserService().login(userFitnessInput).enqueue(new Callback<ResponseBody>() {
+            @Override
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                mutableLiveData.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
 
             }
         });

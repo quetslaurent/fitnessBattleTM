@@ -1,28 +1,47 @@
 package com.example.projet;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import model.outputDataModel.UserFitnessOutput;
+import repository.UserRepository;
 
 public class MenuActivity extends AppCompatActivity {
 
 float x1,x2,y1,y2;
     private Bitmap image;
     private String token =null;
+    private UserRepository userRepository = new UserRepository();
+    TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_menu);
+        textView = (TextView) findViewById(R.id.tv_point);
+
+        userRepository.getPointById(1).observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double integer) {
+                Log.i("cc",integer.toString());
+                double point = integer;
+                String userPoint = ""+point + " points ";
+                textView.setText(userPoint);
+            }
+        });
 
 
     }
