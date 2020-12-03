@@ -5,35 +5,47 @@ import androidx.lifecycle.Observer;
 
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
-
-
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import model.inputDataModel.UserFitnessInput;
-import okhttp3.ResponseBody;
-import repository.UserRepository;
-import retrofit2.Response;
+import android.widget.Button;
+import android.widget.EditText;
 
+import model.inputDataModel.UserFitnessInputLogin;
+import model.outputDataModel.UserFitnessOutputLogin;
+import repository.AuthRepository;
 
 public class LoginActivity extends AppCompatActivity {
+    private UserFitnessInputLogin userFitnessInputLogin;
+    private AuthRepository authRepository;
+    private EditText edit_name,edit_pswd;
+    private Button btn_login;
+    private String name,pswd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-
-
-        UserRepository  userRepository = new UserRepository();
-        UserFitnessInput u = new UserFitnessInput("admin","admin","admin@gmail.com",true);
-        userRepository.login(u).observe(this, new Observer<ResponseBody>() {
+        init();
+        btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(ResponseBody response) {
-                Log.i("ccc",response.toString());
+            public void onClick(View v) {
+                    name=edit_name.getText().toString();
+                    pswd=edit_pswd.getText().toString();
+                    userFitnessInputLogin = new UserFitnessInputLogin(name,pswd);
+                authRepository.loginUser(userFitnessInputLogin).observe(LoginActivity.this, new Observer<UserFitnessOutputLogin>() {
+                    @Override
+                    public void onChanged(UserFitnessOutputLogin userFitnessOutputLogin) {
+                        Log.i("loginnnnnn", userFitnessOutputLogin.toString());
+
+                    }
+                });
             }
         });
+
     }
 
     @Override
@@ -51,6 +63,15 @@ public class LoginActivity extends AppCompatActivity {
     public void goToRegister(View view) {
             Intent intent=new Intent(LoginActivity.this, RegisterActivity.class);
             startActivity(intent);
+    }
+
+    public void init(){
+        edit_name = findViewById(R.id.edit_name);
+        edit_pswd = findViewById(R.id.edit_pswd);
+        authRepository = new AuthRepository();
+        btn_login = findViewById(R.id.button);
+
+
     }
 
 
