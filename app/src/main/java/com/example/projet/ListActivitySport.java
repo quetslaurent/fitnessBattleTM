@@ -30,14 +30,14 @@ public class ListActivitySport extends AppCompatActivity{
 
         categoryRepository.queryCategoriesActivities().observe(this, new Observer<List<ActivitiesByCategorieOutput>>() {
             @Override
-            public void onChanged(List<ActivitiesByCategorieOutput> activityByCategorieOutputs) {
-                Log.i("test", activityByCategorieOutputs.toString());
+            public void onChanged(List<ActivitiesByCategorieOutput> activitiesByCategorieOutputs) {
+                Log.i("test", activitiesByCategorieOutputs.toString());
+
                 activitiesAdapter = new ActivitiesAdapter(
                         context,
                         R.id.list_activities,
-                        activityByCategorieOutputs
+                        activitiesByCategorieOutputs
                 );
-
                 lvActivities.setAdapter(activitiesAdapter);
             }
         });

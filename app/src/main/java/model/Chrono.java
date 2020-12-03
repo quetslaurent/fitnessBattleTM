@@ -24,7 +24,6 @@ public class Chrono {
 
     public void addtime() {
         tBuff += tMilliSecond;
-
     }
 
     public void run() {

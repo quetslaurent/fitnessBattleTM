@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,11 +60,15 @@ public class RegisterActivity extends AppCompatActivity {
                 else{
                   userFitness = new UserFitnessInput(name,password,mail,false);
                   registerViewModel.createUser(userFitness);
-
                 }
             }
         });
 
+    }
+
+    public void goToLogin(View view) {
+        Intent intent=new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
     private void initView() {

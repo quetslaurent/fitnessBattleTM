@@ -34,19 +34,27 @@ public class ActivitiesAdapter extends ArrayAdapter<ActivitiesByCategorieOutput>
         }
 
         final ActivitiesByCategorieOutput activitiesByCategorieOutput = getItem(position);
-        populateView(inflatedView,activitiesByCategorieOutput);
+
+        List<ActivitySport> activities = activitiesByCategorieOutput.getActivities();
+        for(int i=0; i<activities.size();i++) {
+            String nameActivities = activities.get(i).getName();
+            populateView(inflatedView, nameActivities);
+        }
         return  inflatedView;
 
     }
 
-    private void populateView(View inflatedView, ActivitiesByCategorieOutput activitiesByCategorieOutput) {
-        TextView tvName = inflatedView.findViewById(R.id.list_item_activities_name);
+    private void populateView(View inflatedView, String name) {
 
+        TextView tvName = inflatedView.findViewById(R.id.list_item_activities_name);
+        tvName.setText(name);
+/*
         List<ActivitySport> activities = activitiesByCategorieOutput.getActivities();
         for(int i=0; i<activities.size();i++){
+            TextView tvName = inflatedView.findViewById(R.id.list_item_activities_name);
             String nameActivities = activities.get(i).getName();
             tvName.setText(nameActivities);
-        }
+        }*/
     }
 
 

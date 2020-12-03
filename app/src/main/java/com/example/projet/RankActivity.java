@@ -32,17 +32,14 @@ public class RankActivity extends AppCompatActivity {
         lvUsers = findViewById(R.id.list_users);
         context = this;
 
-
         userRepository.query().observe(this, new Observer<List<UserFitnessOutput>>() {
             @Override
             public void onChanged(List<UserFitnessOutput> users) {
-                Log.i("UserSql", users.toString());
                 rankAdapter = new RankAdapter(
                         context,
                         R.id.list_users,
                         users
                 );
-
                 lvUsers.setAdapter(rankAdapter);
             }
         });
