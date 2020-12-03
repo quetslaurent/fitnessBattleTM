@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText edit_name,edit_pswd;
     private Button btn_login;
     private String name,pswd;
-
+//ceci est un push a supp
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
