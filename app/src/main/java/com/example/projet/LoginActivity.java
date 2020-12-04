@@ -40,11 +40,11 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onChanged(UserFitnessOutputLogin userFitnessOutputLogin) {
                         Log.i("loginnnnnn", userFitnessOutputLogin.toString());
-
+                        Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        intent.putExtra("idUser", userFitnessOutputLogin.getId());
+                        startActivity(intent);
                     }
                 });
-                Intent intent=new Intent(LoginActivity.this, MenuActivity.class);
-                startActivity(intent);
             }
         });
 

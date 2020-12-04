@@ -25,6 +25,7 @@ float x1,x2,y1,y2;
     private String token =null;
     private UserRepository userRepository = new UserRepository();
     TextView textView;
+    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,7 +34,13 @@ float x1,x2,y1,y2;
         setContentView(R.layout.activity_menu);
         textView = (TextView) findViewById(R.id.tv_point);
 
-        userRepository.getPointById(1).observe(this, new Observer<Double>() {
+        Intent intent = getIntent();
+
+        if(intent.hasExtra("idUser")){
+             id=intent.getIntExtra("idUser",0);
+        }
+
+        userRepository.getPointById(id).observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double integer) {
                 Log.i("cc",integer.toString());
