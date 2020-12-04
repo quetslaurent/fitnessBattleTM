@@ -50,11 +50,12 @@ public class CategoryAdapter extends ArrayAdapter<ActivitiesByCategorieOutput> {
         String name = activitiesByCategorieOutput.getName();
         TextView tvName = inflatedView.findViewById(R.id.list_item_category_name);
         tvName.setText(name);
+        lvActivities = inflatedView.findViewById(R.id.list_activities);
 
 
         List<ActivitySport> activities = activitiesByCategorieOutput.getActivities();
         activitiesAdapter = new ActivitiesAdapter(
-                context,
+                getContext(),
                 R.id.list_activities,
                 activities
         );
