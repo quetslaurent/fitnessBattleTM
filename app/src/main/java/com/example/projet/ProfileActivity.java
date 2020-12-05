@@ -112,6 +112,7 @@ public class ProfileActivity extends AppCompatActivity {
     //Permet de supprimer un compte à l'aide de son id
     public void deleteAccount(View view) {
 
+        //UTILISER SELFDELETE !!!!!!!!!!!!!
         //MODIFIER LE 5 AVEC LE ID DE L'UTILISATEUR QUI SE CONNECTE
        /* userRepository.deleteUser(5).observe(this, new Observer<UserFitnessInput>() {
             @Override

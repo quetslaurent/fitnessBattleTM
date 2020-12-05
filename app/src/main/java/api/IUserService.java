@@ -44,5 +44,6 @@ public interface IUserService {
     Call<UserFitnessInput>deleteUser(@Path("token")String token);
 
 
+    ///FAIRE SELFDELETE
 }
 
