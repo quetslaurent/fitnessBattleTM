@@ -17,10 +17,20 @@
         app:layout_constraintVertical_bias="0.25">
 
         <TextView
+            android:id="@+id/position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="25dp"
+            android:text="1"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+
+        <TextView
             android:id="@+id/list_item_users_name"
             android:layout_marginTop="25dp"
             android:layout_marginLeft="20dp"
-            android:layout_width="280dp"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
             android:text="Name of users"
             android:textSize="26sp" />

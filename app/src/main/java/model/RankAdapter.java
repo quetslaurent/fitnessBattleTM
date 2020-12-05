@@ -31,18 +31,21 @@ public class RankAdapter extends ArrayAdapter<UserFitnessOutput> {
         }
 
         final UserFitnessOutput userFitnessOutput = getItem(position);
-        populateView(inflatedView,userFitnessOutput);
+        populateView(inflatedView,userFitnessOutput, position);
         return  inflatedView;
 
     }
 
-    private void populateView(View inflatedView, UserFitnessOutput userFitnessOutput) {
+    private void populateView(View inflatedView, UserFitnessOutput userFitnessOutput,int position) {
         TextView tvName = inflatedView.findViewById(R.id.list_item_users_name);
         tvName.setText(userFitnessOutput.getName());
         TextView tvPoints = inflatedView.findViewById(R.id.list_item_users_points);
         double user=userFitnessOutput.getPoints();
         String userPoints =""+user;
         tvPoints.setText(userPoints);
+        TextView tvPosition = inflatedView.findViewById(R.id.position);
+        String pos = ""+position;
+        tvPosition.setText(pos);
 
     }
 
