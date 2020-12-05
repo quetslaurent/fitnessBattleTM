@@ -110,4 +110,36 @@ public class UserRepository {
         return mutableLiveData;
     }
 
+
+    public LiveData<UserFitnessInput> update(int id,UserFitnessInput userFitnessInput){
+        final MutableLiveData<UserFitnessInput> mutableLiveData = new MutableLiveData<>();
+        getIUserService().update(id, userFitnessInput).enqueue(new Callback<UserFitnessInput>() {
+            @Override
+            public void onResponse(Call<UserFitnessInput> call, Response<UserFitnessInput> response) {
+                if(response.isSuccessful()){
+                    mutableLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserFitnessInput> call, Throwable t) {
+
+            }
+        });
+        return mutableLiveData;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

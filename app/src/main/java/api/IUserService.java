@@ -10,6 +10,7 @@ import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface IUserService {
@@ -30,6 +31,8 @@ public interface IUserService {
     @POST("users/login")
     Call<String>login(@Body UserFitnessInput user);
 
+    @PUT("users/{id}")
+    Call<UserFitnessInput>update(@Path("id")int id,@Body UserFitnessInput user);
 
 }
 
