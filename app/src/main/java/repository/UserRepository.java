@@ -94,9 +94,9 @@ public class UserRepository {
         return mutableLiveData;
     }
 
-    public LiveData<Double> getPointById(String token){
+    public LiveData<Double> getPointById(){
         final MutableLiveData<Double> mutableLiveData = new MutableLiveData<>();
-        getIUserService().getUserPoint(token).enqueue(new Callback<Double>() {
+        getIUserService().getUserPoint(ApiClient.getToken()).enqueue(new Callback<Double>() {
             @Override
             public void onResponse(Call<Double> call, Response<Double> response) {
                 mutableLiveData.postValue(response.body());

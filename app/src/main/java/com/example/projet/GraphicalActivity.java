@@ -1,35 +1,19 @@
 package com.example.projet;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.graphics.Color;
 import android.os.Bundle;
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.utils.ColorTemplate;
-
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
-
 import model.outputDataModel.TrainingOutput;
-
 import repository.TrainingRepository;
 import viewModel.GraphicalModelView;
 
@@ -52,7 +36,7 @@ public class GraphicalActivity extends AppCompatActivity {
         //graphics
         lineChart = findViewById(R.id.lineChart);
 
-     trainingRepository.getTrainingByuserId(1).observe(this, new Observer<List<TrainingOutput>>() {
+     trainingRepository.getTrainingByuserId().observe(this, new Observer<List<TrainingOutput>>() {
          @Override
          public void onChanged(List<TrainingOutput> trainingOutputs) {
              lineEntries=new ArrayList<>();

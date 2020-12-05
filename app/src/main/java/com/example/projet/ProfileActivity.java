@@ -19,6 +19,8 @@ import com.r0adkll.slidr.model.SlidrInterface;
 
 import model.inputDataModel.UserFitnessInput;
 import model.outputDataModel.UserFitnessOutput;
+import model.outputDataModel.UserFitnessOutputToken;
+import repository.TokenRepository;
 import repository.UserRepository;
 import viewModel.ProfileViewModel;
 
@@ -28,8 +30,8 @@ public class ProfileActivity extends AppCompatActivity {
     private Bitmap image;
     private String token =null;
     private ProfileViewModel profileViewModel;
-    private TextView tv_mail, txt_name, tv_name;
-    private UserRepository userRepository = new UserRepository();
+    private TextView tv_mail, tv_name;
+    private TokenRepository tokenRepository = new TokenRepository();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,30 +42,14 @@ public class ProfileActivity extends AppCompatActivity {
         //initalise la view
         initView();
 
-        /*
-        userRepository.getById(id).observe(this, new Observer<UserFitnessOutput>() {
-            @Override
-            public void onChanged(UserFitnessOutput userFitnessOutput) {
-                Log.i("user",userFitnessOutput.toString());
-                String name = userFitnessOutput.getName();
-                String email = userFitnessOutput.getEmail();
-                txt_name.setText(name);
-                tv_mail.setText(email);
-            }
-        });*/
-
-        //set les valeurs de l'utilisateurs connectés
-   profileViewModel.getUserlive().observe(this, new Observer<UserFitnessOutput>() {
-       @Override
-       public void onChanged(UserFitnessOutput userFitness) {
-           tv_name.setText(userFitness.getName());
-           txt_name.setText(userFitness.getName());
-           tv_mail.setText(userFitness.getEmail());
-       }
-   });
-
+//set les valeurs de l'utilisateurs connectés
+            tokenRepository.getUserFromToken().observe(this, new Observer<UserFitnessOutputToken>() {
+                @Override
+                public void onChanged(UserFitnessOutputToken s) {
+                    tv_name.setText(s.getName());
+                    tv_mail.setText(s.getEmail());
+                }});
     }
-
 
     //recupere l'image stocké dans un token et l'affiche
     @Override
@@ -93,7 +79,6 @@ public class ProfileActivity extends AppCompatActivity {
     public void initView(){
         tv_mail = (TextView) findViewById(R.id.tv_mail);
         tv_name = (TextView) findViewById(R.id.tv_name);
-        txt_name = (TextView) findViewById(R.id.txt_name);
         profileViewModel =  new ViewModelProvider(this).get(ProfileViewModel.class);
     }
 

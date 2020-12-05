@@ -33,7 +33,7 @@ float x1,x2,y1,y2;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_menu);
         textView = (TextView) findViewById(R.id.tv_point);
-        userRepository.getPointById(ApiClient.getToken()).observe(this, new Observer<Double>() {
+        userRepository.getPointById().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double integer) {
                 Log.i("cc",integer.toString());

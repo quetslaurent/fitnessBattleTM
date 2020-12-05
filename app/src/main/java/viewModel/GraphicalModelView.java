@@ -14,7 +14,7 @@ public class GraphicalModelView extends ViewModel  {
 
     private TrainingRepository trainingRepository = new TrainingRepository();
     private LiveData<List<TrainingOutput>> trainingLiveData;
-    public LiveData<List<TrainingOutput>>getTrainingLiveData(){
+    /*public LiveData<List<TrainingOutput>>getTrainingLiveData(){
         return trainingLiveData=trainingRepository.getTrainingByuserId(1);
-    }
+    } */
 }

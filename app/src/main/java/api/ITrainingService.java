@@ -16,8 +16,8 @@ public interface ITrainingService {
     Call<List<TrainingOutput>> getTraining();//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
 
 
-    @GET("training/user/{id}")
-    Call<List<TrainingOutput>> getTrainingbyUserId(@Path("id")int id);//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
+    @GET("training/user/{token}")
+    Call<List<TrainingOutput>> getTrainingbyUserId(@Path("token")String token);//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
 
 
     @POST("training")

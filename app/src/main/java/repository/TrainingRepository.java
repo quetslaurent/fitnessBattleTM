@@ -59,9 +59,9 @@ public class TrainingRepository {
         });
         return mutableLiveData;
     }
-    public LiveData<List<TrainingOutput>> getTrainingByuserId(int id){
+    public LiveData<List<TrainingOutput>> getTrainingByuserId(){
         final MutableLiveData<List<TrainingOutput>> mutableLiveData = new MutableLiveData<>();
-        getITrainingService().getTrainingbyUserId(id).enqueue(new Callback<List<TrainingOutput>>() {
+        getITrainingService().getTrainingbyUserId(ApiClient.getToken()).enqueue(new Callback<List<TrainingOutput>>() {
             @Override
             public void onResponse(Call<List<TrainingOutput>> call, Response<List<TrainingOutput>> response) {
                 mutableLiveData.postValue(response.body());
