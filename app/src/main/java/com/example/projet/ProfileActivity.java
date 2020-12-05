@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     private ProfileViewModel profileViewModel;
     private TextView tv_mail, txt_name, tv_name;
     private int id;
-    private UserRepository userRepository;
+    private UserRepository userRepository = new UserRepository();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +40,13 @@ public class ProfileActivity extends AppCompatActivity {
         //initalise la view
         initView();
 
-       /* Intent intent = getIntent();
+        /*
+        Intent intent = getIntent();
 
         if(intent.hasExtra("idUser")){
             id=intent.getIntExtra("idUser",0);
         }
-
+        NE RECUPERE PAS L'ID !!!!
         Log.i("iduser", String.valueOf(id));
         userRepository.getById(id).observe(this, new Observer<UserFitnessOutput>() {
             @Override

@@ -39,6 +39,7 @@ float x1,x2,y1,y2;
         if(intent.hasExtra("idUser")){
              id=intent.getIntExtra("idUser",0);
         }
+        Log.i("idusermenu", String.valueOf(id));
 
         userRepository.getPointById(id).observe(this, new Observer<Double>() {
             @Override
