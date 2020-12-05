@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
+import model.inputDataModel.UserFitnessInput;
 import model.outputDataModel.UserFitnessOutput;
 import repository.UserRepository;
 import viewModel.ProfileViewModel;
@@ -59,6 +60,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });*/
 
+        //set les valeurs de l'utilisateurs connectés
    profileViewModel.getUserlive().observe(this, new Observer<UserFitnessOutput>() {
        @Override
        public void onChanged(UserFitnessOutput userFitness) {
@@ -71,6 +73,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
 
+    //recupere l'image stocké dans un token et l'affiche
     @Override
     protected void onResume() {
         super.onResume();
@@ -82,16 +85,19 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    //nous renvoies dans camera pour modifier sa photo de profil
     public void goToCamera(View view) {
         Intent intent=new Intent(ProfileActivity.this, CameraActivity.class);
         startActivity(intent);
     }
 
+    //nous renvoies dans le layout imc pour calculer l'imc
     public void goToImc(View view) {
         Intent intent=new Intent(ProfileActivity.this, IMCActivity.class);
         startActivity(intent);
     }
 
+    //initialiser les views
     public void initView(){
         tv_mail = (TextView) findViewById(R.id.tv_mail);
         tv_name = (TextView) findViewById(R.id.tv_name);
@@ -99,13 +105,31 @@ public class ProfileActivity extends AppCompatActivity {
         profileViewModel =  new ViewModelProvider(this).get(ProfileViewModel.class);
     }
 
+    //Nous renvoies dans le layout editName pour modifier son name
     public void goToEditName(View view) {
         Intent intent=new Intent(ProfileActivity.this, EditNameActivity.class);
         startActivity(intent);
     }
 
+    //Nous renvoies dans le layout editMail pour modifier son adresse mail
     public void goToEditMail(View view) {
         Intent intent=new Intent(ProfileActivity.this, EditMailActivity.class);
+        startActivity(intent);
+    }
+
+    //Permet de supprimer un compte à l'aide de son id
+    public void deleteAccount(View view) {
+
+        //MODIFIER LE 5 AVEC LE ID DE L'UTILISATEUR QUI SE CONNECTE
+        userRepository.deleteUser(5).observe(this, new Observer<UserFitnessInput>() {
+            @Override
+            public void onChanged(UserFitnessInput userFitnessInput) {
+
+            }
+        });
+
+
+        Intent intent=new Intent(ProfileActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 }

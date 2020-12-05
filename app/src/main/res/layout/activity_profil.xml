@@ -159,6 +159,7 @@
             android:background="@drawable/bg_delete"
             android:drawableLeft="@drawable/ic_baseline_person_24"
             android:gravity="center"
+            android:onClick="deleteAccount"
             android:paddingLeft="10dp"
             android:text="Delete account"
             android:textColor="@android:color/black"

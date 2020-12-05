@@ -8,6 +8,7 @@ import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -33,6 +34,10 @@ public interface IUserService {
 
     @PUT("users/{id}")
     Call<UserFitnessInput>update(@Path("id")int id,@Body UserFitnessInput user);
+
+    @DELETE("users/{id}")
+    Call<UserFitnessInput>deleteUser(@Path("id")int id);
+
 
 }
 

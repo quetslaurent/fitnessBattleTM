@@ -128,9 +128,24 @@ public class UserRepository {
         });
         return mutableLiveData;
     }
-    
-    
-    
+
+    public LiveData<UserFitnessInput> deleteUser(int id){
+        final MutableLiveData<UserFitnessInput> mutableLiveData = new MutableLiveData<>();
+        getIUserService().deleteUser(id).enqueue(new Callback<UserFitnessInput>() {
+            @Override
+            public void onResponse(Call<UserFitnessInput> call, Response<UserFitnessInput> response) {
+                if(response.isSuccessful()){
+                    mutableLiveData.postValue(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserFitnessInput> call, Throwable t) {
+
+            }
+        });
+        return mutableLiveData;
+    }
     
     
     

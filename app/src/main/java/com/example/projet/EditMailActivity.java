@@ -21,6 +21,7 @@ public class EditMailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_edit_mail);
     }
 
+    //update l'adresse mail + renvoies dans profile
     public void updateMail(View view) {
         userRepository.update(5,u1).observe(this, new Observer<UserFitnessInput>() {
             @Override
