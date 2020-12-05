@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import android.widget.ImageView;
@@ -17,6 +18,7 @@ import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
 
 import model.outputDataModel.UserFitnessOutput;
+import repository.UserRepository;
 import viewModel.ProfileViewModel;
 
 
@@ -25,7 +27,9 @@ public class ProfileActivity extends AppCompatActivity {
     private Bitmap image;
     private String token =null;
     private ProfileViewModel profileViewModel;
-    private TextView txt_mail,txt_name;
+    private TextView tv_mail, txt_name, tv_name;
+    private int id;
+    private UserRepository userRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,12 +40,30 @@ public class ProfileActivity extends AppCompatActivity {
         //initalise la view
         initView();
 
+       /* Intent intent = getIntent();
+
+        if(intent.hasExtra("idUser")){
+            id=intent.getIntExtra("idUser",0);
+        }
+
+        Log.i("iduser", String.valueOf(id));
+        userRepository.getById(id).observe(this, new Observer<UserFitnessOutput>() {
+            @Override
+            public void onChanged(UserFitnessOutput userFitnessOutput) {
+                Log.i("user",userFitnessOutput.toString());
+                String name = userFitnessOutput.getName();
+                String email = userFitnessOutput.getEmail();
+                txt_name.setText(name);
+                tv_mail.setText(email);
+            }
+        });*/
 
    profileViewModel.getUserlive().observe(this, new Observer<UserFitnessOutput>() {
        @Override
        public void onChanged(UserFitnessOutput userFitness) {
+           tv_name.setText(userFitness.getName());
            txt_name.setText(userFitness.getName());
-           txt_mail.setText(userFitness.getEmail());
+           tv_mail.setText(userFitness.getEmail());
        }
    });
 
@@ -70,7 +92,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void initView(){
-        txt_mail = (TextView) findViewById(R.id.tv_mail);
+        tv_mail = (TextView) findViewById(R.id.tv_mail);
+        tv_name = (TextView) findViewById(R.id.tv_name);
         txt_name = (TextView) findViewById(R.id.txt_name);
         profileViewModel =  new ViewModelProvider(this).get(ProfileViewModel.class);
     }

@@ -11,7 +11,6 @@ import api.ApiClient;
 import api.IUserService;
 import model.inputDataModel.UserFitnessInput;
 import model.outputDataModel.UserFitnessOutput;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -79,7 +78,7 @@ public class UserRepository {
     }
     public LiveData<UserFitnessOutput> getById(int id){
         final MutableLiveData<UserFitnessOutput> mutableLiveData = new MutableLiveData<>();
-        getIUserService().getUser(id).enqueue(new Callback<UserFitnessOutput>() {
+        getIUserService().getUserById(id).enqueue(new Callback<UserFitnessOutput>() {
             @Override
             public void onResponse(Call<UserFitnessOutput> call, Response<UserFitnessOutput> response) {
 

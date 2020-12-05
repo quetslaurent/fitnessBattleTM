@@ -19,7 +19,7 @@ public interface IUserService {
     Call<List<UserFitnessOutput>> getUsers();//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
 
     @GET("users/{id}")
-    Call<UserFitnessOutput> getUser(@Path("id")int id);
+    Call<UserFitnessOutput> getUserById(@Path("id")int id);
 
     @GET("users/points/{id}")
     Call<Double> getUserPoint(@Path("id")int id);
