@@ -26,7 +26,7 @@ public class EditNameActivity extends AppCompatActivity {
     }
 
 
-    public void updateUsername(View view) {
+   /* public void updateUsername(View view) {
 
         userRepository.update(5,u1).observe(this, new Observer<UserFitnessInput>() {
             @Override
@@ -37,5 +37,5 @@ public class EditNameActivity extends AppCompatActivity {
 
         Intent intent=new Intent(EditNameActivity.this, ProfileActivity.class);
         startActivity(intent);
-    }
+    } */
 }

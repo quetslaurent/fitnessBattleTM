@@ -15,6 +15,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import api.ApiClient;
 import model.outputDataModel.UserFitnessOutput;
 import repository.UserRepository;
 
@@ -25,7 +26,6 @@ float x1,x2,y1,y2;
     private String token =null;
     private UserRepository userRepository = new UserRepository();
     TextView textView;
-    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +33,7 @@ float x1,x2,y1,y2;
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_menu);
         textView = (TextView) findViewById(R.id.tv_point);
-
-        Intent intent = getIntent();
-
-        if(intent.hasExtra("idUser")){
-             id=intent.getIntExtra("idUser",0);
-        }
-        Log.i("idusermenu", String.valueOf(id));
-
-        userRepository.getPointById(id).observe(this, new Observer<Double>() {
+        userRepository.getPointById(ApiClient.getToken()).observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double integer) {
                 Log.i("cc",integer.toString());

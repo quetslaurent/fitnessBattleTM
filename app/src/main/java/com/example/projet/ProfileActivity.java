@@ -29,7 +29,6 @@ public class ProfileActivity extends AppCompatActivity {
     private String token =null;
     private ProfileViewModel profileViewModel;
     private TextView tv_mail, txt_name, tv_name;
-    private int id;
     private UserRepository userRepository = new UserRepository();
 
     @Override
@@ -42,13 +41,6 @@ public class ProfileActivity extends AppCompatActivity {
         initView();
 
         /*
-        Intent intent = getIntent();
-
-        if(intent.hasExtra("idUser")){
-            id=intent.getIntExtra("idUser",0);
-        }
-        NE RECUPERE PAS L'ID !!!!
-        Log.i("iduser", String.valueOf(id));
         userRepository.getById(id).observe(this, new Observer<UserFitnessOutput>() {
             @Override
             public void onChanged(UserFitnessOutput userFitnessOutput) {
@@ -121,12 +113,12 @@ public class ProfileActivity extends AppCompatActivity {
     public void deleteAccount(View view) {
 
         //MODIFIER LE 5 AVEC LE ID DE L'UTILISATEUR QUI SE CONNECTE
-        userRepository.deleteUser(5).observe(this, new Observer<UserFitnessInput>() {
+       /* userRepository.deleteUser(5).observe(this, new Observer<UserFitnessInput>() {
             @Override
             public void onChanged(UserFitnessInput userFitnessInput) {
 
             }
-        });
+        }); */
 
 
         Intent intent=new Intent(ProfileActivity.this, LoginActivity.class);

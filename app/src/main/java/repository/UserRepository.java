@@ -76,9 +76,9 @@ public class UserRepository {
         });
         return mutableLiveData;
     }
-    public LiveData<UserFitnessOutput> getById(int id){
+    public LiveData<UserFitnessOutput> getById(String token){
         final MutableLiveData<UserFitnessOutput> mutableLiveData = new MutableLiveData<>();
-        getIUserService().getUserById(id).enqueue(new Callback<UserFitnessOutput>() {
+        getIUserService().getUserById(token).enqueue(new Callback<UserFitnessOutput>() {
             @Override
             public void onResponse(Call<UserFitnessOutput> call, Response<UserFitnessOutput> response) {
 
@@ -94,9 +94,9 @@ public class UserRepository {
         return mutableLiveData;
     }
 
-    public LiveData<Double> getPointById(int id){
+    public LiveData<Double> getPointById(String token){
         final MutableLiveData<Double> mutableLiveData = new MutableLiveData<>();
-        getIUserService().getUserPoint(id).enqueue(new Callback<Double>() {
+        getIUserService().getUserPoint(token).enqueue(new Callback<Double>() {
             @Override
             public void onResponse(Call<Double> call, Response<Double> response) {
                 mutableLiveData.postValue(response.body());
@@ -111,9 +111,9 @@ public class UserRepository {
     }
 
 
-    public LiveData<UserFitnessInput> update(int id,UserFitnessInput userFitnessInput){
+    public LiveData<UserFitnessInput> update(String token,UserFitnessInput userFitnessInput){
         final MutableLiveData<UserFitnessInput> mutableLiveData = new MutableLiveData<>();
-        getIUserService().update(id, userFitnessInput).enqueue(new Callback<UserFitnessInput>() {
+        getIUserService().update(token, userFitnessInput).enqueue(new Callback<UserFitnessInput>() {
             @Override
             public void onResponse(Call<UserFitnessInput> call, Response<UserFitnessInput> response) {
                 if(response.isSuccessful()){
@@ -128,7 +128,7 @@ public class UserRepository {
         });
         return mutableLiveData;
     }
-
+/*
     public LiveData<UserFitnessInput> deleteUser(int id){
         final MutableLiveData<UserFitnessInput> mutableLiveData = new MutableLiveData<>();
         getIUserService().deleteUser(id).enqueue(new Callback<UserFitnessInput>() {
@@ -146,7 +146,7 @@ public class UserRepository {
         });
         return mutableLiveData;
     }
-    
+    */
     
     
     

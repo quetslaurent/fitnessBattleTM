@@ -11,7 +11,8 @@ public class ProfileViewModel extends ViewModel {
     private UserRepository userRepository = new UserRepository();
     private LiveData<UserFitnessOutput> user;
     public LiveData<UserFitnessOutput> getUserlive(){
-    return user=userRepository.getById(1);
+    //return user=userRepository.getById(1);
+        return null;
    }
 
 }

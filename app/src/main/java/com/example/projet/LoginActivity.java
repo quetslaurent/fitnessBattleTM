@@ -13,6 +13,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 
+import api.ApiClient;
 import model.inputDataModel.UserFitnessInputLogin;
 import model.outputDataModel.UserFitnessOutputLogin;
 import repository.AuthRepository;
@@ -39,9 +40,8 @@ public class LoginActivity extends AppCompatActivity {
                     authRepository.loginUser(userFitnessInputLogin).observe(LoginActivity.this, new Observer<UserFitnessOutputLogin>() {
                     @Override
                     public void onChanged(UserFitnessOutputLogin userFitnessOutputLogin) {
-                        Log.i("loginnnnnn", userFitnessOutputLogin.toString());
+                        ApiClient.setToken(userFitnessOutputLogin.getToken());
                         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
-                        intent.putExtra("idUser", userFitnessOutputLogin.getId());
                         startActivity(intent);
                     }
                 });

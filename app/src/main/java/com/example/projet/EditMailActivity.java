@@ -22,7 +22,7 @@ public class EditMailActivity extends AppCompatActivity {
     }
 
     //update l'adresse mail + renvoies dans profile
-    public void updateMail(View view) {
+   /* public void updateMail(View view) {
         userRepository.update(5,u1).observe(this, new Observer<UserFitnessInput>() {
             @Override
             public void onChanged(UserFitnessInput userFitnessInput) {
@@ -32,5 +32,5 @@ public class EditMailActivity extends AppCompatActivity {
 
         Intent intent=new Intent(EditMailActivity.this, ProfileActivity.class);
         startActivity(intent);
-    }
+    }  */
 }
