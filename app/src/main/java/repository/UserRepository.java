@@ -128,25 +128,25 @@ public class UserRepository {
         });
         return mutableLiveData;
     }
-/*
-    public LiveData<UserFitnessInput> deleteUser(int id){
-        final MutableLiveData<UserFitnessInput> mutableLiveData = new MutableLiveData<>();
-        getIUserService().deleteUser(id).enqueue(new Callback<UserFitnessInput>() {
+
+    public LiveData<String> deleteUser(){
+        final MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
+        getIUserService().deleteUser(ApiClient.getToken()).enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<UserFitnessInput> call, Response<UserFitnessInput> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
                     mutableLiveData.postValue(response.body());
                 }
             }
 
             @Override
-            public void onFailure(Call<UserFitnessInput> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
 
             }
         });
         return mutableLiveData;
     }
-    */
+
     
     
     

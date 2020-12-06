@@ -41,9 +41,7 @@ public interface IUserService {
 
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @DELETE("users/{token}")
-    Call<UserFitnessInput>deleteUser(@Path("token")String token);
+    Call<String> deleteUser(@Path("token")String token);
 
-
-    ///FAIRE SELFDELETE
 }
 

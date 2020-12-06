@@ -15,6 +15,8 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.projet.activity.Resume_trainingActivity;
+
 import api.ApiClient;
 import model.outputDataModel.UserFitnessOutput;
 import repository.UserRepository;
@@ -35,11 +37,9 @@ float x1,x2,y1,y2;
         textView = (TextView) findViewById(R.id.tv_point);
         userRepository.getPointById().observe(this, new Observer<Double>() {
             @Override
-            public void onChanged(Double integer) {
-                Log.i("cc",integer.toString());
-                double point = integer;
-                String userPoint = ""+point + " points ";
-                textView.setText(userPoint);
+            public void onChanged(Double points) {
+                double d = (double) Math.round(points * 100) / 100;
+                textView.setText(points.toString()+"Points");
             }
         });
 
@@ -116,6 +116,11 @@ float x1,x2,y1,y2;
 
     public void goToRank(View view) {
         Intent intent=new Intent(MenuActivity.this, RankActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToResumeActivity(View view) {
+        Intent intent=new Intent(MenuActivity.this, Resume_trainingActivity.class);
         startActivity(intent);
     }
 }

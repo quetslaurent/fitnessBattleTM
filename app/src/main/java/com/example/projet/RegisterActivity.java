@@ -1,22 +1,16 @@
 package com.example.projet;
-
 import androidx.appcompat.app.AppCompatActivity;
-
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModelProvider;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-import java.util.List;
-
 import model.inputDataModel.UserFitnessInput;
-import model.outputDataModel.UserFitnessOutput;
 import viewModel.RegisterViewModel;
+
+
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -27,15 +21,13 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btn_register;
     private UserFitnessInput userFitness;
     private RegisterViewModel registerViewModel;
-  // private UserRepository userRepository;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         initView();
-        LiveData<List<UserFitnessOutput>> users =registerViewModel.getUsersFitness();
-
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +51,12 @@ public class RegisterActivity extends AppCompatActivity {
                 else{
                   userFitness = new UserFitnessInput(name,password,mail,false);
                   registerViewModel.createUser(userFitness);
+                  btn_register.setOnClickListener(new View.OnClickListener() {
+                      @Override
+                      public void onClick(View v) {
+                          goToLogin(v);
+                      }
+                  });
                 }
             }
         });

@@ -42,6 +42,7 @@ public class LoginActivity extends AppCompatActivity {
                     public void onChanged(UserFitnessOutputLogin userFitnessOutputLogin) {
                         ApiClient.setToken(userFitnessOutputLogin.getToken());
                         Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                        Log.i("ccc",ApiClient.getToken());
                         startActivity(intent);
                     }
                 });

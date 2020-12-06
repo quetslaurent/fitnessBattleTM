@@ -13,6 +13,7 @@ import android.view.View;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
@@ -27,7 +28,6 @@ import viewModel.ProfileViewModel;
 
 
 public class ProfileActivity extends AppCompatActivity {
-    private SlidrInterface slidr;
     private Bitmap image;
     private String token =null;
     private ProfileViewModel profileViewModel;
@@ -93,15 +93,14 @@ public class ProfileActivity extends AppCompatActivity {
 
     //Permet de supprimer un compte à l'aide de son id
     public void deleteAccount(View view) {
-
         //UTILISER SELFDELETE !!!!!!!!!!!!!
         //MODIFIER LE 5 AVEC LE ID DE L'UTILISATEUR QUI SE CONNECTE
-       /* userRepository.deleteUser(5).observe(this, new Observer<UserFitnessInput>() {
+        profileViewModel.deleteUser().observe(this, new Observer<String>() {
             @Override
-            public void onChanged(UserFitnessInput userFitnessInput) {
-
+            public void onChanged(String s) {
+                Toast.makeText(getApplicationContext(),"Suppression du compte",Toast.LENGTH_LONG).show();
             }
-        }); */
+        });
 
         Intent intent=new Intent(ProfileActivity.this, LoginActivity.class);
         startActivity(intent);

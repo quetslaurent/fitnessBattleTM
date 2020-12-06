@@ -11,9 +11,13 @@ import repository.UserRepository;
 public class ProfileViewModel extends ViewModel {
 
     private TokenRepository tokenRepository = new TokenRepository();
+    private UserRepository userRepository = new UserRepository();
     private LiveData<UserFitnessOutputToken> user;
     public LiveData<UserFitnessOutputToken> getUserToken(){
         return user = tokenRepository.getUserFromToken();
+   }
+   public LiveData<String> deleteUser(){
+        return  userRepository.deleteUser();
    }
 
 }

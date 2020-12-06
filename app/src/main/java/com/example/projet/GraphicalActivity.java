@@ -21,7 +21,6 @@ public class GraphicalActivity extends AppCompatActivity {
     LineData lineData;
     LineDataSet lineDataSet;
     private ArrayList lineEntries;
-    private GraphicalModelView graphicalModelView;
     private TrainingRepository trainingRepository = new TrainingRepository();
 
     @Override
@@ -30,7 +29,6 @@ public class GraphicalActivity extends AppCompatActivity {
         //slide
         setContentView(R.layout.activity_graphical);
         SlideR.swapBack(this);
-       // graphicalModelView = new  ViewModelProvider(this).get(GraphicalModelView.class);
         //graphics
         lineChart = findViewById(R.id.lineChart);
 
