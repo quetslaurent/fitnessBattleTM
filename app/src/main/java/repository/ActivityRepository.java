@@ -41,6 +41,7 @@ public class ActivityRepository {
 
         return  mutableLiveData;
     }
+
     public LiveData<ActivitySport> create(ActivitySport activitySport){
         final MutableLiveData<ActivitySport> mutableLiveData = new MutableLiveData<>();
         getIActivityService().postActivity(activitySport).enqueue(new Callback<ActivitySport>() {
@@ -57,8 +58,23 @@ public class ActivityRepository {
         return mutableLiveData;
     }
 
-    public LiveData<ActivitySport> getById(int i) {
+    public MutableLiveData<List<ActivitySport>> getById(int id) {
+        final MutableLiveData<List<ActivitySport>> mutableLiveData = new MutableLiveData<>();
 
-        return null;
+        getIActivityService().getActivity(id).enqueue(new Callback<List<ActivitySport>>() {
+            @Override
+            public void onResponse(Call<List<ActivitySport>> call, Response<List<ActivitySport>> response) {
+                mutableLiveData.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<List<ActivitySport>> call, Throwable t) {
+
+            }
+        });
+
+        return  mutableLiveData;
+
+
     }
 }

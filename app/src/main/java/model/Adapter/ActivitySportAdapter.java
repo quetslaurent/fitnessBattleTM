@@ -1,4 +1,4 @@
-package model;
+package model.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +12,6 @@ import com.example.projet.R;
 
 import java.util.List;
 
-import model.outputDataModel.ActivitiesByCategorieOutput;
 import model.outputDataModel.ActivitySport;
 
 public class ActivitySportAdapter extends RecyclerView.Adapter<ActivitySportAdapter.MyViewHolder> {

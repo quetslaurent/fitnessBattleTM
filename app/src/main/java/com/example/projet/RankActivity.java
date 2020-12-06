@@ -10,7 +10,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.RankAdapter;
+import model.Adapter.RankAdapter;
 import model.outputDataModel.UserFitnessOutput;
 import repository.UserRepository;
 
