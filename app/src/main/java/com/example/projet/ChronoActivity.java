@@ -11,20 +11,21 @@ import android.widget.Chronometer;
 import android.widget.ImageButton;
 import com.r0adkll.slidr.Slidr;
 import com.r0adkll.slidr.model.SlidrInterface;
+
+import util.SlideR;
 import viewModel.ChronoViewModel;
 public class ChronoActivity extends AppCompatActivity {
     Chronometer chronometer;
     ImageButton btnStart,btnStop;
     private Handler handler;
     private boolean isResume;
-    private SlidrInterface slidr;
     private ChronoViewModel chronoViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chrono);
-        slidr = Slidr.attach(this);
+        SlideR.swapBack(this);
         initView();
         chronoViewModel = new ViewModelProvider(this).get(ChronoViewModel.class);
         handler = chronoViewModel.getHandler();
@@ -77,9 +78,18 @@ public class ChronoActivity extends AppCompatActivity {
         }
     };
 
+
+    /**
+     *
+     *====================================
+     *       Init the view
+     *====================================
+     */
+
     public void initView(){
         chronometer = findViewById(R.id.chronometer);
         btnStart = findViewById(R.id.btn_start);
         btnStop = findViewById(R.id.btn_stop);
     }
+
 }

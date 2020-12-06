@@ -36,7 +36,6 @@ public class RegisterActivity extends AppCompatActivity {
         initView();
         LiveData<List<UserFitnessOutput>> users =registerViewModel.getUsersFitness();
 
-        //userRepository = new UserRepository();
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,10 +65,14 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    public void goToLogin(View view) {
-        Intent intent=new Intent(this, LoginActivity.class);
-        startActivity(intent);
-    }
+
+    /**
+     *
+     *====================================
+     *       Init the view
+     *====================================
+     */
+
 
     private void initView() {
         txt_mail=(EditText) findViewById(R.id.edit_txt);
@@ -78,6 +81,19 @@ public class RegisterActivity extends AppCompatActivity {
         txt_name = (EditText)findViewById(R.id.edit_txt_name);
         registerViewModel =  new ViewModelProvider(this).get(RegisterViewModel.class);
 
+    }
+
+
+    /**
+     *
+     *====================================
+     *       Changement de View
+     *====================================
+     */
+
+    public void goToLogin(View view) {
+        Intent intent=new Intent(this, LoginActivity.class);
+        startActivity(intent);
     }
 
 

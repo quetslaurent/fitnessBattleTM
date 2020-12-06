@@ -22,6 +22,7 @@ import model.outputDataModel.UserFitnessOutput;
 import model.outputDataModel.UserFitnessOutputToken;
 import repository.TokenRepository;
 import repository.UserRepository;
+import util.SlideR;
 import viewModel.ProfileViewModel;
 
 
@@ -31,19 +32,19 @@ public class ProfileActivity extends AppCompatActivity {
     private String token =null;
     private ProfileViewModel profileViewModel;
     private TextView tv_mail, tv_name;
-    private TokenRepository tokenRepository = new TokenRepository();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
         //permet de revenir a la page precedente
-        slidr = Slidr.attach(this);
+        SlideR.swapBack(this);
         //initalise la view
         initView();
 
 //set les valeurs de l'utilisateurs connectés
-            tokenRepository.getUserFromToken().observe(this, new Observer<UserFitnessOutputToken>() {
+            profileViewModel.getUserToken().observe(this, new Observer<UserFitnessOutputToken>() {
                 @Override
                 public void onChanged(UserFitnessOutputToken s) {
                     tv_name.setText(s.getName());
@@ -63,24 +64,20 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
-    //nous renvoies dans camera pour modifier sa photo de profil
-    public void goToCamera(View view) {
-        Intent intent=new Intent(ProfileActivity.this, CameraActivity.class);
-        startActivity(intent);
-    }
-
-    //nous renvoies dans le layout imc pour calculer l'imc
-    public void goToImc(View view) {
-        Intent intent=new Intent(ProfileActivity.this, IMCActivity.class);
-        startActivity(intent);
-    }
-
     //initialiser les views
     public void initView(){
         tv_mail = (TextView) findViewById(R.id.tv_mail);
         tv_name = (TextView) findViewById(R.id.tv_name);
         profileViewModel =  new ViewModelProvider(this).get(ProfileViewModel.class);
     }
+
+
+    /**
+     *
+     *====================================
+     *       Changement de View
+     *====================================
+     */
 
     //Nous renvoies dans le layout editName pour modifier son name
     public void goToEditName(View view) {
@@ -106,8 +103,19 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }); */
 
-
         Intent intent=new Intent(ProfileActivity.this, LoginActivity.class);
+        startActivity(intent);
+    }
+
+    //nous renvoies dans camera pour modifier sa photo de profil
+    public void goToCamera(View view) {
+        Intent intent=new Intent(ProfileActivity.this, CameraActivity.class);
+        startActivity(intent);
+    }
+
+    //nous renvoies dans le layout imc pour calculer l'imc
+    public void goToImc(View view) {
+        Intent intent=new Intent(ProfileActivity.this, IMCActivity.class);
         startActivity(intent);
     }
 }

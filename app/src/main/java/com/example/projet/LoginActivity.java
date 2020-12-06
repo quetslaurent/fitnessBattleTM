@@ -56,11 +56,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     *====================================
+     *       Init the view
+     *====================================
+     */
 
-    public void goToRegister(View view) {
-            Intent intent=new Intent(LoginActivity.this, RegisterActivity.class);
-            startActivity(intent);
-    }
 
     public void init(){
         edit_name = findViewById(R.id.edit_name);
@@ -71,9 +73,21 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    /**
+     *
+     *====================================
+     *       Changement de View
+     *====================================
+     */
 
     public void goToOffline(View view) {
         Intent intent=new Intent(LoginActivity.this, OfflineActivity.class);
         startActivity(intent);
     }
+
+    public void goToRegister(View view) {
+        Intent intent=new Intent(LoginActivity.this, RegisterActivity.class);
+        startActivity(intent);
+    }
+
 }

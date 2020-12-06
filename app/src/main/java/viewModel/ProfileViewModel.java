@@ -4,15 +4,16 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import model.outputDataModel.UserFitnessOutput;
+import model.outputDataModel.UserFitnessOutputToken;
+import repository.TokenRepository;
 import repository.UserRepository;
 
 public class ProfileViewModel extends ViewModel {
 
-    private UserRepository userRepository = new UserRepository();
-    private LiveData<UserFitnessOutput> user;
-    public LiveData<UserFitnessOutput> getUserlive(){
-    //return user=userRepository.getById(1);
-        return null;
+    private TokenRepository tokenRepository = new TokenRepository();
+    private LiveData<UserFitnessOutputToken> user;
+    public LiveData<UserFitnessOutputToken> getUserToken(){
+        return user = tokenRepository.getUserFromToken();
    }
 
 }

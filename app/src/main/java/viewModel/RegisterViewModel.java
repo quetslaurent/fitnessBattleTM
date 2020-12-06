@@ -13,11 +13,9 @@ import repository.UserRepository;
 
 public class RegisterViewModel extends ViewModel {
 
-
     private UserRepository userRepository = new UserRepository();
 
     public LiveData<List<UserFitnessOutput>> getUsersFitness(){
-
         return userRepository.query();
     }
 
@@ -25,6 +23,7 @@ public class RegisterViewModel extends ViewModel {
         userRepository.create(userFitness);
 
     }
+
 
 
 

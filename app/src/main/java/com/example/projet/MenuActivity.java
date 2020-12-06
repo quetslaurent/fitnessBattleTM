@@ -56,6 +56,15 @@ float x1,x2,y1,y2;
         }
 
     }
+
+
+    /**
+     *
+     *====================================
+     *       Changement de View
+     *====================================
+     */
+
     public boolean onTouchEvent(MotionEvent touchEvent){
         switch(touchEvent.getAction()){
             case MotionEvent.ACTION_DOWN:

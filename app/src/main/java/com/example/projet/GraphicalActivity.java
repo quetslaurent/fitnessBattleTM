@@ -11,14 +11,12 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import java.util.ArrayList;
 import java.util.List;
-import com.r0adkll.slidr.Slidr;
-import com.r0adkll.slidr.model.SlidrInterface;
 import model.outputDataModel.TrainingOutput;
 import repository.TrainingRepository;
+import util.SlideR;
 import viewModel.GraphicalModelView;
 
 public class GraphicalActivity extends AppCompatActivity {
-    private SlidrInterface slidr;
     LineChart lineChart;
     LineData lineData;
     LineDataSet lineDataSet;
@@ -31,7 +29,7 @@ public class GraphicalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //slide
         setContentView(R.layout.activity_graphical);
-        slidr = Slidr.attach(this);
+        SlideR.swapBack(this);
        // graphicalModelView = new  ViewModelProvider(this).get(GraphicalModelView.class);
         //graphics
         lineChart = findViewById(R.id.lineChart);
