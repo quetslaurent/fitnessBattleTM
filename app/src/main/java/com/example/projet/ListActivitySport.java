@@ -1,9 +1,9 @@
 package com.example.projet;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ListView;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -13,14 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-import model.ActivitySportAdapter;
+import model.CategorySportAdapter;
 import model.outputDataModel.ActivitiesByCategorieOutput;
 import repository.CategoryRepository;
 
 public class ListActivitySport extends AppCompatActivity{
 
     private CategoryRepository categoryRepository = new CategoryRepository();
-    private ActivitySportAdapter adapter;
+    private CategorySportAdapter adapter;
     private RecyclerView recyclerView;
 
 
@@ -34,7 +34,7 @@ public class ListActivitySport extends AppCompatActivity{
             @Override
             public void onChanged(List<ActivitiesByCategorieOutput> activitiesByCategorieOutputs) {
                 Log.i("test", activitiesByCategorieOutputs.toString());
-                adapter = new ActivitySportAdapter(activitiesByCategorieOutputs);
+                adapter = new CategorySportAdapter(activitiesByCategorieOutputs,ListActivitySport.this);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                 recyclerView.setLayoutManager(layoutManager);
                 recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -49,4 +49,6 @@ public class ListActivitySport extends AppCompatActivity{
 
     }
 
+    public void submit(View view) {
+    }
 }

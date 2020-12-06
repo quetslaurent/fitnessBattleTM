@@ -44,6 +44,7 @@ public class RankAdapter extends ArrayAdapter<UserFitnessOutput> {
         String userPoints =""+user;
         tvPoints.setText(userPoints);
         TextView tvPosition = inflatedView.findViewById(R.id.position);
+        position = position+1;
         String pos = ""+position;
         tvPosition.setText(pos);
 
