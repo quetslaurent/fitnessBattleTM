@@ -35,7 +35,7 @@ public class Resume_trainingActivity extends AppCompatActivity {
 
                 TrainingAdapter trainingAdapter = new TrainingAdapter(Resume_trainingActivity.this, R.id.lv_movies, trainingOutputs);
                 lvTraining.setAdapter(trainingAdapter);
-
+                //ceci est un commentaire
 
             }
         });
