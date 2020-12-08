@@ -72,25 +72,4 @@ public class ListActivitySport extends AppCompatActivity{
         });
     }
 
-        /*categoryRepository.queryCategoriesActivities().observe(this, new Observer<List<ActivitiesByCategorieOutput>>() {
-            @Override
-            public void onChanged(List<ActivitiesByCategorieOutput> activitiesByCategorieOutputs) {
-                Log.i("test", activitiesByCategorieOutputs.toString());
-                adapter = new CategorySportAdapter(activitiesByCategorieOutputs,ListActivitySport.this);
-                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-                recyclerView.setLayoutManager(layoutManager);
-                recyclerView.setItemAnimator(new DefaultItemAnimator());
-                recyclerView.addItemDecoration(new
-                        DividerItemDecoration(getApplicationContext(),LinearLayoutManager.VERTICAL));
-
-                recyclerView.setAdapter(adapter);
-
-            }
-        });*/
-
-
-
-
-    public void submit(View view) {
-    }
 }

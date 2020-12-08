@@ -62,7 +62,6 @@ public class CategorySportAdapter extends RecyclerView.Adapter<CategorySportAdap
         holder.name_categories.setText(name);
         //recuperer la liste d'activités
         list_activities = list.get(position).getActivities();
-        Log.i("list",list_activities.toString());
         //faire un recyclerview
 
 

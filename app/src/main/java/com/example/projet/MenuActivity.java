@@ -39,7 +39,7 @@ float x1,x2,y1,y2;
             @Override
             public void onChanged(Double points) {
                 double d = (double) Math.round(points * 100) / 100;
-                textView.setText(points.toString()+"Points");
+                textView.setText(points.toString()+" Points");
             }
         });
 
@@ -121,6 +121,11 @@ float x1,x2,y1,y2;
 
     public void goToResumeActivity(View view) {
         Intent intent=new Intent(MenuActivity.this, Resume_trainingActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToActivity(View view) {
+        Intent intent=new Intent(MenuActivity.this,ListActivitySport.class);
         startActivity(intent);
     }
 }
