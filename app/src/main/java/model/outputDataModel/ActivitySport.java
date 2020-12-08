@@ -10,16 +10,16 @@ public class ActivitySport {
     private int id;
     private String name;
     private double repetitions;
-    private CategoryInput category;
-    private UnitInput unit;
+    private String categoryName;
+    private String unitType;
 
 
 
-    public ActivitySport(String name,double repetitions ,CategoryInput categoryId, UnitInput unitId) {
+    public ActivitySport(String name,double repetitions ,String categoryName, String unitType) {
         this.name = name;
         this.repetitions = repetitions;
-        this.category = categoryId;
-        this.unit = unitId;
+        this.categoryName = categoryName;
+        this.unitType = unitType;
     }
 
     @Override
@@ -28,8 +28,8 @@ public class ActivitySport {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", repetitions=" + repetitions +
-                ", category=" + category +
-                ", unit=" + unit +
+                ", category=" + categoryName +
+                ", unit=" + unitType +
                 '}';
     }
 
@@ -53,23 +53,25 @@ public class ActivitySport {
         return repetitions;
     }
 
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+
+    public String getUnitType() {
+        return unitType;
+    }
+
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
+    }
+
     public void setRepetitions(double repetitions) {
         this.repetitions = repetitions;
     }
 
-    public CategoryInput getCategory() {
-        return category;
-    }
 
-    public void setCategory(CategoryInput category) {
-        this.category = category;
-    }
-
-    public UnitInput getUnit() {
-        return unit;
-    }
-
-    public void setUnit(UnitInput unit) {
-        this.unit = unit;
-    }
 }

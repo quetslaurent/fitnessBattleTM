@@ -18,6 +18,7 @@ import java.util.List;
 
 import model.outputDataModel.ActivitiesByCategorieOutput;
 import model.outputDataModel.ActivitySport;
+import util.ActivitiesItemClickListener;
 
 
 public class CategorySportAdapter extends RecyclerView.Adapter<CategorySportAdapter.MyViewHolder>{
@@ -48,9 +49,10 @@ public class CategorySportAdapter extends RecyclerView.Adapter<CategorySportAdap
     @NonNull
     @Override
     public CategorySportAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_sport_categories_item,parent,false);
+        final View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.activity_sport_categories_item,parent,false);
+        final MyViewHolder myViewHolder = new MyViewHolder(itemView);
 
-        return new MyViewHolder(itemView);
+        return myViewHolder;
     }
 
     @Override

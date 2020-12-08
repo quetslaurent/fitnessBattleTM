@@ -18,7 +18,7 @@ public class EditNameActivity extends AppCompatActivity {
 
     private UserRepository userRepository = new UserRepository();
 
-    UserFitnessInput u1 = new UserFitnessInput("test","helha","helha@gmail",false);
+    //UserFitnessInput u1 = new UserFitnessInput("test","helha","helha@gmail",false);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
