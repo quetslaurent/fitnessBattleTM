@@ -42,6 +42,7 @@ public class TrainingDateRepository {
 
         return  mutableLiveData;
     }
+
     public LiveData<TrainingDateInput> create(TrainingDateInput trainingDateInput){
         final MutableLiveData<TrainingDateInput> mutableLiveData = new MutableLiveData<>();
         getITrainingDateService().postTrainingDate(trainingDateInput).enqueue(new Callback<TrainingDateInput>() {
@@ -57,4 +58,22 @@ public class TrainingDateRepository {
         });
         return mutableLiveData;
     }
+
+    public LiveData<TrainingDateInput> createToday(){
+        final MutableLiveData<TrainingDateInput> mutableLiveData = new MutableLiveData<>();
+        getITrainingDateService().postToday().enqueue(new Callback<TrainingDateInput>() {
+            @Override
+            public void onResponse(Call<TrainingDateInput> call, Response<TrainingDateInput> response) {
+                mutableLiveData.postValue(response.body());
+            }
+
+            @Override
+            public void onFailure(Call<TrainingDateInput> call, Throwable t) {
+
+            }
+        });
+        return mutableLiveData;
+    }
+
+
 }

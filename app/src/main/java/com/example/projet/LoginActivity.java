@@ -19,6 +19,7 @@ import model.outputDataModel.UserFitnessOutputLogin;
 import repository.AuthRepository;
 
 public class LoginActivity extends AppCompatActivity {
+
     private UserFitnessInputLogin userFitnessInputLogin;
     private AuthRepository authRepository;
     private EditText edit_name,edit_pswd;

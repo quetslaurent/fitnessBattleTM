@@ -13,6 +13,9 @@ public class TrainingDateInput {
     public TrainingDateInput(String date) {
         this.date = date;
     }
+    public TrainingDateInput(){
+
+    }
 
 
     @Override

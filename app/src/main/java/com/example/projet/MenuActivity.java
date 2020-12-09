@@ -8,7 +8,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -17,8 +16,6 @@ import android.widget.TextView;
 
 import com.example.projet.activity.Resume_trainingActivity;
 
-import api.ApiClient;
-import model.outputDataModel.UserFitnessOutput;
 import repository.UserRepository;
 
 public class MenuActivity extends AppCompatActivity {
@@ -100,7 +97,7 @@ float x1,x2,y1,y2;
     }
 
     public void goToAddActivity(View view) {
-        Intent intent=new Intent(MenuActivity.this,ListActivitySport.class);
+        Intent intent=new Intent(MenuActivity.this, AddSportActivity.class);
         startActivity(intent);
     }
 
@@ -125,7 +122,7 @@ float x1,x2,y1,y2;
     }
 
     public void goToActivity(View view) {
-        Intent intent=new Intent(MenuActivity.this,ListActivitySport.class);
+        Intent intent=new Intent(MenuActivity.this, ListSportActivity.class);
         startActivity(intent);
     }
 }

@@ -17,4 +17,7 @@ public interface ITrainingDateService {
 
     @POST("training-dates")
     Call<TrainingDateInput>postTrainingDate(@Body TrainingDateInput trainingDateInput);
+
+    @POST("training-dates/today")
+    Call<TrainingDateInput>postToday();
 }

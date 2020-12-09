@@ -1,8 +1,6 @@
 package com.example.projet;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
@@ -21,7 +19,7 @@ import model.outputDataModel.CategoryOutput;
 import repository.ActivityRepository;
 import repository.CategoryRepository;
 
-public class ListActivitySport extends AppCompatActivity{
+public class ListSportActivity extends AppCompatActivity{
 
     private CategoryRepository categoryRepository = new CategoryRepository();
     private CategorySportAdapter adapter;
@@ -46,7 +44,7 @@ public class ListActivitySport extends AppCompatActivity{
                     final int id = categoryOutputs.get(position).getId();
                     final String name = categoryOutputs.get(position).getName();
 
-                    activityRepository.getById(id).observe(ListActivitySport.this, new Observer<List<ActivitySport>>() {
+                    activityRepository.getById(id).observe(ListSportActivity.this, new Observer<List<ActivitySport>>() {
                         @Override
                         public void onChanged(List<ActivitySport> activitySports) {
                             //creation d'un activitiesbycategory
@@ -55,7 +53,7 @@ public class ListActivitySport extends AppCompatActivity{
                             list.add(a);
 
                             //mise en place du recyclerview
-                            adapter = new CategorySportAdapter(list,ListActivitySport.this);
+                            adapter = new CategorySportAdapter(list, ListSportActivity.this);
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
                             recyclerView.setLayoutManager(layoutManager);
                             recyclerView.setItemAnimator(new DefaultItemAnimator());

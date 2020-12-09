@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.Resume_trainingActivity"></activity>
+        <activity android:name=".AddSportActivity"></activity>
+        <activity android:name=".activity.Resume_trainingActivity" />
         <activity android:name=".OfflineActivity" />
         <activity android:name=".EditMailActivity" />
         <activity android:name=".EditNameActivity" />
@@ -24,7 +25,7 @@
         <activity android:name=".GraphicalActivity" />
         <activity android:name=".ChronoActivity" />
         <activity
-            android:name=".ListActivitySport"
+            android:name=".ListSportActivity"
             android:label="@string/ListActivitySport"
             android:screenOrientation="portrait" />
         <activity

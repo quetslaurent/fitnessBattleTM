@@ -2,7 +2,6 @@ package model.inputDataModel;
 
 public class TrainingInput {
 
-   private int id;
     private double repetitions;
     private int UserId;
     private int ActivityId;
@@ -19,7 +18,6 @@ public class TrainingInput {
     @Override
     public String toString() {
         return "Training{" +
-                "id=" + id +
                 ", repetitions=" + repetitions +
                 ", UserId=" + UserId +
                 ", ActivityId=" + ActivityId +
