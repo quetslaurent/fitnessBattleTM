@@ -1,10 +1,12 @@
 package model.outputDataModel;
 
 
+import java.util.Date;
+
 public class TrainingDateOutput {
 
     private int id;
-    private String date;
+    private Date date;
 
 
     public TrainingDateOutput(){

@@ -36,7 +36,8 @@ float x1,x2,y1,y2;
             @Override
             public void onChanged(Double points) {
                 double d = (double) Math.round(points * 100) / 100;
-                textView.setText(points.toString()+" Points");
+                String pointUser = d+" Points";
+                textView.setText(pointUser);
             }
         });
 
@@ -52,8 +53,16 @@ float x1,x2,y1,y2;
             imgPhoto.setImageBitmap(image);
         }
 
-    }
+        userRepository.getPointById().observe(this, new Observer<Double>() {
+            @Override
+            public void onChanged(Double points) {
+                double d = (double) Math.round(points * 100) / 100;
+                String pointUser = d+" Points";
+                textView.setText(pointUser);
+            }
+        });
 
+    }
 
     /**
      *

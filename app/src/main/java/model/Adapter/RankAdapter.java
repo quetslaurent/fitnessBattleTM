@@ -41,8 +41,11 @@ public class RankAdapter extends ArrayAdapter<UserFitnessOutput> {
         tvName.setText(userFitnessOutput.getName());
         TextView tvPoints = inflatedView.findViewById(R.id.list_item_users_points);
         double user=userFitnessOutput.getPoints();
-        String userPoints =""+user;
-        tvPoints.setText(userPoints);
+
+        double d = (double) Math.round(user * 100) / 100;
+        String pointUser = d+" Points";
+
+        tvPoints.setText(pointUser);
         TextView tvPosition = inflatedView.findViewById(R.id.position);
         position = position+1;
         String pos = ""+position;

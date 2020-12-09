@@ -24,13 +24,7 @@ public class ActivitySport {
 
     @Override
     public String toString() {
-        return "ActivitySport{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", repetitions=" + repetitions +
-                ", category=" + categoryName +
-                ", unit=" + unitType +
-                '}';
+        return name ;
     }
 
     public int getId() {

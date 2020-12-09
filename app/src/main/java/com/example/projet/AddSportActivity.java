@@ -39,6 +39,7 @@ public class AddSportActivity extends AppCompatActivity implements AdapterView.O
     private TrainingDateRepository trainingDateRepository = new TrainingDateRepository();
     private TrainingRepository trainingRepository = new TrainingRepository();
     private int idCateg = 1;
+    private List<String> categories;
 
 
     @Override
@@ -116,13 +117,13 @@ public class AddSportActivity extends AppCompatActivity implements AdapterView.O
         categoryRepository.query().observe(this, new Observer<List<CategoryOutput>>() {
             @Override
             public void onChanged(List<CategoryOutput> categoryOutputs) {
-                /*for (int position = 0; position < categoryOutputs.size(); position++) {
-                    categories.add(categoryOutputs.get(position).getName());
-                }
-                Log.i("test",categories.toString());*/
-                ArrayAdapter<CategoryOutput> categoryAdapter = new ArrayAdapter<>(AddSportActivity.this, android.R.layout.simple_spinner_dropdown_item,categoryOutputs);
+                ArrayAdapter<CategoryOutput> categoryAdapter = new ArrayAdapter<>(
+                        AddSportActivity.this,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        categoryOutputs);
                 categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spin_categories.setAdapter(categoryAdapter);
+
             }
         });
 
