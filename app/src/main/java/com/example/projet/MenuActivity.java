@@ -1,5 +1,6 @@
 package com.example.projet;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 
@@ -41,18 +42,11 @@ float x1,x2,y1,y2;
             }
         });
 
-
     }
+
     @Override
     protected void onResume() {
         super.onResume();
-        ImageView imgPhoto = (ImageView)findViewById(R.id.imge_profil);
-        token = getSharedPreferences("myapp",MODE_PRIVATE).getString("photoToken",null);
-        if(token !=null){
-            image = BitmapFactory.decodeFile(token);
-            imgPhoto.setImageBitmap(image);
-        }
-
         userRepository.getPointById().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double points) {
@@ -62,7 +56,15 @@ float x1,x2,y1,y2;
             }
         });
 
+        ImageView imgPhoto = (ImageView)findViewById(R.id.imge_profil);
+        token = getSharedPreferences("myapp",MODE_PRIVATE).getString("photoToken",null);
+        if(token !=null){
+            image = BitmapFactory.decodeFile(token);
+            imgPhoto.setImageBitmap(image);
+        }
+
     }
+
 
     /**
      *
@@ -132,6 +134,7 @@ float x1,x2,y1,y2;
 
     public void goToActivity(View view) {
         Intent intent=new Intent(MenuActivity.this, ListSportActivity.class);
+
         startActivity(intent);
     }
 }

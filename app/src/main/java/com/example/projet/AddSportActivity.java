@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,7 @@ import repository.CategoryRepository;
 import repository.TokenRepository;
 import repository.TrainingDateRepository;
 import repository.TrainingRepository;
+import util.SlideR;
 
 public class AddSportActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -46,6 +48,7 @@ public class AddSportActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sport);
+        SlideR.swapBack(this);
         spin_activities = findViewById(R.id.spin_activities);
         spin_categories = findViewById(R.id.spin_categories);
         btnSubmit = findViewById(R.id.btn_submit);
@@ -85,7 +88,7 @@ public class AddSportActivity extends AppCompatActivity implements AdapterView.O
 
                         }
                     });
-
+                    Toast.makeText(getApplicationContext(),"Activity add",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AddSportActivity.this, MenuActivity.class);
                     startActivity(intent);
                 }
