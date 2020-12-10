@@ -49,7 +49,8 @@ public class ProfileActivity extends AppCompatActivity {
                 public void onChanged(UserFitnessOutputToken s) {
                     tv_name.setText(s.getName());
                     tv_mail.setText(s.getEmail());
-                }});
+                }
+            });
     }
 
     //recupere l'image stocké dans un token et l'affiche
@@ -79,17 +80,6 @@ public class ProfileActivity extends AppCompatActivity {
      *====================================
      */
 
-    //Nous renvoies dans le layout editName pour modifier son name
-    public void goToEditName(View view) {
-        Intent intent=new Intent(ProfileActivity.this, EditNameActivity.class);
-        startActivity(intent);
-    }
-
-    //Nous renvoies dans le layout editMail pour modifier son adresse mail
-    public void goToEditMail(View view) {
-        Intent intent=new Intent(ProfileActivity.this, EditMailActivity.class);
-        startActivity(intent);
-    }
 
     //Permet de supprimer un compte à l'aide de son id
     public void deleteAccount(View view) {
@@ -115,6 +105,11 @@ public class ProfileActivity extends AppCompatActivity {
     //nous renvoies dans le layout imc pour calculer l'imc
     public void goToImc(View view) {
         Intent intent=new Intent(ProfileActivity.this, IMCActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToLogin(View view) {
+        Intent intent=new Intent(ProfileActivity.this, LoginActivity.class);
         startActivity(intent);
     }
 }

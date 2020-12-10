@@ -5,7 +5,7 @@ public class UserFitnessOutputToken {
     private int id;
     private String name;
     private String email;
-    private boolean role;
+    private String role;
 
     public UserFitnessOutputToken() {
     }
@@ -34,11 +34,11 @@ public class UserFitnessOutputToken {
         this.email = email;
     }
 
-    public boolean isRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(boolean role) {
+    public void setRole(String role) {
         this.role = role;
     }
 }

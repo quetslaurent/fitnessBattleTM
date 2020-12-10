@@ -7,9 +7,7 @@
     tools:context=".ProfileActivity"
     android:orientation="vertical">
 
-
-    <include layout="@layout/toolbars"/>
-
+    <include layout="@layout/toolbars"></include>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -56,18 +54,6 @@
             android:layout_marginLeft="5dp"
             android:textSize="18sp"
             android:textStyle="bold" />
-        <TextView
-            android:layout_width="40dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:background="@drawable/bg_round"
-            android:drawableLeft="@drawable/ic_baseline_edit_24"
-            android:gravity="center"
-            android:paddingLeft="10dp"
-            android:onClick="goToEditName"
-            android:textColor="@android:color/black"
-            android:textSize="18dp" />
-
 
     </LinearLayout>
 
@@ -97,17 +83,7 @@
             android:layout_marginLeft="5dp"
             android:textSize="18sp"
             android:textStyle="bold" />
-        <TextView
-            android:layout_width="40dp"
-            android:layout_height="50dp"
 
-            android:background="@drawable/bg_round"
-            android:drawableLeft="@drawable/ic_baseline_edit_24"
-            android:gravity="center"
-            android:paddingLeft="10dp"
-            android:onClick="goToEditMail"
-            android:textColor="@android:color/black"
-            android:textSize="18dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -131,18 +107,6 @@
             android:textColor="@android:color/black"
             android:textSize="18dp" />
 
-        <TextView
-            android:layout_width="200dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="-10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_round"
-            android:drawableLeft="@drawable/ic_baseline_lock_24"
-            android:gravity="center"
-            android:paddingLeft="10dp"
-            android:text="Change Password"
-            android:textColor="@android:color/black"
-            android:textSize="18dp" />
 
         <TextView
             android:layout_width="200dp"

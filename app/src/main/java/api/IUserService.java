@@ -32,9 +32,6 @@ public interface IUserService {
     @POST("users")
     Call<UserFitnessInput>postUser(@Body UserFitnessInput user);
 
-    @POST("users/login")
-    Call<String>login(@Body UserFitnessInput user);
-
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @PUT("users/{token}")
     Call<UserFitnessInput>update(@Path("token")String token,@Body UserFitnessInput user);

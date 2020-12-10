@@ -5,7 +5,7 @@ public class UserFitnessOutput {
     private String name;
     private String password;
     private String email;
-    private Boolean admin;
+    private String role;
     private double points;
 
     public UserFitnessOutput(){
@@ -18,7 +18,7 @@ public class UserFitnessOutput {
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
-                ", admin=" + admin +
+                ", admin=" + role +
                 ", points=" + points +
                 '}';
     }
@@ -39,36 +39,8 @@ public class UserFitnessOutput {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public double getPoints() {
         return points;
-    }
-
-    public void setPoints(double points) {
-        this.points = points;
-    }
-
-    public Boolean getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Boolean admin) {
-        this.admin = admin;
     }
 
     @Override

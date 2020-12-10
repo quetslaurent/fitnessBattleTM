@@ -76,9 +76,9 @@ public class UserRepository {
         });
         return mutableLiveData;
     }
-    public LiveData<UserFitnessOutput> getById(String token){
+    public LiveData<UserFitnessOutput> getUserFitness(){
         final MutableLiveData<UserFitnessOutput> mutableLiveData = new MutableLiveData<>();
-        getIUserService().getUserById(token).enqueue(new Callback<UserFitnessOutput>() {
+        getIUserService().getUserById(ApiClient.getToken()).enqueue(new Callback<UserFitnessOutput>() {
             @Override
             public void onResponse(Call<UserFitnessOutput> call, Response<UserFitnessOutput> response) {
 

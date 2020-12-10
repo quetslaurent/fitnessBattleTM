@@ -16,8 +16,6 @@
         <activity android:name=".AddSportActivity"></activity>
         <activity android:name=".activity.Resume_trainingActivity" />
         <activity android:name=".OfflineActivity" />
-        <activity android:name=".EditMailActivity" />
-        <activity android:name=".EditNameActivity" />
         <activity android:name=".RankActivity" />
         <activity android:name=".IMCActivity" />
         <activity android:name=".CameraActivity" />

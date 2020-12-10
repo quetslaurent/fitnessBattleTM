@@ -5,13 +5,12 @@ import model.UserFitness;
 public class UserFitnessInput extends UserFitness {
     private int id;
     private String email;
-    private Boolean admin;
+    private String role;
 
-    public UserFitnessInput(String name, String password, String email, Boolean admin) {
+    public UserFitnessInput(String name, String password, String email, String role) {
         super(name, password);
         this.email = email;
-        this.admin = admin;
-        this.admin=admin;
+        this.role = role;
     }
 
     public int getId() {
@@ -37,16 +36,16 @@ public class UserFitnessInput extends UserFitness {
                 ", name='" + getName() + '\'' +
                 ", password='" + getPassword() + '\'' +
                 ", email='" + email + '\'' +
-                ", admin=" + admin +
+                ", admin=" + role +
                 '}';
     }
 
-    public Boolean getAdmin() {
-        return admin;
+    public String getAdmin() {
+        return role;
     }
 
-    public void setAdmin(Boolean admin) {
-        this.admin = admin;
+    public void setAdmin(String  role) {
+        this.role = role;
     }
 
 

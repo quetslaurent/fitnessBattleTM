@@ -49,7 +49,7 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this,"Password required",Toast.LENGTH_LONG).show();
                 }
                 else{
-                  userFitness = new UserFitnessInput(name,password,mail,false);
+                  userFitness = new UserFitnessInput(name,password,mail,"Admin");
                   registerViewModel.createUser(userFitness);
                   btn_register.setOnClickListener(new View.OnClickListener() {
                       @Override
