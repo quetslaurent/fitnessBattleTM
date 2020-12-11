@@ -11,8 +11,10 @@ public class TrainingDateInput {
 
 
     public TrainingDateInput(String date) {
+
         this.date = date;
     }
+
     public TrainingDateInput(){
 
     }
@@ -35,12 +37,12 @@ public class TrainingDateInput {
     }
 
 
-    public static  String getTimeNow(){
-        Calendar c = Calendar.getInstance();
-        System.out.println("Current time => "+c.getTime());
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-        String formattedDate = df.format(c.getTime());
-        return formattedDate;
-    }
+//    public static  String getTimeNow(){
+//        Calendar c = Calendar.getInstance();
+//        System.out.println("Current time => "+c.getTime());
+//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'  'HH:mm:ss.SSS");
+//        String formattedDate = df.format(c.getTime());
+//        return formattedDate;
+//    }
 
 }

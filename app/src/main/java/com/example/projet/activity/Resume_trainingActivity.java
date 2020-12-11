@@ -7,8 +7,7 @@ import android.os.Bundle;
 import android.widget.ListView;
 
 import com.example.projet.R;
-import com.example.projet.TrainingAdapter;
-import com.github.mikephil.charting.data.Entry;
+import model.Adapter.TrainingAdapter;
 
 import java.util.ArrayList;
 import java.util.List;

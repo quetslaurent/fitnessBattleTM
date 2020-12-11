@@ -1,6 +1,7 @@
-package com.example.projet;
+package model.Adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.projet.R;
+
+import java.text.ParseException;
 import java.util.List;
 
 import model.outputDataModel.TrainingOutput;
@@ -29,18 +33,22 @@ public class TrainingAdapter extends ArrayAdapter<TrainingOutput> {
             inflatedView=layoutInflater.inflate(R.layout.list_item_training,parent,false);
         }
         final TrainingOutput trainingOutput = getItem(position);
-        populateView(inflatedView,trainingOutput);
+        try {
+            populateView(inflatedView,trainingOutput);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         return  inflatedView;
     }
 
-    private void populateView(View inflatedView, TrainingOutput trainingOutput) {
+    private void populateView(View inflatedView, TrainingOutput trainingOutput) throws ParseException {
         TextView tvName = inflatedView.findViewById(R.id.tv_list_item_activity_name);
         TextView tvdate = inflatedView.findViewById(R.id.tv_list_item_activity_date);
         TextView tv_rep = inflatedView.findViewById(R.id.tv_list_item_activity_nbRepetition);
 
         tvName.setText("Activity : " + trainingOutput.getActivityName());
-        tv_rep.setText("Repetiton effectué :" + trainingOutput.getRepetitions()+"");
-        tvdate.setText("Fait le  :" + trainingOutput.getTrainingDateValue()+"");
+        tv_rep.setText("Repetiton effectué : " + trainingOutput.getRepetitions()+"");
+        tvdate.setText("Fait le  : " + trainingOutput.getTrainingDateValue()+"");
     }
 
 }

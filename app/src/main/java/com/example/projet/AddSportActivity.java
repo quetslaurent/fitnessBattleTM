@@ -88,7 +88,7 @@ public class AddSportActivity extends AppCompatActivity implements AdapterView.O
 
                         }
                     });
-                    Toast.makeText(getApplicationContext(),"Activity add",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(),"Activity added",Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(AddSportActivity.this, MenuActivity.class);
                     startActivity(intent);
                 }

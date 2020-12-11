@@ -1,5 +1,10 @@
 package model.outputDataModel;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class TrainingOutput {
 
    private int id;
@@ -36,8 +41,12 @@ public class TrainingOutput {
   return repetitions;
  }
 
- public String getTrainingDateValue() {
-  return trainingDateValue;
+ public String getTrainingDateValue() throws ParseException {
+  DateFormat output = new SimpleDateFormat("dd-MM-yyyy ' à 'HH:mm:ss");
+  DateFormat input = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+  Date date = input.parse(trainingDateValue);
+  String formattedDate = output.format(date);
+  return formattedDate;
  }
 
  public String getActivityName() {
