@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import android.graphics.Color;
 import android.os.Bundle;
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
@@ -38,20 +39,25 @@ public class GraphicalActivity extends AppCompatActivity {
              lineEntries=new ArrayList<>();
              int   y=0;
              for(int i=0;i<trainingOutputs.size();i++){
-                 double rep = trainingOutputs.get(y).getRepetitions();
-                 lineEntries.add(new Entry((float) i, (float) rep));
-                 y++;
+                     double rep = trainingOutputs.get(y).getRepetitions();
+                     lineEntries.add(new Entry((float) i, (float) rep));
+                     y++;
+
              }
-             lineDataSet = new LineDataSet(lineEntries, "");
+             
+             lineDataSet = new LineDataSet(lineEntries, "Training");
              lineDataSet.setLineWidth(2.0f);
              lineDataSet.setCircleRadius(2f);
              lineDataSet.setDrawValues(true);
              lineDataSet.setColor(ContextCompat.getColor(GraphicalActivity.this, R.color.colorPrimaryDark));
              lineDataSet.setCircleColor(ContextCompat.getColor(GraphicalActivity.this, R.color.colorPrimaryDark));
-
              lineDataSet.setDrawValues(false);
              lineData = new LineData(lineDataSet);
              lineChart.setData(lineData);
+             lineDataSet.getLabel();
+             Legend legend = lineChart.getLegend();
+             legend.setEnabled(true);
+             legend.setTextColor(Color.RED);
 
 
              lineDataSet.setValueTextColor(Color.BLACK);
