@@ -9,6 +9,7 @@ import retrofit2.http.Headers;
 import retrofit2.http.Path;
 
 public interface ITokenService {
+    //utilisation du token
     @Headers({"Content-Type: application/json", "Accept: application/json"})
     @GET("token/{token}")
     Call<UserFitnessOutputToken> getUserByToken(@Path("token") String token);

@@ -17,6 +17,7 @@ import util.SlideR;
 import viewModel.GraphicalModelView;
 
 public class GraphicalActivity extends AppCompatActivity {
+    //declaration
     LineChart lineChart;
     LineData lineData;
     LineDataSet lineDataSet;
@@ -32,6 +33,7 @@ public class GraphicalActivity extends AppCompatActivity {
         //graphics
         lineChart = findViewById(R.id.lineChart);
 
+        //mettre les valeurs dans le graphique
      trainingRepository.getTrainingByuserId().observe(this, new Observer<List<TrainingOutput>>() {
          @Override
          public void onChanged(List<TrainingOutput> trainingOutputs) {

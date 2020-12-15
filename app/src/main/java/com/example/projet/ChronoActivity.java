@@ -15,6 +15,8 @@ import com.r0adkll.slidr.model.SlidrInterface;
 import util.SlideR;
 import viewModel.ChronoViewModel;
 public class ChronoActivity extends AppCompatActivity {
+
+    //declaration
     Chronometer chronometer;
     ImageButton btnStart,btnStop;
     private Handler handler;
@@ -25,11 +27,15 @@ public class ChronoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chrono);
+        //utilisation du slide
         SlideR.swapBack(this);
+        //initialiser la view
         initView();
+        //utilisation du ViewModel
         chronoViewModel = new ViewModelProvider(this).get(ChronoViewModel.class);
         handler = chronoViewModel.getHandler();
 
+        //start le chrono quand on appuie sur le bouton start
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +61,7 @@ public class ChronoActivity extends AppCompatActivity {
             }
         });
 
-
+//stop le chrono quand on appuie sur le bouton stop
         btnStop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +75,7 @@ public class ChronoActivity extends AppCompatActivity {
             }
         });
     }
+    //affiche le temps du chrono
     public Runnable runnable = new Runnable() {
         @Override
         public void run() {

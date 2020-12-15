@@ -10,10 +10,11 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface IUnitsService {
-
+    //recuperer les units
     @GET("units")
-    Call<List<UnitOutput>> getUnits();//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
+    Call<List<UnitOutput>> getUnits();
 
+    //ajout d'un unit
     @POST("units")
     Call<UnitInput>postUnits(@Body UnitInput unit);
 }

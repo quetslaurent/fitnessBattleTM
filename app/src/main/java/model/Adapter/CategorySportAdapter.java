@@ -23,16 +23,19 @@ import util.ActivitiesItemClickListener;
 
 public class CategorySportAdapter extends RecyclerView.Adapter<CategorySportAdapter.MyViewHolder>{
 
+    //declaration
     private List<ActivitiesByCategorieOutput> list;
     private Context context;
     private ActivitySportAdapter activitySportAdapter;
     private List<ActivitySport> list_activities;
 
+    //constructeur
     public CategorySportAdapter(List<ActivitiesByCategorieOutput> list,Context context){
        this.context = context;
         this.list = list;
     }
 
+    //ViewHolder du recyclerView
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView name_categories;
         private RecyclerView recyclerView_activities;
@@ -40,6 +43,7 @@ public class CategorySportAdapter extends RecyclerView.Adapter<CategorySportAdap
 
         public MyViewHolder(final View view){
             super(view);
+            //init view
             name_categories = view.findViewById(R.id.name);
             recyclerView_activities = view.findViewById(R.id.recyclerView_activities);
 
@@ -55,6 +59,7 @@ public class CategorySportAdapter extends RecyclerView.Adapter<CategorySportAdap
         return myViewHolder;
     }
 
+    //mettre les données dans le reyclerview
     @Override
     public void onBindViewHolder(@NonNull CategorySportAdapter.MyViewHolder holder, int position) {
         //Afficher les categories

@@ -16,6 +16,7 @@ import repository.UserRepository;
 
 public class RankActivity extends AppCompatActivity {
 
+    //declaration
     private List<UserFitnessOutput> userFitness = new ArrayList<>();
     private UserRepository userRepository = new UserRepository();
     private ListView lvUsers;
@@ -27,9 +28,11 @@ public class RankActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rank);
+        //init view
         lvUsers = findViewById(R.id.list_users);
         context = this;
 
+        //mettre la liste des users dans un adapter
         userRepository.query().observe(this, new Observer<List<UserFitnessOutput>>() {
             @Override
             public void onChanged(List<UserFitnessOutput> users) {

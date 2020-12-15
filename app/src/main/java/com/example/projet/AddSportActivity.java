@@ -32,6 +32,8 @@ import util.SlideR;
 
 public class AddSportActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+
+    //delcaration de nos elements + repository
     private Spinner spin_categories,spin_activities;
     private Button btnSubmit;
     private EditText et_rep;
@@ -48,15 +50,20 @@ public class AddSportActivity extends AppCompatActivity implements AdapterView.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_sport);
+        //utilisation du slide
         SlideR.swapBack(this);
+        //recuperation des elements du layout
+
         spin_activities = findViewById(R.id.spin_activities);
         spin_categories = findViewById(R.id.spin_categories);
         btnSubmit = findViewById(R.id.btn_submit);
         et_rep = findViewById(R.id.et_rep);
-        
+
+        //remplir les listes déroulantes
         populateSpinnerCategory();
         populateSpinnerActivity(idCateg);
 
+        //creation du training qunad on appuie sur le bouton submit
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,13 +103,14 @@ public class AddSportActivity extends AppCompatActivity implements AdapterView.O
             }
         });
 
+        //recureper les item quand on selectionnes dans la liste déroulante
         spin_categories.setOnItemSelectedListener(this);
         spin_activities.setOnItemSelectedListener(this);
 
     }
 
+    //remplir la liste déroulante d'activity
     private void populateSpinnerActivity(int idCateg) {
-
         activityRepository.getById(idCateg).observe(this, new Observer<List<ActivitySport>>() {
             @Override
             public void onChanged(List<ActivitySport> activitySports) {
@@ -111,11 +119,9 @@ public class AddSportActivity extends AppCompatActivity implements AdapterView.O
                 spin_activities.setAdapter(activitySportAdapter);
             }
         });
-
-
-
     }
 
+    //remplir la liste déroulante de category
     private void populateSpinnerCategory() {
         categoryRepository.query().observe(this, new Observer<List<CategoryOutput>>() {
             @Override
@@ -132,7 +138,7 @@ public class AddSportActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
-
+    //recureper les item quand on selectionnes dans la liste déroulante
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if(parent.getId() == R.id.spin_categories){

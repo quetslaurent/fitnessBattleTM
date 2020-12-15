@@ -12,13 +12,13 @@ import retrofit2.http.POST;
 
 public interface ICategoryService {
 
+    //recuperer les categories
     @GET("categories")
-    Call<List<CategoryOutput>> getCategory();//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
-
-
+    Call<List<CategoryOutput>> getCategory();
+    //ajouter une categorie
     @POST("categories")
     Call<CategoryInput>postCategory(@Body CategoryInput categoryInput);
-
+    //recuperer la liste de categories avec leur activites
     @GET("categories/activities")
     Call<List<ActivitiesByCategorieOutput>> getActivitiesByCategory();
 }

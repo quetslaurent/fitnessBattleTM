@@ -16,6 +16,7 @@ import model.outputDataModel.UserFitnessOutput;
 
 public class RankAdapter extends ArrayAdapter<UserFitnessOutput> {
 
+    //constructeur
     public RankAdapter(@NonNull Context context, int resource, @NonNull List<UserFitnessOutput> objects){
         super(context,resource,objects);
     }
@@ -36,6 +37,7 @@ public class RankAdapter extends ArrayAdapter<UserFitnessOutput> {
 
     }
 
+    //afficher dans la listeview
     private void populateView(View inflatedView, UserFitnessOutput userFitnessOutput,int position) {
         TextView tvName = inflatedView.findViewById(R.id.list_item_users_name);
         tvName.setText(userFitnessOutput.getName());

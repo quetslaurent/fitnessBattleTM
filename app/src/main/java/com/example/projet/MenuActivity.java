@@ -21,18 +21,22 @@ import repository.UserRepository;
 
 public class MenuActivity extends AppCompatActivity {
 
-float x1,x2,y1,y2;
+    //declaration
+    private float x1,x2,y1,y2;
     private Bitmap image;
     private String token =null;
     private UserRepository userRepository = new UserRepository();
-    TextView textView;
+    private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_menu);
+        //init view
         textView = (TextView) findViewById(R.id.tv_point);
+
+        //recuperer les points
         userRepository.getPointById().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double points) {
@@ -47,6 +51,7 @@ float x1,x2,y1,y2;
     @Override
     protected void onResume() {
         super.onResume();
+        //recuperer les points
         userRepository.getPointById().observe(this, new Observer<Double>() {
             @Override
             public void onChanged(Double points) {
@@ -56,6 +61,7 @@ float x1,x2,y1,y2;
             }
         });
 
+        //recuperer l'image et l'afficher
         ImageView imgPhoto = (ImageView)findViewById(R.id.imge_profil);
         token = getSharedPreferences("myapp",MODE_PRIVATE).getString("photoToken",null);
         if(token !=null){

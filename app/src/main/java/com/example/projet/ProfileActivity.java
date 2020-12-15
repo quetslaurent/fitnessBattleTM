@@ -28,6 +28,8 @@ import viewModel.ProfileViewModel;
 
 
 public class ProfileActivity extends AppCompatActivity {
+
+    //declaration
     private Bitmap image;
     private String token =null;
     private ProfileViewModel profileViewModel;
@@ -43,7 +45,7 @@ public class ProfileActivity extends AppCompatActivity {
         //initalise la view
         initView();
 
-//set les valeurs de l'utilisateurs connectés
+        //set les valeurs de l'utilisateurs connectés
             profileViewModel.getUserToken().observe(this, new Observer<UserFitnessOutputToken>() {
                 @Override
                 public void onChanged(UserFitnessOutputToken s) {

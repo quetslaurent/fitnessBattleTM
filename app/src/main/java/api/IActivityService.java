@@ -12,12 +12,15 @@ import retrofit2.http.Path;
 
 public interface IActivityService {
 
+    //requete du get Activity
     @GET("activity")
-    Call<List<ActivitySport>> getActivitySport();//le call sert a contacter la db et recuperer ( dans ce cas ) a récuperer une liste de ActivitySport
+    Call<List<ActivitySport>> getActivitySport();
 
+    //ajout d'une activity
     @POST("activity")
     Call<ActivitySport>postActivity(@Body ActivitySport activitySport);
 
+    //recuperer une activity par son id
     @GET("activity/{id}")
     Call<List<ActivitySport>> getActivity(@Path("id")int id);
 

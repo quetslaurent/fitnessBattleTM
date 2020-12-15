@@ -20,6 +20,7 @@ import model.outputDataModel.TrainingOutput;
 
 public class TrainingAdapter extends ArrayAdapter<TrainingOutput> {
 
+    //constructeur
     public TrainingAdapter(@NonNull Context context, int resource, @NonNull List<TrainingOutput> objects) {
         super(context, resource, objects);
     }
@@ -41,6 +42,7 @@ public class TrainingAdapter extends ArrayAdapter<TrainingOutput> {
         return  inflatedView;
     }
 
+    //afficher dans la listeview
     private void populateView(View inflatedView, TrainingOutput trainingOutput) throws ParseException {
         TextView tvName = inflatedView.findViewById(R.id.tv_list_item_activity_name);
         TextView tvdate = inflatedView.findViewById(R.id.tv_list_item_activity_date);

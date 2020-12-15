@@ -14,6 +14,7 @@ import viewModel.RegisterViewModel;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    //declaration
     private EditText txt_mail,txt_password,txt_name;
     private String mail;
     private String password;
@@ -27,7 +28,10 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        //init view
         initView();
+
+        //quand on appuie pour s'enregistrer on verifie que tout les champs sont remplis si c'est le cas alors on creer le user
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

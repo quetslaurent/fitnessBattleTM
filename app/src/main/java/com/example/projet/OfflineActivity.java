@@ -16,6 +16,14 @@ public class OfflineActivity extends AppCompatActivity {
     }
 
 
+    /**
+     *
+     *====================================
+     *       Changement de View
+     *====================================
+     */
+
+
     public void goToChrono(View view) {
         Intent intent=new Intent(OfflineActivity.this, ChronoActivity.class);
         startActivity(intent);

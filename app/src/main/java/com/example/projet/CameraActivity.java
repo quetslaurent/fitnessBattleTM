@@ -24,11 +24,10 @@ import java.util.Date;
 
 public class CameraActivity extends AppCompatActivity {
 
+    //declaration
         private static final int RETURN_PHOTO =1;
-
         private Button btnPhoto;
         private Button btnSave;
-
         private ImageView imgPhoto;
         private Bitmap image;
         private String linkOfImage = null;
@@ -48,8 +47,7 @@ public class CameraActivity extends AppCompatActivity {
 
         }
 
-    //CameraModel cameraModel = ViewModelProviders.of(this).get(CameraModel.class);
-
+    //recuperation des elements du layout
         private void initActivity() {
 
             btnPhoto = (Button)findViewById(R.id.btnPhoto);
@@ -59,7 +57,6 @@ public class CameraActivity extends AppCompatActivity {
             createOnClickBtnPhoto();
             createOnClickBtnSave();
 
-            //cameraModel.init();
             sharedPreferences = getSharedPreferences("myapp",MODE_PRIVATE);
             photoToken = sharedPreferences.getString("photoToken",null);
 
@@ -68,6 +65,7 @@ public class CameraActivity extends AppCompatActivity {
         }
 
 
+        //Enregistre l'image dans le telephone
         private void createOnClickBtnSave(){
             btnSave.setOnClickListener(new Button.OnClickListener() {
                 @Override
@@ -81,18 +79,17 @@ public class CameraActivity extends AppCompatActivity {
                     Intent intent = new Intent(CameraActivity.this, ProfileActivity.class);
                     intent.putExtra("EXTRA_CAMERA_IMAGE",photoToken);
                     startActivity(intent);
-//                    cameraModel.save();
                 }
             });
 
         }
 
 
+        //bouton pour prendre une photo
         private void createOnClickBtnPhoto() {
             btnPhoto.setOnClickListener(new Button.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //cameraModel.takePhoto();
                     takePhoto();
                 }
             });
@@ -137,7 +134,4 @@ public class CameraActivity extends AppCompatActivity {
             }
         }
 
-//    public ImageView getImgPhoto() {
-//        return imgPhoto;
-//    }
 }

@@ -9,6 +9,7 @@ import retrofit2.http.POST;
 
 public interface IAuthService {
 
+    //utiliser l'auth
     @POST("auth")
     Call<UserFitnessOutputLogin> loginUser(@Body UserFitnessInputLogin userFitnessInputLogin);
 }

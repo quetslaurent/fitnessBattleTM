@@ -19,6 +19,7 @@ import viewModel.ProfileViewModel;
 
 public class IMCActivity extends AppCompatActivity {
 
+    //declaration
     Button envoyer = null;
     EditText weight,height = null;
     RadioGroup group = null;
@@ -32,7 +33,9 @@ public class IMCActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_i_m_c);
+        //utilisation du slide
         SlideR.swapBack(this);
+        //init view
         initView();
         // On attribue un listener adapté aux vues qui en ont besoin
         envoyer.setOnClickListener(envoyerListener);

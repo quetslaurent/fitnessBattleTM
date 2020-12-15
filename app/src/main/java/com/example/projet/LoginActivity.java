@@ -25,19 +25,22 @@ import viewModel.RegisterViewModel;
 
 public class LoginActivity extends AppCompatActivity {
 
+    //declaration
     private UserFitnessInputLogin userFitnessInputLogin;
     private AuthRepository authRepository;
     private EditText edit_name,edit_pswd;
     private Button btn_login;
     private String name,pswd;
     private LoginViewModel loginViewModel;
-//ceci est un push a supp
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_login);
         init();
+        //quand on clique sur login on test pour voir si l'user est correct
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

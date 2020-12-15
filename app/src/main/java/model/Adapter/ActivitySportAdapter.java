@@ -19,14 +19,16 @@ import util.ActivitiesItemClickListener;
 
 public class ActivitySportAdapter extends RecyclerView.Adapter<ActivitySportAdapter.MyViewHolder> {
 
-
+    //declaration
     private List<ActivitySport> list_activities;
 
+    //constructeur
     public ActivitySportAdapter(List<ActivitySport> list_activities){
         this.list_activities = list_activities;
     }
 
 
+    //ViewHolder du recyclerView
     public class MyViewHolder extends RecyclerView.ViewHolder{
         private TextView name_activities;
         private TextView activities_rep;
@@ -34,6 +36,7 @@ public class ActivitySportAdapter extends RecyclerView.Adapter<ActivitySportAdap
 
         public MyViewHolder(final View view){
             super(view);
+            //init view
             name_activities = view.findViewById(R.id.name_activities);
             activities_rep = view.findViewById(R.id.activities_rep);
             activities_unit = view.findViewById(R.id.activities_unit);
@@ -49,6 +52,7 @@ public class ActivitySportAdapter extends RecyclerView.Adapter<ActivitySportAdap
         return new MyViewHolder(itemView);
     }
 
+    //mettre les données dans le reyclerview
     @Override
     public void onBindViewHolder(@NonNull ActivitySportAdapter.MyViewHolder holder, int position) {
         String name = list_activities.get(position).getName();

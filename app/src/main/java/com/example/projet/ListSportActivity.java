@@ -21,6 +21,7 @@ import repository.CategoryRepository;
 
 public class ListSportActivity extends AppCompatActivity{
 
+    //declaration
     private CategoryRepository categoryRepository = new CategoryRepository();
     private CategorySportAdapter adapter;
     private RecyclerView recyclerView;
