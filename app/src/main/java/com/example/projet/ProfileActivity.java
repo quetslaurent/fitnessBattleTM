@@ -1,9 +1,11 @@
 package com.example.projet;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -87,15 +89,41 @@ public class ProfileActivity extends AppCompatActivity {
     public void deleteAccount(View view) {
         //UTILISER SELFDELETE !!!!!!!!!!!!!
         //MODIFIER LE 5 AVEC LE ID DE L'UTILISATEUR QUI SE CONNECTE
-        profileViewModel.deleteUser().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Toast.makeText(getApplicationContext(),"Suppression du compte",Toast.LENGTH_LONG).show();
-            }
-        });
 
-        Intent intent=new Intent(ProfileActivity.this, LoginActivity.class);
-        startActivity(intent);
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage("Do you want to delete your account ? ");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+
+                        profileViewModel.deleteUser().observe(ProfileActivity.this, new Observer<String>() {
+                            @Override
+                            public void onChanged(String s) {
+                                Toast.makeText(getApplicationContext(),"Suppression du compte",Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                        Intent intent=new Intent(ProfileActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }
+                });
+
+        builder1.setNegativeButton(
+                "No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+
+
     }
 
     //nous renvoies dans camera pour modifier sa photo de profil
