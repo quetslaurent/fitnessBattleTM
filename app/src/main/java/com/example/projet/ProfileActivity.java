@@ -87,9 +87,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     //Permet de supprimer un compte à l'aide de son id
     public void deleteAccount(View view) {
-        //UTILISER SELFDELETE !!!!!!!!!!!!!
-        //MODIFIER LE 5 AVEC LE ID DE L'UTILISATEUR QUI SE CONNECTE
-
         AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
         builder1.setMessage("Do you want to delete your account ? ");
         builder1.setCancelable(true);
