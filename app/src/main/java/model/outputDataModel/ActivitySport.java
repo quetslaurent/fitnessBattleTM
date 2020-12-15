@@ -6,6 +6,10 @@ import android.os.Parcelable;
 import model.inputDataModel.CategoryInput;
 import model.inputDataModel.UnitInput;
 
+/**
+ * La classe qui recoit l'objet ActivitySport du serveur
+ */
+
 public class ActivitySport {
     private int id;
     private String name;
@@ -47,25 +51,10 @@ public class ActivitySport {
         return repetitions;
     }
 
-    public String getCategoryName() {
-        return categoryName;
-    }
-
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
-    }
-
     public String getUnitType() {
         return unitType;
     }
 
-    public void setUnitType(String unitType) {
-        this.unitType = unitType;
-    }
-
-    public void setRepetitions(double repetitions) {
-        this.repetitions = repetitions;
-    }
 
 
 }

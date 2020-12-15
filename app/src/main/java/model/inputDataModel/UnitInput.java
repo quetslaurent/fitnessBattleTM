@@ -1,5 +1,12 @@
 package model.inputDataModel;
 
+
+/**
+ * Ca sera la classe qui sera envoyé au serveur lorsqu'un Unit  sera creer.
+
+ *
+ */
+
 public class UnitInput {
     private int id;
     private String type;

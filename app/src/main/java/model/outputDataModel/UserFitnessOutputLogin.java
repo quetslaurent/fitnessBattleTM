@@ -1,5 +1,9 @@
 package model.outputDataModel;
 
+/**
+ * La classe qui recoit l'objet UserFitnessOutputLogin du serveur
+ */
+
 public class UserFitnessOutputLogin {
 
     private String token;
@@ -7,15 +11,9 @@ public class UserFitnessOutputLogin {
     public UserFitnessOutputLogin() {
     }
 
-
     public String getToken() {
         return token;
     }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
 
     @Override
     public String toString() {

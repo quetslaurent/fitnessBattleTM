@@ -2,16 +2,26 @@ package model;
 
 import android.os.SystemClock;
 
+
+/**
+ * Classse Chrono
+ */
 public class Chrono {
 
     private long tMilliSecond, tStart, tBuff, tUpdate = 0L;
     private int sec, min, milliSec;
 
-
+    /**
+     * fonction start , demarre le serveur
+     */
     public void start(){
         tStart = SystemClock.uptimeMillis();
     }
 
+
+    /**
+     * fonction stop , remet tout a zero
+     */
     public void stop() {
         tMilliSecond = 0L;
         tStart = 0L;
@@ -21,11 +31,16 @@ public class Chrono {
         min = 0;
         milliSec = 0;
     }
-
+    /**
+     * fonction qui ajoute le temps
+     */
     public void addtime() {
         tBuff += tMilliSecond;
     }
 
+    /**
+     * permet de run le chrono
+     */
     public void run() {
         tMilliSecond = SystemClock.uptimeMillis() - tStart;
         tUpdate = tBuff + tMilliSecond;

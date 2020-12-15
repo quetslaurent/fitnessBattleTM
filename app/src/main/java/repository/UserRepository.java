@@ -17,11 +17,7 @@ import retrofit2.Response;
 
 public class UserRepository {
 
-    private Application application;
 
-    public UserRepository(Application application) {
-        this.application=application;
-    }
 
     public UserRepository() {
 
@@ -37,6 +33,7 @@ public class UserRepository {
     /**
      * flux d'info que l'on peut observer
      * on peut pas le modifier ! mais le mutable oui
+     * permet de revoyer la liste d'utilisateur
      * @return
      */
     public LiveData<List<UserFitnessOutput>> query(){ //List d'oversable //
@@ -58,7 +55,11 @@ public class UserRepository {
         return  mutableLiveData;
     }
 
-
+    /**
+     *
+     * @param userFitnessInput , Creer un userFitness et l'envoie a la DB
+     * @return
+     */
     public LiveData<UserFitnessInput> create(UserFitnessInput userFitnessInput){
         final MutableLiveData<UserFitnessInput> mutableLiveData = new MutableLiveData<>();
         getIUserService().postUser(userFitnessInput).enqueue(new Callback<UserFitnessInput>() {
@@ -76,24 +77,11 @@ public class UserRepository {
         });
         return mutableLiveData;
     }
-    public LiveData<UserFitnessOutput> getUserFitness(){
-        final MutableLiveData<UserFitnessOutput> mutableLiveData = new MutableLiveData<>();
-        getIUserService().getUserById(ApiClient.getToken()).enqueue(new Callback<UserFitnessOutput>() {
-            @Override
-            public void onResponse(Call<UserFitnessOutput> call, Response<UserFitnessOutput> response) {
 
-                UserFitnessOutput userFitnessOutput = response.body();
-                mutableLiveData.postValue(userFitnessOutput);
-            }
-
-            @Override
-            public void onFailure(Call<UserFitnessOutput> call, Throwable t) {
-
-            }
-        });
-        return mutableLiveData;
-    }
-
+    /**
+     * permet de recuperer les points d'un utilisateur via son ID
+     * @return
+     */
     public LiveData<Double> getPointById(){
         final MutableLiveData<Double> mutableLiveData = new MutableLiveData<>();
         getIUserService().getUserPoint(ApiClient.getToken()).enqueue(new Callback<Double>() {
@@ -110,28 +98,14 @@ public class UserRepository {
         return mutableLiveData;
     }
 
-
-    public LiveData<UserFitnessInput> update(String token,UserFitnessInput userFitnessInput){
-        final MutableLiveData<UserFitnessInput> mutableLiveData = new MutableLiveData<>();
-        getIUserService().update(token, userFitnessInput).enqueue(new Callback<UserFitnessInput>() {
-            @Override
-            public void onResponse(Call<UserFitnessInput> call, Response<UserFitnessInput> response) {
-                if(response.isSuccessful()){
-                    mutableLiveData.postValue(response.body());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserFitnessInput> call, Throwable t) {
-
-            }
-        });
-        return mutableLiveData;
-    }
-
+    /**
+     * permet de supprimer son compte définitivement.
+     * en passant via son token
+     * @return
+     */
     public LiveData<String> deleteUser(){
         final MutableLiveData<String> mutableLiveData = new MutableLiveData<>();
-        getIUserService().deleteUser(ApiClient.getToken()).enqueue(new Callback<String>() {
+        getIUserService().deleteUser(ApiClient.getToken()).enqueue(new Callback<String>() { // passage du token
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
                 if(response.isSuccessful()){
@@ -146,15 +120,5 @@ public class UserRepository {
         });
         return mutableLiveData;
     }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
 }

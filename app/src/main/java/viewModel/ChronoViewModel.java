@@ -6,6 +6,11 @@ import androidx.lifecycle.ViewModel;
 
 import model.Chrono;
 
+
+/**
+ * VIEW MODEL , elle va instancier l'objet ici
+ * et appeler ses méthodes
+ */
 public class ChronoViewModel extends ViewModel {
 
     private Handler handler = new Handler();

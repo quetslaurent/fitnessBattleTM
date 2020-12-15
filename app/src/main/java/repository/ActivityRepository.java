@@ -14,33 +14,21 @@ import retrofit2.Response;
 
 public class ActivityRepository {
 
+
+    /**
+     *
+     *On recupère l'instance de l'activity service
+     */
     private IActivityService getIActivityService(){
         return ApiClient.getClient().create(IActivityService.class);
     }
 
-    /**
-     * flux d'info que l'on peut observer
-     * on peut pas le modifier ! mais le mutable oui
-     * @return
-     */
-    public LiveData<List<ActivitySport>> query(){ //List d'oversable
-        final MutableLiveData<List<ActivitySport>> mutableLiveData = new MutableLiveData<>();
 
-        getIActivityService().getActivitySport().enqueue(new Callback<List<ActivitySport>>() {
-            @Override
-            public void onResponse(Call<List<ActivitySport>> call, Response<List<ActivitySport>> response) {
-                mutableLiveData.postValue(response.body()); //on envoit des données sur le flux d'information
-                //verifier si tache synchrone
-            }
-
-            @Override
-            public void onFailure(Call<List<ActivitySport>> call, Throwable t) {
-
-            }
-        });
-
-        return  mutableLiveData;
-    }
+     /**
+      *-------------------------------------
+      *  Permet de creer une Activité
+      * ---------------------------------
+      */
 
     public LiveData<ActivitySport> create(ActivitySport activitySport){
         final MutableLiveData<ActivitySport> mutableLiveData = new MutableLiveData<>();
@@ -58,6 +46,12 @@ public class ActivityRepository {
         return mutableLiveData;
     }
 
+
+    /**
+     *-------------------------------------
+     *  Recuperer une activité grace son ID
+     * ---------------------------------
+     */
     public MutableLiveData<List<ActivitySport>> getById(int id) {
         final MutableLiveData<List<ActivitySport>> mutableLiveData = new MutableLiveData<>();
 

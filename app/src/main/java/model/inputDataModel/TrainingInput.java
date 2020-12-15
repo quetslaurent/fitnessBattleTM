@@ -1,5 +1,16 @@
 package model.inputDataModel;
 
+
+
+/**
+ * Ca sera la classe qui sera envoyé au serveur lorsqu'un Training sera creer.
+ *
+ * repetitions = le nombre de rep que l'user a fait
+ * userId = l'id de l'user
+ * ActivityId = l'id de l'activty que l'user a fait
+ * TrainingDateId = l'id de la date
+ *
+ */
 public class TrainingInput {
 
     private double repetitions;

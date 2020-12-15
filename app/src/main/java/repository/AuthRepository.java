@@ -17,6 +17,12 @@ public class AuthRepository {
         return ApiClient.getClient().create(IAuthService.class);
     }
 
+
+    /**
+     *
+     * @param userFitnessInputLogin , passage du paramètre userfitnessInputLogin qui permet de se connecter
+     * @return
+     */
     public LiveData<UserFitnessOutputLogin> loginUser(UserFitnessInputLogin userFitnessInputLogin){
         final MutableLiveData<UserFitnessOutputLogin>mutableLiveData = new MutableLiveData<>();
 

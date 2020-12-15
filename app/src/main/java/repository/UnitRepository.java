@@ -18,28 +18,10 @@ public class UnitRepository {
     }
 
     /**
-     * flux d'info que l'on peut observer
-     * on peut pas le modifier ! mais le mutable oui
+     *
+     * @param unit , permet de creer une unité et l'envoie au serveur
      * @return
      */
-    public LiveData<List<UnitOutput>> query(){ //List d'oversable
-        final MutableLiveData<List<UnitOutput>> mutableLiveData = new MutableLiveData<>();
-
-        getIUnitService().getUnits().enqueue(new Callback<List<UnitOutput>>() {
-            @Override
-            public void onResponse(Call<List<UnitOutput>> call, Response<List<UnitOutput>> response) {
-                mutableLiveData.postValue(response.body()); //on envoit des données sur le flux d'information
-                //verifier si tache synchrone
-            }
-
-            @Override
-            public void onFailure(Call<List<UnitOutput>> call, Throwable t) {
-
-            }
-        });
-
-        return  mutableLiveData;
-    }
     public LiveData<UnitInput> create(UnitInput unit){
         final MutableLiveData<UnitInput> mutableLiveData = new MutableLiveData<>();
         getIUnitService().postUnits(unit).enqueue(new Callback<UnitInput>() {

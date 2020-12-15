@@ -4,6 +4,10 @@ package model.inputDataModel;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+
+/**
+ * Ca sera la classe qui sera envoyé au serveur lorsqu'une date sera creer.
+ */
 public class TrainingDateInput {
 
     private int id;
@@ -13,10 +17,6 @@ public class TrainingDateInput {
     public TrainingDateInput(String date) {
 
         this.date = date;
-    }
-
-    public TrainingDateInput(){
-
     }
 
 
@@ -36,13 +36,5 @@ public class TrainingDateInput {
         this.id = id;
     }
 
-
-//    public static  String getTimeNow(){
-//        Calendar c = Calendar.getInstance();
-//        System.out.println("Current time => "+c.getTime());
-//        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'  'HH:mm:ss.SSS");
-//        String formattedDate = df.format(c.getTime());
-//        return formattedDate;
-//    }
 
 }

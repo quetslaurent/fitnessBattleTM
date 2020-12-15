@@ -22,9 +22,9 @@ public class CategoryRepository {
     }
 
     /**
-     * flux d'info que l'on peut observer
-     * on peut pas le modifier ! mais le mutable oui
-     * @return
+     *
+     * permet de recuperer une liste de category
+     *
      */
     public LiveData<List<CategoryOutput>> query(){ //List d'oversable
         final MutableLiveData<List<CategoryOutput>> mutableLiveData = new MutableLiveData<>();
@@ -44,6 +44,12 @@ public class CategoryRepository {
 
         return  mutableLiveData;
     }
+
+    /**
+     *
+     * permet de creer une category
+     *
+     */
     public LiveData<CategoryInput> create(CategoryInput categoryInput){
         final MutableLiveData<CategoryInput> mutableLiveData = new MutableLiveData<>();
         getICategoryService().postCategory(categoryInput).enqueue(new Callback<CategoryInput>() {
@@ -59,26 +65,4 @@ public class CategoryRepository {
         });
         return mutableLiveData;
     }
-
-    public LiveData<List<ActivitiesByCategorieOutput>>queryCategoriesActivities(){ //List d'oversable
-        final MutableLiveData<List<ActivitiesByCategorieOutput>> mutableLiveData = new MutableLiveData<>();
-
-        getICategoryService().getActivitiesByCategory().enqueue(new Callback<List<ActivitiesByCategorieOutput>>() {
-
-            @Override
-            public void onResponse(Call<List<ActivitiesByCategorieOutput>> call, Response<List<ActivitiesByCategorieOutput>> response) {
-                mutableLiveData.postValue(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<List<ActivitiesByCategorieOutput>> call, Throwable t) {
-
-            }
-        });
-
-        return  mutableLiveData;
-    }
-
-
-
 }

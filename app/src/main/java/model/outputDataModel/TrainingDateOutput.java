@@ -3,6 +3,10 @@ package model.outputDataModel;
 
 import java.util.Date;
 
+
+/**
+ * La classe qui recoit l'objet TrainingDateOutput du serveur
+ */
 public class TrainingDateOutput {
 
     private int id;

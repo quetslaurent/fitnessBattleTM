@@ -22,28 +22,10 @@ public class TrainingRepository {
     }
 
     /**
-     * flux d'info que l'on peut observer
-     * on peut pas le modifier ! mais le mutable oui
+     *
+     * @param trainingInput
      * @return
      */
-    public LiveData<List<TrainingOutput>> query(){ //List d'oversable
-        final MutableLiveData<List<TrainingOutput>> mutableLiveData = new MutableLiveData<>();
-
-        getITrainingService().getTraining().enqueue(new Callback<List<TrainingOutput>>() {
-            @Override
-            public void onResponse(Call<List<TrainingOutput>> call, Response<List<TrainingOutput>> response) {
-                mutableLiveData.postValue(response.body()); //on envoit des données sur le flux d'information
-                //verifier si tache synchrone
-            }
-
-            @Override
-            public void onFailure(Call<List<TrainingOutput>> call, Throwable t) {
-
-            }
-        });
-
-        return  mutableLiveData;
-    }
     public LiveData<TrainingInput> create(TrainingInput trainingInput){
         final MutableLiveData<TrainingInput> mutableLiveData = new MutableLiveData<>();
         getITrainingService().postTraining(trainingInput).enqueue(new Callback<TrainingInput>() {

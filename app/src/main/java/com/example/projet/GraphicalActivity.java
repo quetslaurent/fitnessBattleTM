@@ -15,7 +15,6 @@ import java.util.List;
 import model.outputDataModel.TrainingOutput;
 import repository.TrainingRepository;
 import util.SlideR;
-import viewModel.GraphicalModelView;
 
 public class GraphicalActivity extends AppCompatActivity {
     //declaration

@@ -5,6 +5,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/**
+ * La classe qui recoit l'objet TrainingOutput du serveur
+ */
 public class TrainingOutput {
 
    private int id;

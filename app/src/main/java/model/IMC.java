@@ -1,5 +1,9 @@
 package model;
 
+
+/**
+ * Classe model du calcul de IMC
+ */
 public class IMC {
 
 

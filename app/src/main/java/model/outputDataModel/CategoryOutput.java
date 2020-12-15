@@ -1,5 +1,8 @@
 package model.outputDataModel;
 
+/**
+ * La classe qui recoit l'objet CategoryOutput du serveur
+ */
 public class CategoryOutput {
     private int id;
     private String name;

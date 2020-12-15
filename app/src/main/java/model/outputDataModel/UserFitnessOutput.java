@@ -8,6 +8,11 @@ public class UserFitnessOutput {
     private String role;
     private double points;
 
+    /**
+     * La classe qui recoit l'objet UserFitnessOutput du serveur
+     */
+
+
     public UserFitnessOutput(){
     }
 

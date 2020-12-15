@@ -1,7 +1,15 @@
 package model.inputDataModel;
 
 import model.UserFitness;
-
+/**
+ * Ca sera la classe qui sera envoyé au serveur lorsqu'un Training sera creer.
+ *
+ *un user possede un email
+ * un user posse un role
+ *
+ * il herite egalement de la classe USERfitness pour le nom et le mdp
+ *
+ */
 public class UserFitnessInput extends UserFitness {
     private int id;
     private String email;

@@ -1,7 +1,9 @@
 package model;
 
-import model.inputDataModel.UserFitnessInput;
 
+/**
+ * Classe mere de UserFitness
+ */
 public class UserFitness {
     private String name;
     private String password;

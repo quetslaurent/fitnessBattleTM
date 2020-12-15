@@ -1,5 +1,9 @@
 package model.inputDataModel;
 
+
+/**
+ * Ca sera la classe qui sera envoyé au serveur lorsqu'une category sera creer.
+ */
 public class CategoryInput {
     private int id;
     private String name;

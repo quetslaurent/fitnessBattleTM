@@ -1,5 +1,9 @@
 package model.outputDataModel;
 
+/**
+ * La classe qui recoit l'objet UserFitnessOutputToken du serveur
+ */
+
 public class UserFitnessOutputToken {
 
     private int id;
@@ -29,16 +33,5 @@ public class UserFitnessOutputToken {
     public String getEmail() {
         return email;
     }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
+    
 }

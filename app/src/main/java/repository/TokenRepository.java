@@ -20,7 +20,11 @@ public class TokenRepository {
         return ApiClient.getClient().create(ITokenService.class);
     }
 
-
+    /**
+     * Permet de recuperer un utilisateur via son token lorsqu'il s'identifie.
+     * Renvoie un UserFitnessOutputToken
+     * @return
+     */
     public LiveData<UserFitnessOutputToken> getUserFromToken(){
         final MutableLiveData<UserFitnessOutputToken> mutableLiveData = new MutableLiveData<>();
         getITokenService().getUserByToken(ApiClient.getToken()).enqueue(new Callback<UserFitnessOutputToken>() {

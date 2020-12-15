@@ -5,6 +5,9 @@ import java.util.List;
 import model.outputDataModel.ActivitySport;
 import model.outputDataModel.CategoryOutput;
 
+/**
+ * La classe qui recoit l'objet CategoryOutput du serveur
+ */
 public class ActivitiesByCategorieOutput extends CategoryOutput {
 
     private List<ActivitySport> activities ;
@@ -26,7 +29,4 @@ public class ActivitiesByCategorieOutput extends CategoryOutput {
         return activities;
     }
 
-    public void setActivities(List<ActivitySport> activities) {
-        this.activities = activities;
-    }
 }

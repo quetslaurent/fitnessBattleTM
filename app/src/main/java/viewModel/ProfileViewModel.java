@@ -7,7 +7,10 @@ import model.outputDataModel.UserFitnessOutput;
 import model.outputDataModel.UserFitnessOutputToken;
 import repository.TokenRepository;
 import repository.UserRepository;
-
+/**
+ * VIEW MODEL , elle va instancier l'objet ici
+ * et appeler ses méthodes
+ */
 public class ProfileViewModel extends ViewModel {
 
     private TokenRepository tokenRepository = new TokenRepository();

@@ -20,28 +20,10 @@ public class TrainingDateRepository {
     }
 
     /**
-     * flux d'info que l'on peut observer
-     * on peut pas le modifier ! mais le mutable oui
+     *
+     * @param trainingDateInput , on envoie le trainingDate que l'on a creer au serveur
      * @return
      */
-    public LiveData<List<TrainingDateOutput>> query(){ //List d'oversable
-        final MutableLiveData<List<TrainingDateOutput>> mutableLiveData = new MutableLiveData<>();
-
-        getITrainingDateService().getTrainingDate().enqueue(new Callback<List<TrainingDateOutput>>() {
-            @Override
-            public void onResponse(Call<List<TrainingDateOutput>> call, Response<List<TrainingDateOutput>> response) {
-                mutableLiveData.postValue(response.body()); //on envoit des données sur le flux d'information
-                //verifier si tache synchrone
-            }
-
-            @Override
-            public void onFailure(Call<List<TrainingDateOutput>> call, Throwable t) {
-
-            }
-        });
-
-        return  mutableLiveData;
-    }
 
     public LiveData<TrainingDateInput> create(TrainingDateInput trainingDateInput){
         final MutableLiveData<TrainingDateInput> mutableLiveData = new MutableLiveData<>();
@@ -59,6 +41,10 @@ public class TrainingDateRepository {
         return mutableLiveData;
     }
 
+    /**
+     * permet de creer  la date d'aujourd'hui
+     * @return
+     */
     public LiveData<TrainingDateInput> createToday(){
         final MutableLiveData<TrainingDateInput> mutableLiveData = new MutableLiveData<>();
         getITrainingDateService().postToday().enqueue(new Callback<TrainingDateInput>() {
